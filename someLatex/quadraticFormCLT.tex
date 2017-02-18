@@ -1,0 +1,66 @@
+
+\begin{lemma}\label{quadraticFormCLT}
+    Suppose $X_{n}$ is a $k_n$ dimensional standard normal random vector and $A_n$ is a $k_n\times k_n$ symmetric matrix. Then a necessary and sufficient condition for
+    \begin{equation}\label{quadratic}
+        \frac{X_n^T A_n X_n-\mathrm{E}X_n^T A_n X_n}{{[\mathrm{Var}(X_n^T A_n X_n)]}^{1/2}}\xrightarrow{\mathcal{L}}N(0,1)
+    \end{equation}
+    is that
+    \begin{equation}\label{quadraticEigen}
+        \frac{\lambda_{\max}(A_n^2)}{\mathrm{tr}(A_n^2)}\to 0.
+    \end{equation}
+\end{lemma}
+\begin{remark}
+This lemma is the Example 5.1 of Jiming Jiang (1996). Here we give a proof by ch.f.
+\end{remark}
+\begin{proof}
+    Let $\lambda_1(A_n)\geq\cdots\geq \lambda_{k_n}(A_n)$ be the eigenvalues of $A_n$, then 
+    \begin{equation}
+        \frac{X_n^T A_n X_n-\mathrm{E}X_n^T A_n X_n}{{[\mathrm{Var}(X_n^T A_n X_n)]}^{1/2}}=\sum_{i=1}^{k_n}\frac{\lambda_i(A_n)}{{\big[2\mathrm{tr}(A_n^2)\big]}^{1/2}}(Z_{ni}^2-1),
+    \end{equation}
+    where $Z_{ni}$'s ($i=1,\ldots,k_n$) are independent standard normal random variables.
+
+    If~\ref{quadraticEigen} holds, then
+    \begin{equation*}
+        \begin{aligned}
+            &\sum_{i=1}^{k_n}\mathrm{E}\Big[\frac{\lambda_i^2(A_n)}{2\mathrm{tr}(A_n^2)}{(Z_{ni}^2-1)}^2\Big\{\frac{\lambda_i^2(A_n)}{2\mathrm{tr}(A_n^2)}{(Z_{ni}^2-1)}^2\geq \epsilon\Big\}\Big]\\
+            \leq&\sum_{i=1}^{k_n}
+            \frac{\lambda_i^2(A_n)}{2\mathrm{tr}(A_n^2)}
+            \mathrm{E}\Big[{(Z_{n1}^2-1)}^2\Big\{\frac{\lambda_{\max}(A_n^2)}{2\mathrm{tr}(A_n^2)}{(Z_{n1}^2-1)}^2\geq \epsilon\Big\}\Big]\\
+            =&
+            \frac{1}{2}\mathrm{E}\Big[{(Z_{n1}^2-1)}^2\Big\{\frac{\lambda_{\max}(A_n^2)}{2\mathrm{tr}(A_n^2)}{(Z_{n1}^2-1)}^2\geq \epsilon\Big\}\Big]\to 0.
+        \end{aligned}
+    \end{equation*}
+    Hence~\ref{quadratic} follows by Lindeberg theorem.
+
+    Conversely, if~\ref{quadratic} holds, we will prove that there is a subsequence of $\{n\}$ along which~\ref{quadraticEigen} holds. Then~\ref{quadraticEigen} will hold by a standard contradiction argument. 
+
+    Denote $c_{ni}=\lambda_i(A_n)/{\big[2\mathrm{tr}(A_n^2)\big]}^{1/2}$ ($i=1,\ldots,k_n$), we have $c_{ni}\in[-\sqrt{2}/2,\sqrt{2}/2]$.
+    Since~\ref{quadratic} holds, the characteristic function of
+        $
+        \sum_{i=1}^{k_n}c_{ni}(Z_{ni}^2-1)
+    $
+    converges to $\exp(-t^2/2)$ for every $t$. For $t\in (-1,1)$, we have
+    \begin{equation*}
+        \begin{aligned}
+            &\log \mathrm{E}\exp{\big(it \sum_{j=1}^{k_n}c_{nj}(Z_{nj}^2-1)\big)}\\
+            =&
+            -i(\sum_{j=1}^{k_n}c_{nj})t-
+            \frac{1}{2}\sum_{j=1}^{k_n}\log(1-i2c_{nj}t)\\
+            =&
+            -i(\sum_{j=1}^{k_n}c_{nj})t+
+            \frac{1}{2}\sum_{j=1}^{k_n}\sum_{l=1}^{+\infty}\frac{1}{l}{(i2c_{nj}t)}^l\\
+            =&
+            -i(\sum_{j=1}^{k_n}c_{nj})t+
+            \frac{1}{2}\sum_{l=1}^{+\infty}\Big[\sum_{j=1}^{k_n}{(c_{nj})}^l\Big]\frac{1}{l}{(i2t)}^l\\
+            =&-\frac{1}{2}t^2+
+            \frac{1}{2}\sum_{l=3}^{+\infty}\Big[\sum_{j=1}^{k_n}{(c_{nj})}^l\Big]\frac{1}{l}{(i2t)}^l.
+        \end{aligned}
+    \end{equation*}
+    Denote $b_{nl}=\sum_{j=1}^{k_n}{(c_{nj})}^l$, $n=1,2,\cdots$ and $l=3,4,\cdots$. For $l\geq 3$, $\big|\sum_{j=1}^{k_n}{(c_{nj})}^l\big|\leq \big|\sum_{j=1}^{k_n}{(c_{nj})}^2\big|=1/2$.
+    By Helly's selection theorem, there's a subsequence of $\{n\}$ along which $\lim_{n\to \infty}b_{nl}=b_l$ exists for every $l$.
+    Apply dominated convergence theorem to this subsequence we have
+            $\log \mathrm{E}\exp{\big(it \sum_{j=1}^{k_n}c_{nj}(Z_{nj}^2-1)\big)}\to
+            -\frac{1}{2}t^2+
+            \frac{1}{2}\sum_{l=3}^{+\infty}b_l\frac{1}{l}{(i2t)}^l$ for $t\in(-1/2,1/2)$.
+            By the property of power series, we have $b_l=0$ for $l\geq 3$. Then~\ref{quadraticEigen} follows by noting that $b_{n4}\geq \max_j{(c_{nj})}^4$.
+\end{proof}

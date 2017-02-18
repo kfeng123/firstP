@@ -1,0 +1,147 @@
+\section{PCA Theory}
+
+We give some PCA theory here. Compared with existing results, we impose less assumptions since our main task is to obtain the properties of principal space.
+    \begin{assumption}\label{PCAassump}
+    Suppose $X_i=\mu +U\Lambda^{1/2}Z_i$, $i=1,\ldots,n$, where $Z_{i}$ is a random vector with $p$ indepent entries with $\mathrm{E}Z_{ij}=0$ and $\mathrm{Var}Z_{ij}=1$, $i=1,\ldots,n$, $j=1,\ldots,p$, $\Lambda=\mathrm{diag}(\lambda_1,\ldots,\lambda_p)$ with $\lambda_1\geq\cdots\geq \lambda_p$ and $U$ is a $p$ dimensional orthogonal matrix.
+    Suppose  $\lambda_{r+1}\asymp \lambda_p\asymp 1$. 
+    \end{assumption}
+
+
+    Denote by $S=\frac{1}{n}\sum_{i=1}^n (X_i-\bar{X}){(X_i-\bar{X})}^T$ the sample covariance matrix, $S=\hat{U}\hat{\Lambda}\hat{U}^T$ the spectral decomposition of $S$ where $\hat{\Lambda}=\mathrm{diag}(\hat{\lambda}_1,\ldots,\hat{\lambda}_p)$ and $\hat{U}$ is a orthogonal matrix.
+    
+    Let $u_i$ be the $i$th column of $U$, $1\leq i\leq p$. And denote $U=(V,\tilde{V})$, where $V$ is the first $r$ columns of $U$ and $\tilde{V}$ is the larst $p-r$ columns of $U$. Similarly define $\hat{u}_i$, $\hat{V}$ and $\hat{\tilde{V}}$.
+
+The proof is similar to Dan Shen's paper.
+
+    Let $Z\overset{def}{=}(Z_1,\ldots,Z_n)\overset{def}{=}{(\tilde{Z}_1^T,\ldots,\tilde{Z}_p^T)}^T$ and $\tilde{Z}_{(1)}={(\tilde{Z}_1^T,\ldots,\tilde{Z}_r^T)}^T$, $\tilde{Z}_{(2)}={(\tilde{Z}_{r+1}^T,\ldots,\tilde{Z}_p^T)}^T$.
+    Let $\Lambda_{(1)}=\mathrm{diag}(\lambda_1,\ldots,\lambda_r)$ and $\Lambda_{(2)}=\mathrm{diag}(\lambda_{r+1},\ldots,\lambda_p)$. Define $\hat{\Lambda}_{(1)}$ and $\hat{\Lambda}_{(2)}$ in a similar way.
+    Deote by $J$ the $p\times p$ matrix with all elements equal to $1$. Then
+    \begin{equation*}
+        S=\frac{1}{n}U\Lambda^{1/2}Z(I-\frac{1}{n}J)Z^T \Lambda^{1/2} U^T.
+    \end{equation*}
+    The positive eigenvalues of $S$ are the same as those of  $S^*=\frac{1}{n}(I-\frac{1}{n}J)Z^T \Lambda Z (I-\frac{1}{n}J)$, the dual matrix of $S$.
+
+
+\begin{theorem}
+    Suppose Assumption~\ref{PCAassump} holds and $p/n\to \infty$.
+    If  $\frac{p}{n\lambda_i}\to 0$, then
+    $\frac{\hat{\lambda}_i}{\lambda_i}\xrightarrow{a.s.} 1$, $1\leq i\leq r$.
+    If  $\frac{p}{n\lambda_r}\to \infty$, then
+    $\frac{\hat{\lambda}_i}{\lambda_i}\asymp \frac{p}{n\lambda_i}$ almost surely, $1\leq i\leq r$.
+\end{theorem}
+\begin{proof}
+    Let
+    \begin{equation*}
+        S^*=\frac{1}{n}(I-\frac{1}{n}J)\tilde{Z}_{(1)}^T \Lambda_{(1)} \tilde{Z}_{(1)} (I-\frac{1}{n}J)+\frac{1}{n}(I-\frac{1}{n}J)\tilde{Z}_{(2)}^T \Lambda_{(2)} \tilde{Z}_{(2)} (I-\frac{1}{n}J)\overset{def}{=}A+B.
+    \end{equation*}
+
+    For $1\leq i\leq r$, we prove the $i$th sample eigenvalue is consistent. By Corollary~\ref{WeylCor}, we have
+    \begin{equation*}
+        \begin{aligned}
+            \frac{\lambda_i(A)}{\lambda_i}&\leq \frac{1}{\lambda_i}\lambda_{\max}\Big(\frac{1}{n}(I-\frac{1}{n}J)\tilde{Z}_{(1)}^T \mathrm{diag}(\underbrace{0,\ldots,0}_{i-1},\underbrace{\lambda_i,\ldots,\lambda_i}_{r-i+1}) \tilde{Z}_{(1)} (I-\frac{1}{n}J)\Big)\\
+            &\leq \lambda_{\max}\Big(\frac{1}{n} \tilde{Z}_{(1)} (I-\frac{1}{n}J)\tilde{Z}_{(1)}^T \Big)\\
+        \end{aligned}
+    \end{equation*}
+    But $\frac{1}{n}\tilde{Z}_{(1)} (I-\frac{1}{n}J)\tilde{Z}_{(1)}^T\xrightarrow{a.s.}I_r$ by law of large number. It follows that the right hand side tends to $1$ almost surely. On the othe hand, by Weyl's inequility, we have
+
+\begin{equation*}
+    \begin{aligned}
+        \frac{\lambda_i(A)}{\lambda_i}&\geq
+        \frac{1}{\lambda_i}\lambda_{i}\Big(\frac{1}{n}(I-\frac{1}{n}J)\tilde{Z}_{(1)}^T \mathrm{diag}(\underbrace{\lambda_i,\ldots,\lambda_i}_{i},\underbrace{0,\ldots,0}_{r-i}) \tilde{Z}_{(1)} (I-\frac{1}{n}J)\Big).\\
+    \end{aligned}
+\end{equation*}
+    The right hand side tends to $1$ almost surely. As a result, $\lambda_i(A)/\lambda_i$ tends to $1$ almost surely.
+
+
+    By Weyl's inequality, we have that
+    \begin{equation}\label{PCA19}
+        \frac{\max(\lambda_i(A),\lambda_i(B))}{\lambda_i}\leq\frac{\lambda_i(S)}{\lambda_i}\leq \frac{\lambda_i(A)}{\lambda_i} +\frac{\lambda_{\max}(B)}{\lambda_i}.
+    \end{equation}
+    By Bai Yin's law, $\frac{n}{p}\lambda_{i}(B)\to 1$ almost surely for $1\leq i\leq n-1$. It follows that 
+    \begin{equation}\label{PCA20}
+        \frac{\lambda_{i}(B)}{\lambda_i}=\frac{p}{n\lambda_i}(1+o_{a.s.}(1))
+        \quad \textrm{and}\quad
+        \frac{\lambda_{\max}(B)}{\lambda_i}\=
+        \frac{p}{n\lambda_i}\leq\frac{p}{n\lambda_r}\ 
+    \end{equation} 
+        almost surely for $1\leq i\leq r$. The theorem follows from~\eqref{PCA19} and~\eqref{PCA20}.
+\end{proof}
+
+
+
+\begin{theorem}
+    Suppose Assumption~\ref{PCAassump} holds and $p/n\to \infty$.
+    If  $\frac{p}{n\lambda_r}\to 0$, then
+    \begin{equation}
+        E\|\hat{V}\hat{V}^T-VV^T\|^2_F=O(\frac{p}{n\lambda_r }).
+    \end{equation}
+    If  $\frac{p}{n\lambda_r}\to \infty$ and $\lambda_r\to \infty$, then
+    \begin{equation}
+        E\|\hat{V}\hat{V}^T-VV^T\|^2_F\to 1.
+    \end{equation}
+\end{theorem}
+
+
+\begin{proof}
+
+    Since
+    \begin{equation*}
+        S=\hat{U}\hat{\Lambda}\hat{U}^T=
+        \frac{1}{n}U\Lambda^{1/2}Z(I-\frac{1}{n}J)Z^T \Lambda^{1/2} U^T,
+    \end{equation*}
+    we have
+    \begin{equation}\label{crucialEqInPCA}
+        \Lambda^{-1/2}U^T \hat{U}\hat{\Lambda}\hat{U}^T U\Lambda^{-1/2}=
+        \frac{1}{n}Z(I-\frac{1}{n}J)Z^T. 
+    \end{equation}
+    The left hand side of~\eqref{crucialEqInPCA} equal to $C+D$, where $C= \Lambda^{-1/2}U^T \hat{V}\hat{\Lambda}_{(1)}\hat{V}^T U\Lambda^{-1/2}$ and $D= \Lambda^{-1/2}U^T \hat{\tilde{V}}\hat{\Lambda}_{(2)}\hat{\tilde{V}}^T U\Lambda^{-1/2}$.
+    Note that $\mathrm{Rank}(C)=r$, $\mathrm{Rank}(D)=n-1-r$ and $\mathrm{Rank}(C+D)=n-1$. By Bai Yin's law, we have
+    \begin{equation*}
+        \lambda_1\big(\frac{1}{p}Z(I-\frac{1}{n}J)Z^T\big)\to 1,\quad
+        \lambda_{n-1}\big(\frac{1}{p}Z(I-\frac{1}{n}J)Z^T\big)\to 1\quad  a.s..
+    \end{equation*}
+    By Lemma~\eqref{lemmaRankLim}, $\lambda_{1}(C)\xrightarrow{a.s.}1$ and $\lambda_{r}(C)\xrightarrow{a.s.}1$. It follows that
+    \begin{equation}
+        \frac{n}{p}\hat{\Lambda}_{(1)}^{1/2}\hat{V}^T U\Lambda^{-1}U^T \hat{V}\hat{\Lambda}_{(1)}^{1/2}\xrightarrow{a.s.} I_r
+    \end{equation}
+
+    When $\frac{p}{n\lambda_r}\to 0$, $\lambda_i$'s are ratio consistent for $1\leq i\leq r$. Therefore
+    \begin{equation}
+        \frac{n}{p}\Lambda_{(1)}^{1/2}\hat{V}^T U\Lambda^{-1}U^T \hat{V}\Lambda_{(1)}^{1/2}\xrightarrow{a.s.} I_r
+    \end{equation}
+    But
+    \begin{equation*}
+        \begin{aligned}
+            \mathrm{tr}\big(\Lambda_{(1)}^{1/2}\hat{V}^T U\Lambda^{-1}U^T \hat{V}\Lambda_{(1)}^{1/2}\big)&\geq
+        \lambda_r\mathrm{tr}\big(\hat{V}^T U\Lambda^{-1}U^T \hat{V}\big)\\
+            &\geq
+            \lambda_r\mathrm{tr}\big(\hat{V}^T \tilde{V}\Lambda_{(2)}^{-1}\tilde{V}^T \hat{V}\big)\\
+            &\asymp
+            \lambda_r\mathrm{tr}\big(\hat{V}^T \tilde{V}\tilde{V}^T \hat{V}\big)=\lambda_r\frac{1}{2}\|VV^T -\hat{V}\hat{V}^T\|^2_F.
+        \end{aligned}
+    \end{equation*}
+    It follows that$\|VV^T -\hat{V}\hat{V}^T\|^2_F=O_{a.s.}(\frac{p}{n\lambda_r})$.
+
+    Hence for $1\leq i\leq r$, we have
+    \begin{equation*}
+        \begin{aligned}
+            &\lambda_{\max}\Big(\frac{1}{n}Z(I-\frac{1}{n}J)Z^T\Big)\\
+            = &
+            \lambda_{\max}\Big(\hat{\Lambda}^{1/2}\hat{U}^T U\Lambda^{-1} U^T \hat{U}\hat{\Lambda}^{1/2}\Big)\\
+            \geq &
+            \hat{\lambda}_i^{1/2}\hat{u}_i^T U\Lambda^{-1} U^T \hat{u}_i\hat{\lambda}_i^{1/2}\\
+            = &
+            \hat{\lambda}_i\sum_{j=1}^p \frac{1}{\lambda_j} {(\hat{u}_i^T u_j)}^2\\
+            \geq &
+            \hat{\lambda}_i\sum_{j=r+1}^p \frac{1}{\lambda_j} {(\hat{u}_i^T u_j)}^2\\
+            \sim &
+            \lambda_i\sum_{j=r+1}^p  {(\hat{u}_i^T u_j)}^2
+        \end{aligned}
+    \end{equation*}
+   Then $ \sum_{j=r+1}^p  {(\hat{u}_i^T u_j)}^2=O(\frac{p}{n\lambda_i})=O(\frac{p}{n\lambda_r})$ almost surely by Bai Yin's law.
+   
+   The theorem follows by noting that
+   \begin{equation*}
+       \frac{1}{r}\|\hat{V}\hat{V}^T -VV^T\|^2_F=r-\mathrm{tr}V^T\hat{V}\hat{V}^T V=\sum_{i=1}^r (1-\sum_{j=1}^r {(\hat{u}^T_i u_j)}^2)=\sum_{i=1}^r \sum_{j=r+1}^p {(\hat{u}^T_i u_j)}^2
+   \end{equation*}
+\end{proof}

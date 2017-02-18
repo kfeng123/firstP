@@ -1,0 +1,150 @@
+\begin{thebibliography}{16}
+\expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
+\providecommand{\url}[1]{\texttt{#1}}
+\providecommand{\href}[2]{#2}
+\providecommand{\path}[1]{#1}
+\providecommand{\DOIprefix}{doi:}
+\providecommand{\ArXivprefix}{arXiv:}
+\providecommand{\URLprefix}{URL: }
+\providecommand{\Pubmedprefix}{pmid:}
+\providecommand{\doi}[1]{\href{http://dx.doi.org/#1}{\path{#1}}}
+\providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
+\providecommand{\bibinfo}[2]{#2}
+\ifx\xfnm\undefined \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Ahn and Horenstein(2013)}]{Ahn2009Eigenvalue}
+\bibinfo{author}{Ahn\xfnm[ S.C.]}, \bibinfo{author}{Horenstein\xfnm[ A.R.]}.
+\newblock \bibinfo{title}{Eigenvalue ratio test for the number of factors}.
+\newblock \bibinfo{journal}{Econometrica}
+  \bibinfo{year}{2013};\bibinfo{volume}{81}(\bibinfo{number}{3}):\bibinfo{pages}{1203--1227}.
+\newblock \DOIprefix\doi{10.3982/ECTA8968}.
+%Type = Article
+\bibitem[{Bai and Saranadasa(1996)}]{Bai1996Efiect}
+\bibinfo{author}{Bai\xfnm[ Z.]}, \bibinfo{author}{Saranadasa\xfnm[ H.]}.
+\newblock \bibinfo{title}{Effect of high dimension: by an example of a two
+  sample problem}.
+\newblock \bibinfo{journal}{Statist Sinica}
+  \bibinfo{year}{1996};\bibinfo{volume}{6}(\bibinfo{number}{2}):\bibinfo{pages}{311--329}.
+%Type = Book
+\bibitem[{Bai and Silverstein(2010)}]{bai2010spectral}
+\bibinfo{author}{Bai\xfnm[ Z.]}, \bibinfo{author}{Silverstein\xfnm[ J.W.]}.
+\newblock \bibinfo{title}{Spectral analysis of large dimensional random
+  matrices}.
+\newblock \bibinfo{edition}{2nd} ed.
+\newblock Springer Series in Statistics. \bibinfo{publisher}{Springer, New
+  York}, \bibinfo{year}{2010}.
+\newblock \DOIprefix\doi{10.1007/978-1-4419-0661-8}.
+%Type = Article
+\bibitem[{Cai et~al.(2014)Cai, Liu and Xia}]{Tony2013}
+\bibinfo{author}{Cai\xfnm[ T.T.]}, \bibinfo{author}{Liu\xfnm[ W.]},
+  \bibinfo{author}{Xia\xfnm[ Y.]}.
+\newblock \bibinfo{title}{Two-sample test of high dimensional means under
+  dependence}.
+\newblock \bibinfo{journal}{J R Stat Soc Ser B Stat Methodol}
+  \bibinfo{year}{2014};\bibinfo{volume}{76}(\bibinfo{number}{2}):\bibinfo{pages}{349--372}.
+\newblock \DOIprefix\doi{10.1111/rssb.12034}.
+%Type = Article
+\bibitem[{Cai et~al.(2013)Cai, Ma and Wu}]{Cai2012Sparse}
+\bibinfo{author}{Cai\xfnm[ T.T.]}, \bibinfo{author}{Ma\xfnm[ Z.]},
+  \bibinfo{author}{Wu\xfnm[ Y.]}.
+\newblock \bibinfo{title}{Sparse {PCA}: optimal rates and adaptive estimation}.
+\newblock \bibinfo{journal}{Ann Statist}
+  \bibinfo{year}{2013};\bibinfo{volume}{41}(\bibinfo{number}{6}):\bibinfo{pages}{3074--3110}.
+\newblock \DOIprefix\doi{10.1214/13-AOS1178}.
+%Type = Article
+\bibitem[{Chen et~al.(2011)Chen, Paul, Prentice and Wang}]{Chen2011A}
+\bibinfo{author}{Chen\xfnm[ L.S.]}, \bibinfo{author}{Paul\xfnm[ D.]},
+  \bibinfo{author}{Prentice\xfnm[ R.L.]}, \bibinfo{author}{Wang\xfnm[ P.]}.
+\newblock \bibinfo{title}{A regularized {H}otelling's {$T^2$} test for pathway
+  analysis in proteomic studies}.
+\newblock \bibinfo{journal}{J Amer Statist Assoc}
+  \bibinfo{year}{2011};\bibinfo{volume}{106}(\bibinfo{number}{496}):\bibinfo{pages}{1345--1360}.
+\newblock \DOIprefix\doi{10.1198/jasa.2011.ap10599}.
+%Type = Article
+\bibitem[{Chen and Qin(2010)}]{Chen2010A}
+\bibinfo{author}{Chen\xfnm[ S.X.]}, \bibinfo{author}{Qin\xfnm[ Y.L.]}.
+\newblock \bibinfo{title}{A two-sample test for high-dimensional data with
+  applications to gene-set testing}.
+\newblock \bibinfo{journal}{Ann Statist}
+  \bibinfo{year}{2010};\bibinfo{volume}{38}(\bibinfo{number}{2}):\bibinfo{pages}{808--835}.
+\newblock \DOIprefix\doi{10.1214/09-AOS716}.
+%Type = Article
+\bibitem[{{El Karoui}(2003)}]{Karoui2003On}
+\bibinfo{author}{{El Karoui}\xfnm[ N.]}.
+\newblock \bibinfo{title}{{On the largest eigenvalue of Wishart matrices with
+  identity covariance when n, p and p/n tend to infinity}}.
+\newblock \bibinfo{journal}{ArXiv Mathematics e-prints}
+  \bibinfo{year}{2003};\href{http://arxiv.org/abs/math/0309355}{\tt
+  arXiv:math/0309355}.
+%Type = Article
+\bibitem[{Johnstone(2001)}]{Johnstone2001On}
+\bibinfo{author}{Johnstone\xfnm[ I.M.]}.
+\newblock \bibinfo{title}{On the distribution of the largest eigenvalue in
+  principal components analysis}.
+\newblock \bibinfo{journal}{Ann Statist}
+  \bibinfo{year}{2001};\bibinfo{volume}{29}(\bibinfo{number}{2}):\bibinfo{pages}{295--327}.
+\newblock \DOIprefix\doi{10.1214/aos/1009210544}.
+%Type = Book
+\bibitem[{Lehmann and Romano(2005)}]{Lehmann}
+\bibinfo{author}{Lehmann\xfnm[ E.L.]}, \bibinfo{author}{Romano\xfnm[ J.P.]}.
+\newblock \bibinfo{title}{Testing statistical hypotheses}.
+\newblock \bibinfo{edition}{3rd} ed.
+\newblock Springer Texts in Statistics. \bibinfo{publisher}{Springer, New
+  York}, \bibinfo{year}{2005}.
+%Type = Incollection
+\bibitem[{Lopes et~al.(2011)Lopes, Jacob and Wainwright}]{Lopes2015A}
+\bibinfo{author}{Lopes\xfnm[ M.]}, \bibinfo{author}{Jacob\xfnm[ L.]},
+  \bibinfo{author}{Wainwright\xfnm[ M.J.]}.
+\newblock \bibinfo{title}{A more powerful two-sample test in high dimensions
+  using random projection}.
+\newblock In: \bibinfo{editor}{Shawe-Taylor\xfnm[ J.]},
+  \bibinfo{editor}{Zemel\xfnm[ R.S.]}, \bibinfo{editor}{Bartlett\xfnm[ P.L.]},
+  \bibinfo{editor}{Pereira\xfnm[ F.]}, \bibinfo{editor}{Weinberger\xfnm[
+  K.Q.]}, editors. \bibinfo{booktitle}{Advances in Neural Information
+  Processing Systems 24}. \bibinfo{publisher}{Curran Associates, Inc.};
+  \bibinfo{year}{2011}. p. \bibinfo{pages}{1206--1214}.
+%Type = Article
+\bibitem[{Ma et~al.(2015)Ma, Lan and Wang}]{Ma2015A}
+\bibinfo{author}{Ma\xfnm[ Y.]}, \bibinfo{author}{Lan\xfnm[ W.]},
+  \bibinfo{author}{Wang\xfnm[ H.]}.
+\newblock \bibinfo{title}{A high dimensional two-sample test under a low
+  dimensional factor structure}.
+\newblock \bibinfo{journal}{J Multivariate Anal}
+  \bibinfo{year}{2015};\bibinfo{volume}{140}:\bibinfo{pages}{162--170}.
+\newblock \DOIprefix\doi{10.1016/j.jmva.2015.05.005}.
+%Type = Article
+\bibitem[{Srivastava and Du(2008)}]{Srivastava2008A}
+\bibinfo{author}{Srivastava\xfnm[ M.S.]}, \bibinfo{author}{Du\xfnm[ M.]}.
+\newblock \bibinfo{title}{A test for the mean vector with fewer observations
+  than the dimension}.
+\newblock \bibinfo{journal}{Journal of Multivariate Analysis}
+  \bibinfo{year}{2008};\bibinfo{volume}{99}(\bibinfo{number}{3}):\bibinfo{pages}{386
+  -- 402}.
+\newblock \DOIprefix\doi{http://dx.doi.org/10.1016/j.jmva.2006.11.002}.
+%Type = Article
+\bibitem[{Srivastava et~al.(2015)Srivastava, Li and
+  Ruppert}]{Srivastava2014RAPTT}
+\bibinfo{author}{Srivastava\xfnm[ R.]}, \bibinfo{author}{Li\xfnm[ P.]},
+  \bibinfo{author}{Ruppert\xfnm[ D.]}.
+\newblock \bibinfo{title}{Raptt: An exact two-sample test in high dimensions
+  using random projections}.
+\newblock \bibinfo{journal}{Journal of Computational and Graphical Statistics}
+  \bibinfo{year}{2015};\DOIprefix\doi{10.1080/10618600.2015.1062771}.
+%Type = Article
+\bibitem[{Thulin(2014)}]{Thulin2014A}
+\bibinfo{author}{Thulin\xfnm[ M.]}.
+\newblock \bibinfo{title}{A high-dimensional two-sample test for the mean using
+  random subspaces}.
+\newblock \bibinfo{journal}{Computational Statistics \& Data Analysis}
+  \bibinfo{year}{2014};\bibinfo{volume}{74}:\bibinfo{pages}{26 -- 38}.
+\newblock \DOIprefix\doi{http://dx.doi.org/10.1016/j.csda.2013.12.003}.
+%Type = Article
+\bibitem[{Zhao and Xu(2016)}]{Zhao2016A}
+\bibinfo{author}{Zhao\xfnm[ J.]}, \bibinfo{author}{Xu\xfnm[ X.]}.
+\newblock \bibinfo{title}{A generalized likelihood ratio test for normal mean
+  when {$p$} is greater than {$n$}}.
+\newblock \bibinfo{journal}{Comput Statist Data Anal}
+  \bibinfo{year}{2016};\bibinfo{volume}{99}:\bibinfo{pages}{91--104}.
+\newblock \DOIprefix\doi{10.1016/j.csda.2016.01.006}.
+
+\end{thebibliography}

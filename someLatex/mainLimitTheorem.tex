@@ -1,0 +1,245 @@
+\section{The new theory}
+\begin{lemma}
+    if 
+    \begin{equation}
+        \frac{\lambda_1(\Sigma_i)}{{[\mathrm{tr}(\Sigma_i^2)]}^{1/2}}\to 0,
+    \end{equation}
+    $i=1,2$. Then
+    \begin{equation}
+        \mathrm{tr}(\Sigma_i\Sigma_j\Sigma_l\Sigma_h)=o[\mathrm{tr}^2 \{{(\Sigma_1+\Sigma_2)}^2\}]\quad \textrm{for} \,\, i,j,l,h=1\,\,\textrm{or}\,\, 2.
+    \end{equation}
+\end{lemma}
+\begin{proof}
+    There are totally $6$ possibilities of 
+    $\mathrm{tr}(\Sigma_i\Sigma_j\Sigma_l\Sigma_h)$:
+    \begin{equation*}
+        \begin{aligned}
+    \mathrm{tr}(\Sigma_1\Sigma_1\Sigma_1\Sigma_1)\quad
+    \mathrm{tr}(\Sigma_1\Sigma_1\Sigma_1\Sigma_2)\quad
+    \mathrm{tr}(\Sigma_1\Sigma_1\Sigma_2\Sigma_2)\\
+    \mathrm{tr}(\Sigma_1\Sigma_2\Sigma_1\Sigma_2)\quad
+    \mathrm{tr}(\Sigma_1\Sigma_2\Sigma_2\Sigma_2)\quad
+    \mathrm{tr}(\Sigma_2\Sigma_2\Sigma_2\Sigma_2)\\
+        \end{aligned}
+    \end{equation*}
+    For $\mathrm{tr}(\Sigma_1\Sigma_2\Sigma_1\Sigma_2)$ we have
+    \begin{equation*}
+        \begin{aligned}
+            \frac{\mathrm{tr}(\Sigma_1\Sigma_2\Sigma_1\Sigma_2)}{\mathrm{tr}^2 \{{(\Sigma_1+\Sigma_2)}^2\}}&=
+            \frac{\mathrm{tr}(\Sigma_1^{1/2}\Sigma_2\Sigma_1\Sigma_2\Sigma_1^{1/2})}{\mathrm{tr}^2 \{{(\Sigma_1+\Sigma_2)}^2\}}\\
+            &\leq
+            \frac{\lambda_1(\Sigma_1)\mathrm{tr}(\Sigma_1^{1/2}\Sigma_2^2\Sigma_1^{1/2})}{\mathrm{tr}^2 \{{(\Sigma_1+\Sigma_2)}^2\}}\\
+            &\leq
+            \frac{\lambda_1^2(\Sigma_1)\mathrm{tr}(\Sigma_2^2)}{\mathrm{tr}^2 \{{(\Sigma_1+\Sigma_2)}^2\}}\\
+            &\leq
+            \frac{\lambda_1^2(\Sigma_1)\mathrm{tr}(\Sigma_2^2)}{\mathrm{tr} (\Sigma_1^2)\mathrm{tr} (\Sigma_2^2)}\to 0.
+        \end{aligned}
+    \end{equation*}
+    The other cases can be proved similarly.
+\end{proof}
+Define
+    \begin{equation}
+        T(A)=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T AA^T X_{1j}}{n_1(n_1-1)}+
+        \frac{\sum_{i\neq j}^{n_2}X_{2i}^T AA^T X_{2j}}{n_2(n_2-1)}-
+        2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T   AA^T X_{2j}}{n_1n_2}.
+    \end{equation}
+    Let
+    \begin{equation}
+        W(A)=\frac{2}{n_1(n_1-1)}\mathrm{tr}{(A^T \Sigma_1 A)}^2+
+        \frac{2}{n_2(n_2-1)}\mathrm{tr}{(A^T \Sigma_2 A)}^2+
+\frac{4}{n_1 n_2}\mathrm{tr}(A^T \Sigma_1 A A^T \Sigma_2 A).
+    \end{equation}
+
+\begin{theorem}
+    Suppose $\hat{\tilde{V}}$ is a random $(p-\hat{r})\times p$ orthgonal matrix which is independent of the data, $\hat{r}\geq \max(r_1,r_2)$ and is bounded. $n_1/n_2\to \psi$. Then a sufficient  condition of 
+    \begin{equation}\label{newTheoryResult}
+        \frac{T(\hat{\tilde{V}})-\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2}
+        {\sqrt{W(\hat{\tilde{V}})}}
+        \xrightarrow{\mathcal{L}} N(0,1)
+    \end{equation}
+    is that
+    \begin{equation}\label{newTheoryCondition}
+        %\max\big(\lambda_1(\Sigma_1),\lambda_1(\Sigma_2)\big)\|VV^T-\hat{V}\hat{V}^T\|_F^2\to 0.
+        \lambda_1(\Sigma_i)\mathrm{tr} (\hat{\tilde{V}}^T V_i V_i^T \hat{\tilde{V}})=o_P(\sqrt{p}),
+    \end{equation}
+    and
+    \begin{equation}
+        {(\mu_1-\mu_2)}^T \hat{\tilde{V}}\hat{\tilde{V}}^T \Sigma_i \hat{\tilde{V}}\hat{\tilde{V}}^T (\mu_1-\mu_2)=o_P(\frac{p}{n})
+    \end{equation}
+    $i=1,2$.
+    If we further assume $\lambda_1(\Sigma)\asymp \lambda_r(\Sigma)$, $\Sigma_1=\Sigma_2$, $\mu_1=\mu_2$ and data are from normal distribution, then~\eqref{newTheoryCondition} is also neccessary.
+\end{theorem}
+\begin{proof}
+    We only need to prove that~\eqref{newTheoryResult} holds conditioning on $\hat{\tilde{V}}$.
+    Notice that $T(\hat{\tilde{V}})$ can be regard as the $T_{CQ}$ of data $\hat{\tilde{V}}^T X_{i,j}$.
+    Since $\hat{\tilde{V}}^T X_{i,j}=\hat{\tilde{V}}^T U_i\Lambda^{1/2}_{i}Z_{i,j}$. Denote $\Sigma_i^*=\hat{\tilde{V}}^T\Sigma_i\hat{\tilde{V}}$, $i=1,2$.
+    By Chen Qin's theorem, we only need to check condition (3.6) (for $\Sigma_i^*$) and (3.4) of Chen Qin's paper.
+    Since 
+    \begin{equation}
+        \begin{aligned}
+            \Sigma_i^*&=\hat{\tilde{V}}^T V_i \Lambda_{i,(1)}V_i^T \hat{\tilde{V}}+
+    \hat{\tilde{V}}^T \tilde{V}_i \Lambda_{i,(2)}\tilde{V}_i^T\hat{\tilde{V}}\\
+            &\overset{def}{=}A_1+A_2
+        \end{aligned}
+    \end{equation}
+
+First step: deal with $A_2$.
+
+     For $j=1,\ldots,p-\hat{r}$, we have 
+    \begin{equation} 
+        \begin{aligned}
+            \lambda_j(A_2)&=
+        \lambda_j(\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T\hat{\tilde{V}}\hat{\tilde{V}}^T \tilde{V}_i\Lambda_{i,(2)}^{1/2})
+           \\ 
+            &=\lambda_j(\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T \tilde{V}_i\Lambda_{i,(2)}^{1/2}-\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T \hat{V}\hat{V}^T\tilde{V}_i\Lambda_{i,(2)}^{1/2})
+        \end{aligned}
+    \end{equation}
+    Since the rank of $\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T \hat{V}\hat{V}^T\tilde{V}_i\Lambda_{i,(2)}^{1/2}$ is at most $\hat{r}$, we have for $j=1,\ldots,p-2\hat{r}$ that 
+    \begin{equation}
+        \lambda_{j+\hat{r}}(\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T \tilde{V}_i\Lambda_{i,(2)}^{1/2})
+            \leq\lambda_j(A_2)\leq
+            \lambda_j(\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T \tilde{V}_i\Lambda_{i,(2)}^{1/2}).
+    \end{equation}
+    Note that $\lambda_j(\Lambda_{i,(2)}^{1/2}\tilde{V}_i^T \tilde{V}_i\Lambda_{i,(2)}^{1/2})=\lambda_j( \tilde{V}_i\Lambda_{i,(2)}\tilde{V}_i^T)=\lambda_{j+r_i}(\Sigma_i)$,
+    $j=1,\ldots,p-r_i$. Hence we have
+    \begin{equation}
+        \lambda_{j+\hat{r}+r_i}(\Sigma_i)\leq \lambda_j(A_2)\leq \lambda_{j+r_i}(\Sigma_i),
+    \end{equation}
+    for $j=1,\ldots,p-2\hat{r}$.
+Since $\mathrm{rank}(A_1)\leq r_i$, we have for $j=r_i+1,\ldots,p-2\hat{r}$ that
+    \begin{equation}\label{mainLimitTheoremIne1}
+        \lambda_{j+\hat{r}+r_i}(\Sigma_i)\leq \lambda_j(A_2)\leq\lambda_j(\Sigma_i^*)\leq \lambda_{j-r_i}(A_2)\leq \lambda_j(\Sigma_i).
+    \end{equation}
+    Specially, $\lambda_j(\Sigma_i^*)\asymp 1$, $j=r_i+1,\ldots,p-2\hat{r}$.
+
+    By~\eqref{mainLimitTheoremIne1}, 
+    \begin{equation}
+        \sum_{j=\hat{r}+2r_i+1}^{p-\hat{r}+r_i}\lambda_j^2(\Sigma_i)\leq
+\sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)\leq
+\sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i).
+    \end{equation}
+    Hence 
+    \begin{equation}\label{mainLimitTheoremIne2}
+        \frac{\sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)}{\sum_{j=r_i+1}^{p}\lambda_j^2(\Sigma_i)}\xrightarrow{P}1.
+    \end{equation}
+
+Below we will use the assumption of PCA rate.
+    \begin{equation}
+        \lambda_1(A_1)\leq \lambda_1(\Sigma_i)\mathrm{tr} (\hat{\tilde{V}}^T V_i V_i^T \hat{\tilde{V}}).
+    \end{equation}
+
+     And 
+    \begin{equation}
+        \lambda_1(\Sigma_i^*)\leq \lambda_1(A_1)+\lambda_1(A_2)\leq o_P(\sqrt{p})+\lambda_{r_i+1}(\Sigma_i)=o_P(\sqrt{p}).
+    \end{equation}
+    Since
+    \begin{equation*}
+        \begin{aligned}
+            \sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)\leq \mathrm{tr}(\Sigma_i^{*2})
+            \leq r_i \lambda_1^2(\Sigma_i^*)+
+            \sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)+
+            2\hat{r}\lambda_{p-2\hat{r}+1}^2(\Sigma_i^*).
+        \end{aligned}
+    \end{equation*}
+    But $\sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)\asymp p$, $\lambda_1^2(\Sigma_i^*)=o_P(p)$, and $2\hat{r}\lambda_{p-2\hat{r}+1}^2(\Sigma_i^*)=O_P(1)$ since $\hat{r}$ is bounded.
+    It follows that
+    \begin{equation}
+        \frac{\mathrm{tr}(\Sigma_i^{*2})}{\sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)}\xrightarrow{P}1.
+    \end{equation}
+
+    It follows that
+    \begin{equation}
+        \frac{\mathrm{tr}(\Sigma_i^{*2})}{\sum_{j=r_i+1}^{p}\lambda_j^2(\Sigma_i)}\xrightarrow{P}1.
+    \end{equation}
+
+    Notice that
+    \begin{equation}
+        \begin{aligned}
+            \frac{\lambda_1(\Sigma_i^*)}{{[\mathrm{tr}(\Sigma_i^{*2})]}^{1/2}}\leq 
+            \frac{o_P(\sqrt{p})}{{[\sum_{j=r_i+1}^{p-2\hat{r}}\lambda_j^2(\Sigma_i^*)]}^{1/2}}
+            \asymp
+            \frac{o_P(\sqrt{p})}{\sqrt{p}}\to 0.
+        \end{aligned}
+    \end{equation}
+By lemma, the first condition of Chen and Qin is satisfied.
+
+
+    \begin{equation*}
+        \begin{aligned}
+        \frac{{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\Sigma_i^*\hat{\tilde{V}}^T (\mu_1-\mu_2)}{n^{-1}\mathrm{tr}\{{(\Sigma_1^*+\Sigma_2^*)}^2\}}
+            &\leq
+            \frac{{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\Sigma_i^*\hat{\tilde{V}}^T (\mu_1-\mu_2)}{n^{-1}\mathrm{tr}(\Sigma_1^{*2})}\\
+            &\asymp
+            \frac{{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\Sigma_i^*\hat{\tilde{V}}^T (\mu_1-\mu_2)}{n^{-1}p}\\
+        \end{aligned}
+    \end{equation*}
+
+     Neccessaity is in the conditional sense. Suppose
+\begin{equation}
+        \frac{T(\hat{\tilde{V}})-\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2}
+        {\sqrt{W(\hat{\tilde{V}})}}
+        \xrightarrow{\mathcal{L}} N(0,1)
+\end{equation}
+Write $T(\hat{\tilde{V}})=T^{(1)}+T^{(2)}$, where
+\begin{equation*}
+\begin{aligned}
+    T^{(1)}=&\frac{\sum_{i\neq j}^{n_1}{(X_{1i}-\mu_1)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T(X_{1j}-\mu_1)}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}{(X_{2i}-\mu_2)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T(X_{2j}-\mu_2)}{n_2(n_2-1)}
+\\
+    &-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}{(X_{1i}-\mu_1)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T(X_{2j}-\mu_2)}{n_1n_2}
+\end{aligned}
+\end{equation*}
+and
+\begin{equation*}
+\begin{aligned}
+    T^{(2)}=&2{(\bar{X_{1}}-\mu_1)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T(\mu_1-\mu_2)+
+    2{(\bar{X_{2}}-\mu_2)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T(\mu_2-\mu_1)
+\\
+    &+\|\hat{\tilde{V}}(\mu_1-\mu_2)\|^2.
+\end{aligned}
+\end{equation*}
+   
+Since $W(\hat{\tilde{V}})\geq \frac{2}{n_1(n_1-1)}\mathrm{tr}(\Sigma_1^{*2})\asymp\frac{p}{n^2}$. 
+We have
+\begin{equation*}
+    \begin{aligned}
+    \mathrm{Var}\Big(\frac{T^{(2)}-\|\hat{\tilde{V}}(\mu_1-\mu_2)\|^2}{\sqrt{W(\hat{\tilde{V}})}}\Big)
+        =&
+        \frac{4}{W(\hat{\tilde{V}})}\Big(
+        {(\mu_1-\mu_2)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T       \frac{1}{n_1}\Sigma_1\hat{\tilde{V}}\hat{\tilde{V}}^T(\mu_1-\mu_2)\\
+        &+
+        {(\mu_1-\mu_2)}^T\hat{\tilde{V}}\hat{\tilde{V}}^T       \frac{1}{n_2}\Sigma_2\hat{\tilde{V}}\hat{\tilde{V}}^T(\mu_1-\mu_2)
+        \Big)\\
+        =&o_P(1)\frac{n^2}{p}\frac{1}{n}\frac{p}{n}\xrightarrow{P}0.
+    \end{aligned}
+\end{equation*}
+And $\frac{T^{(2)}-\|\hat{\tilde{V}}(\mu_1-\mu_2)\|^2}{\sqrt{W(\hat{\tilde{V}})}}$ has mean zero, hence converges to $0$ in probability. By Slutsky's theorem, 
+\begin{equation}
+    \frac{T^{(1)}}
+        {\sqrt{W(\hat{\tilde{V}})}}
+        \xrightarrow{\mathcal{L}} N(0,1).
+\end{equation}
+
+It follows by previous theorem that
+$\frac{\lambda_1(\Sigma^*)}{{[\mathrm{tr}\Sigma^{*2}]}^{1/2}}\to 0$.Then
+\begin{equation}
+    \frac{\sum_{i=1}^{r}\lambda_i^2(\Sigma^*)}{\mathrm{tr}\Sigma^{*2}}\leq \frac{r\lambda_1^2(\Sigma^*)}{\mathrm{tr}\Sigma^{*2}}\to 0.
+\end{equation} 
+    Then
+\begin{equation}
+    \frac{\sum_{i=1}^{r}\lambda_i^2(\Sigma^*)}{\sum_{i=r+1}^{p}\lambda_i^2(\Sigma^*)}\to 0,
+\end{equation} 
+which is equivalent to $\lambda$.
+By~\eqref{mainLimitTheoremIne2}, $\sum_{i=1}^{r}\lambda_i^2(\Sigma^*)=o(p)$. Then
+\begin{equation}
+    \lambda_1(A_1)\leq \lambda_1^2(\Sigma^*)\leq \sum_{i=1}^{r}\lambda_i^2(\Sigma^*)=o(p)
+\end{equation}
+But
+\begin{equation}
+    \lambda_1(A_1)\asymp
+    \lambda_1(\Sigma_i)\lambda_1(\hat{\tilde{V}}^T V V^T\hat{\tilde{V}})
+    \asymp
+    \lambda_1(\Sigma_i)\lambda_1(\hat{\tilde{V}}^T V V^T \hat{\tilde{V}})
+\end{equation}
+The first equivalence of above holds by assumption. The second equivalence holds because $\mathrm{rank}(\hat{\tilde{V}}^T V V^T \hat{\tilde{V}})\leq r$. The conclusion follows.
+\end{proof}
+

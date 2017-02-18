@@ -1,0 +1,848 @@
+\documentclass[review]{elsarticle}
+ 
+\usepackage{lineno,hyperref}
+\modulolinenumbers[5]
+
+\journal{Journal of \LaTeX\ Templates}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+%% To change the style, put a % in front of the second line of the current style and
+%% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+%\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xeCJK}
+\usepackage{bm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{booktabs}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{\quad\quad Theorem}
+\newtheorem{proposition}{\quad\quad Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{example}{Example}
+\newtheorem{assumption}{\quad\quad Assumption}
+\newtheorem{condition}{Condition}
+
+\theoremstyle{definition}
+\newtheorem{remark}{\quad\quad Remark}
+\theoremstyle{remark}
+\begin{document}
+
+\begin{frontmatter}
+
+\title{High-dimensional two-sample test under spiked covariance}
+
+%% Group authors per affiliation:
+    \author[mymainaddress]{Rui Wang}
+    \author[mymainaddress,mysecondaryaddress]{Xingzhong Xu\corref{mycorrespondingauthor}}
+\cortext[mycorrespondingauthor]{Corresponding author}
+\ead{xuxz@bit.edu.cn}
+    \address[mymainaddress]{School of Mathematics and Statistics, Beijing Institute of Technology, Beijing 
+    100081,China}
+    \address[mysecondaryaddress]{Beijing Key Laboratory on MCAACI, Beijing Institute of Technology, Beijing 100081,China}
+%\fntext[myfootnote]{Since 1880.}
+
+%% or include affiliations in footnotes:
+%\author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+%\ead[url]{www.elsevier.com}
+
+
+
+\begin{abstract}
+    This paper considers testing the means of two $p$-variate normal samples in high dimensional setting.  The covariance matrices are assumed to be spiked, which often arises in practice. 
+    We propose a new test procedure through projection on the orthogonal complement of principal space.
+    The asymptotic normality of the new test statistic is proved and the power function of the test is given.
+    Theoretical and simulation results show that the new test outperforms existing methods substantially when the covariance matrices are spiked. Even when the covariance matrices are not spiked, the new test is acceptable.
+\end{abstract}
+
+\begin{keyword}
+    high dimension, mean test, orthogonal complement of principal space, spiked covariance
+\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+
+
+
+\section{Introduction}
+
+Suppose that $X_{k1},\ldots,X_{kn_k}$  are independent identically distributed (i.i.d.) as $N_p(\mu_k,\Sigma_k)$, where $\mu_k$ and $\Sigma_k$ are unknown, $k=1,2$. We consider the hypothesis testing problem:
+
+\begin{equation}\label{problem}
+    H_0:\mu_1=\mu_2\quad \textrm{vs.}\quad H_1:\mu_1\neq \mu_2.
+\end{equation}
+In this paper, the dimension $p$ varies as $n_1$ and $n_2$ increase, i.e., high dimensional setting is adopted.
+Testing hypotheses~\eqref{problem} is important in many applications, including biology, finance and economics. Quite often,  these data have strong correlations between variables. When strong correlations exist, covariance matrices are often spiked in the sense that a few eigenvalues are distinctively larger than the others. The paper is devoted to
+testing hypotheses~\eqref{problem} in high dimensional setting with spiked covariance.
+
+
+If $\Sigma_1=\Sigma_2=\Sigma$ is unknown, a classical test for hypotheses~\eqref{problem} is Hotelling's $T^2$ test.  Hotelling's test statistic is ${(\bar{X}_1-\bar{X}_2)}^T S^{-1}(\bar{X}_1-\bar{X}_2)$, where $S$ is the pooled sample covariance matrix. However, Hotelling's test is not defined when $p\geq n_1+n_2-1$.
+Moreover,~\cite{Bai1996Efiect} showed that even if $p<n_1+n_2-1$, Hotelling's test suffers from low power when $p$ is comparable to $n$.
+Perhaps, the main reason for low power of Hotelling's test is due to that $S$ is a poor estimator of $\Sigma$ when $p$ is large compared with $n_1+n_2$. See~\cite{Chen2010A} and the references therein.
+In high dimensional setting,  
+many test statistics in the literatures are based on an estimator of ${(\mu_1-\mu_2)}^T A(\mu_1-\mu_2)$ for a given positive definite matrix $A$. 
+For example,~\cite{Bai1996Efiect} proposed a test based on
+\begin{equation*}
+    T_{BS}=\|\bar{X}_1-\bar{X}_2\|^2-(\frac{1}{n_1}+\frac{1}{n_2})\mathrm{tr}S,
+\end{equation*}
+which is an unbiased estimator of $\|\mu_1-\mu_2\|^2$.~\cite{Chen2010A} modified $T_{BS}$ by removing terms $\sum_{i=1}^{n_k}X_{ki}^T X_{ki}$, $k=1,2$ and proposed a test based on
+\begin{equation*}
+    \begin{aligned}
+        T_{CQ}&=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T X_{2j}}{n_2(n_2-1)}-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T X_{2j}}{n_1n_2}
+        \\
+            &=\|\bar{X}_1-\bar{X}_2\|^2-\frac{1}{n_1}\mathrm{tr}S_1-\frac{1}{n_2}\mathrm{tr}S_2,
+    \end{aligned}
+\end{equation*}
+where $S_1$ and $S_2$ are sample covariance matrices. Statistic $T_{CQ}$ 
+is also an unbiased estimator of $\|\mu_1-\mu_2\|^2$. Choosing $A={[\mathrm{diag}(\Sigma)]}^{-1}$,~\cite{Srivastava2008A} proposed a test based on
+\begin{equation*}
+    T_{S}={(\bar{X}_1-\bar{X}_2)}^T {[\mathrm{diag}(S)]}^{-1}(\bar{X}_1-\bar{X}_2),
+\end{equation*}
+where $\textrm{diag} (A)$ is a diagonal matrix with the same diagonal elements as $A$'s.
+%To characterize strong correlation between variables,~\cite{Ma2015A} adopted a factor model proposed a test based on
+%\begin{equation}\label{compete2}
+ %    T_{FAST}=\frac{n_1 n_2}{n_1+n_2}\|\bar{X}_1-\bar{X}_2\|^2-(\mathrm{tr} S- \sum_{i=1}^{\hat{r}} \lambda_l(S))
+%\end{equation}
+
+As~\cite{Ma2015A} pointed out, however, these test procedures may not be valid if strong correlations exist, i.e., $\Sigma$ is far away from diagonal matrix. For example, the assumption 
+%$$
+%\mathrm{tr}(\Sigma_i \Sigma_j \Sigma_l \Sigma_h)=o[\mathrm{tr}^2\{{(\Sigma_1+\Sigma_2)}^2\}]\quad\quad  \textrm{for}\, i,j,l,h=1\,\textrm{or}\,2
+%$$ 
+\begin{equation}\label{chenscondition}
+\mathrm{tr}(\Sigma^4)=o[\mathrm{tr}^2\{{(\Sigma)}^2\}]
+\end{equation}
+adopted by~\cite{Chen2010A} can be violated when $\Sigma=(1-c)I_p+c\bm{1}_p \bm{1}_p^T$ where $-{1}/{(p-1)}<c<1$, $I_p$ is the $p$ dimensional identity matrix and $\bm{1}_p$ is the $p$ dimensional vector  with
+elements $1$. 
+
+Strong correlations between variables do exist in practice. In gene expression analysis, genes are correlated due to genetic regulatory networks (see~\cite{Thulin2014A}).~\cite{Chen2011A} pointed out that in terms of pathway analysis in proteomic studies,  test level can not be guaranteed if correlations are incorrectly assumed to be absent.
+ As~\cite{Ma2015A} argued, there're strong correlations between different stock returns since they are all affected by the market index.
+
+Incorrectly assuming the absence of correlation between variables will result in level inflation and low power for a test procedure. A class of test procedures is proposed through random projection (see~\cite{Lopes2015A},~\cite{Thulin2014A} and~\cite{Srivastava2014RAPTT}). The idea is to project data on some random lower-dimensional subspaces. It has been shown that these
+procedures perform well under strong correlations. 
+
+In many situations, the correlations are determined by a small number of factors.
+Then $\Sigma$ is spiked (see~\cite{Cai2012Sparse}).
+The random projection methods imply that test procedures are improved when data are projected on certain subspaces.
+We will see that the ideal subspace is the orthogonal complement of the principal space.
+Fortunately, the principal space can be estimated consistently even in high dimensional setting by the theory of principal component analysis (PCA).
+%We find the ideal subspace is the orthogonal complement of the principal space.
+%In this case, we know from the theory of principal component analysis (PCA) that the principal space can be estimated consistently even in high dimensional setting.
+With the assumption of spiked covariance model, we propose a new test procedure through projection on the (estimated) ideal subspace.  
+The asymptotic distribution of the test statistic is derived and hence asymptotic power is given.
+%We will see that the asymptotic power function increases fast. In fact, the increasing rate is of a higher order than that of $T_{CQ}$.
+We will see that the test is more powerful than $T_{CQ}$.
+%Simulation study justifies the well-performance of the new test. Our theoretical results need the assumption $\sqrt{p}/(n_1+n_2)\to 0$. Simulation study shows that if it doesn't converge to $0$, the theorem may not be valid.
+Moreover, even there's no strong correlation showing up, we prove that the new test performs equally well as $T_{CQ}$ does. The idea is also generalized to the unequal variance setting and similar results still hold.
+
+%{\color{red}{To the best of our knowledge,~\cite{Ma2015A} and~\cite{2016arXiv160202491A} are the only work concerned on problem (~\eqref{problem}) when strong correlation exists.
+%\cite{Ma2015A} adopted a factor model and modified the test statistic of~\cite{Chen2010A} to guarantee the test level. But we will see that the test still suffers from low power. In an independent working paper,~\cite{2016arXiv160202491A} adopted a spiked covariance structure, and their statistic is similar to ours. The main advantage of our work is that our theorems don't need strict relationship between $p$ and $n$. And our statistic is invariant under shift.
+%}}
+
+
+%{\color{red}{A fairly recent work~\cite{2016arXiv160202491A} proposed a new test for strongly spiked eigenvalue model. The proposed a test based on an estimation of
+%\begin{equation}
+%    \begin{aligned}
+%        T_{AY}=&\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\tilde{V}_1\tilde{V}_1^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\tilde{V}_1\tilde{V}_1^T X_{2j}}{n_2(n_2-1)}
+%        \\&-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\tilde{V}_1\tilde{V}_1^T\tilde{V}_2\tilde{V}_2^T X_{2j}}{n_1n_2}
+%    \end{aligned}
+%\end{equation}
+%which is similar to our statistic in form. However, the theory framework is different. And we will see our statistic is different from theirs in some key properties.
+%}}
+
+
+The rest of the paper is organized as follows. In Section 2,  the model and some assumptions are given.  In Section 3, we propose a test procedure under $\Sigma_1=\Sigma_2$. Section 4 exploits properties of the test. In Section 5, we generalize our test procedure to the situation of $\Sigma_1\neq \Sigma_2$. In Section 6, simulations are carried out and  a real data example is given. Section 7 contains some discussion. All the technical details are in appendix.
+
+\section{Model and assumptions}
+
+
+Let $\{X_{k1},\ldots,X_{kn_k}\}$, $k=1, 2$ be two independent  random samples from $p$ dimensional normal distribution with means $\mu_1$ and $\mu_2$ respectively.
+
+\begin{assumption}\label{balance}
+Assume $p\to \infty$ as $n_1, n_2\to \infty$. Furthermore, assume two samples are balanced, that is,
+\begin{equation*}
+    \frac{n_1}{n_2}\to \xi \in (0,+\infty).
+\end{equation*}
+\end{assumption}
+
+To characterize correlations between $p$ variables, we consider spiked covariance structure which is adopted by PCA study. See~\cite{Cai2012Sparse} and the references given there.
+\begin{assumption}\label{theModel}
+Suppose $X_{ki}$, $i=1,2,\ldots,n_k$ and $k=1,2$ are generated by  following model
+\begin{equation*}
+X_{ki}=\mu_k+V_k D_k U_{ki}+Z_{ki},
+\end{equation*}
+where
+$U_{ki}$'s are i.i.d.\  random vectors distributed as $r_k$ dimensional standard normal distribution with $r_k$ fixed, 
+$D_k=diag(\lambda_{k1}^{\frac{1}{2}},\ldots,\lambda_{k{r_k}}^{\frac{1}{2}})$ with $\lambda_{k1}\geq \cdots \geq \lambda_{k{r_k}}>0$,
+$V_k$ is  a $p\times r_k$ orthonormal matrix, $Z_{ki}$'s are i.i.d.\ random vectors distributed as  $N_p(0,\sigma^2_k I_p)$ independent of $U_{ki}$'s and $\sigma^2_k>0$, $k=1,2$.
+\end{assumption}
+Then $X_{ki}\sim N(\mu_k,\Sigma_k)$, where $ 
+\Sigma_k=\textrm{Var}(X_{ki})=V_k\Lambda_k V_k^T+\sigma^2_k I_p
+$
+, $\Lambda_k=D_k^2=diag(\lambda_{k1},\ldots,\lambda_{k{r_k}})$.
+From Assumption~\ref{theModel}, $V_k V_k^T$ is the orthogonal projection matrix on the column space of $V_k$. Let $\tilde{V}_k$ be a $p\times (p-r_k)$ full column rank orthonormal matrix orthogonal to columns of  $V_k$.
+%, that is $\tilde{V}_k^T V_k=O_{r_k\times(p-r_k )}$
+ Note that $\tilde{V}_k$ may not be unique. But the projection matrix $\tilde{V}_k\tilde{V}_k^T$ is unique because $\tilde{V}_k\tilde{V}_k^T=I-V_k V_k^T$.
+
+
+\begin{assumption}\label{orderOfBeta}
+    Assume that there is some constant $\kappa$ such that
+    \begin{equation*}
+    \kappa \lambda\geq \lambda_{k1}\geq \cdots \geq\lambda_{kr_k}\geq \lambda>0,
+\end{equation*}
+    where $\lambda=cp^\beta$ for some $c>0$ and $\beta\geq \frac{1}{2}$.
+\end{assumption}
+
+
+The restriction $\beta\geq 1/2$ is assumed in Assumption~\ref{orderOfBeta}. If $\beta< 1/2$, condition~\eqref{chenscondition} is meet and~\cite{Chen2010A}'s  method is valid. 
+ %By Theorem~\ref{testPowerh}, we will see that if $\beta< 1/2$, the power of our test and $T_{CQ}$'s test power are asymptotic equivalent.
+ Hence $\beta=1/2$ is the boundary of the scope between $T_{CQ}$ and our new test.
+
+
+Finally, let $\tau={(n_1+n_2)}/{(n_1n_2)}$, $S$ be the pooled sample covariance.
+\begin{equation}
+S=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k} (X_{ki}-\bar{X}_k) {(X_{ki}-\bar{X}_k)}^T
+    =\frac{(n_1-1)S_1+(n_2-1)S_2}{n_1+n_2-2},
+\end{equation}
+where
+\begin{equation}
+S_k=\frac{1}{n_k -1}\sum_{i=1}^{n_k} (X_{ki}-\bar{X}_k) {(X_{ki}-\bar{X}_k)}^T,
+\end{equation}
+is the sample covariance  of the sample $k$, $k=1,2$.
+
+
+\section{Methodology}
+
+In this section, we consider testing the hypotheses~\eqref{problem} with equal covariance matrices.
+\begin{assumption}\label{theModel2}
+Assume $V_1=V_2$, $D_1=D_2$, $\Lambda_1=\Lambda_2$, $\sigma_1=\sigma_2$ and $r_1=r_2$.
+\end{assumption}
+
+To simplify notations, the subscript $k$ of $\Sigma_k$, $V_k$, $D_k$, $\Lambda_k$, $\sigma_k$ and $r_k$ are dropped.
+%\begin{equation}
+%X_{ki}=\mu_k+V D U_{ki}+Z_{ki}.
+%\end{equation}
+
+\subsection{Motivation}
+ %Facing a testing problem, a general pattern to derive a new test can be summarized as $3$ steps.
+ %The first step is to propose a new statistic $T(X)$. 
+ %Usually,  $T(X)$ is chosen to be an estimator of certain `distance' between null and alternative. $\mathrm{E}T=0$ under null and $\mathrm{E}T> 0$  under alternative.
+ In high dimensional setting, many test procedures for hypotheses~\eqref{problem} is based on a statistic $T(X)$ which estimates ${(\mu_1-\mu_2)}^T A(\mu_1-\mu_2)$.
+ Usually, $T(X)$ satisfies $\mathrm{E}T=0$ under null hypothesis and $\mathrm{E}T> 0$  under alternative.
+ To determine the critical value, the asymptotic distribution of $T$ need to be derived, say 
+ $$\frac{T-\textrm{E}T}{\sqrt{\textrm{Var}(T)}}\xrightarrow{\mathcal{L}} N(0,1).$$
+ Since $\textrm{Var}(T)$ may depend on parameters, a ratio consistent estimator $\widehat{\textrm{Var}(T)}$ of $\textrm{Var}(T)$ is necessary. Then
+ the rejection region of a level $\alpha$ test can be defined as $T(X)\geq \widehat{\textrm{Var}(T)}^{\frac{1}{2}}z_{1-\alpha}$ where $z_{1-\alpha}$ is the $1-\alpha$ quantile of $N(0,1)$. 
+% Tests derived by the above pattern have an advantage in that it's clear what kind of alternatives the test favors. Many test procedures have been proposed for different $A$. In essence, test procedures for different $A$ are incomparable since they test different alternatives. For example, $T_{CQ}$ outperforms $T_S$ when $\Sigma$ is nearly an identity matrix. However, $T_S$ performs better when different variables are in different scales. 
+%In general, it remains an important question that how to boost test power for a given `distance'.
+The asymptotic power of the test is 
+$$\Phi(\frac{\mathrm{E}T}{\sqrt{\mathrm{Var}(T)}}-z_{1-\alpha}).$$
+Thus, a general idea to boost the power of test is to reduce the variance $\mathrm{Var}(T)$ while the mean $\mathrm{E}(T)$ varies relatively little.
+
+Now we revisit $T_{BS}$ and $T_{CQ}$ which are both based on the estimation of $\|\mu_1-\mu_2\|^2$. Denote the spectral decomposition of $\Sigma$ by $\Sigma =\sum_{i=1}^p \lambda_i p_i p_i^T$  with $\lambda_1\geq \cdots \geq \lambda_p$, where $p_i$, $i=1,\ldots,p$, are orthonormal $p$ dimensional vectors. The main body of both $T_{BS}$ and $T_{CQ}$ is 
+\begin{equation}\label{qifa}
+    \frac{n_1 n_2}{n_1+n_2}\sum_{i=1}^p {(\bar{X}_1-\bar{X}_2)}^T  p_i p_i^T (\bar{X}_1-\bar{X}_2),
+\end{equation}
+which is a sum of $p$ independent terms. Since $\sqrt{{n_1 n_2}/{(n_1+n_2)}}(\bar{X}_1-\bar{X}_2)$ is distributed as $N(0,\Sigma)$, the variance of ${n_1 n_2}/{(n_1+n_2)} {(\bar{X}_1-\bar{X}_2)}^T  p_i p_i^T (\bar{X}_1-\bar{X}_2)$ is $2\lambda_i^2$ which decreases in $i$. By our previous argument, if a few leading terms with significantly large variance are removed, the modified test will be more powerful.
+
+
+The argument is also supported by the likelihood ratio test. If $\Sigma$ is known, the LRT is based on 
+\begin{equation}\label{qifafa}
+    {(\bar{X}_1-\bar{X}_2)}^T\Sigma^{-1}(\bar{X}_1-\bar{X}_2)=\frac{n_1 n_2}{n_1+n_2}\sum_{i=1}^p \lambda_i^{-1}{(\bar{X}_1-\bar{X}_2)}^T  p_i p_i^T (\bar{X}_1-\bar{X}_2).
+\end{equation}
+The difference between~\eqref{qifa} and~\eqref{qifafa} is the weights $\lambda_i^{-1}$.
+% For LRT, large $\lambda_i$'s corresponds to small weights in the sum.
+%If $\lambda_i$ is large, then the corresponding term has a small weight $\lambda_i^{-1}$ in the sum. 
+Unfortunately, $\lambda_i$'s are hard to precisely estimate in high dimensional setting. See~\cite{bai2010spectral} for detail. Nevertheless, it's possible to identify which $\lambda_i$'s are large. LRT implies the corresponding terms should have small weights, which coincides with our previous idea.
+%If we assume there are correlations between $p$ variables, e.g. $\Sigma=(1-c)I+c\bm{1}_p \bm{1}_p^T$ where c is a constant fulfill $-\frac{1}{p-1}<c<1$, then $\frac{n_1 n_2}{n_1+n_2} {(\bar{X}_1-\bar{X}_2)}^T  p_1 p_1^T (\bar{X}_1-\bar{X}_2)$ distributed as $(cp+1-c)\chi^2_1$ whose variance is of order $p^2$ while $\frac{n_1 n_2}{n_1+n_2}\sum_{i=2}^p {(\bar{X}_1-\bar{X}_2)}^T  p_i p_i^T (\bar{X}_1-\bar{X}_2)$ is distributed as $(1-c)\chi^2_{p-1}$ whose variance is of order $p$. 
+%The large variance is totally caused by term $p\chi^2_1$. 
+%If we remove $\frac{n_1 n_2}{n_1+n_2} {(\bar{X}_1-\bar{X}_2)}^T  p_1 p_1^T (\bar{X}_1-\bar{X}_2)$ from $T_{BS}$, the variance of $T_{BS}$ can be significantly reduced to order $p$ from order $p^2$.
+
+%Note that $\Sigma=(1-c)I+c\bm{1}_p+\bm{1}_p^T$ is just a special case of spiked covariance.
+
+Under Assumption~\ref{theModel}, $\Sigma=V\Lambda V^T +\sigma^2 I_p$. The eigenvalues of $\Sigma$ are $\lambda_1+\sigma^2,\ldots,\lambda_r+\sigma^2,\sigma^2,\ldots,\sigma^2$. The eigenvectors corresponding to the first $r$ eigenvalues are columns of $V$. Follow our previous argument, if the principal subspace $VV^T$ is known, we project $X_{ki}$ on the orthogonal complement space $\tilde{V}\tilde{V}^T$ and invoke the statistic of~\cite{Chen2010A}. We define the following statistic
+
+\begin{equation*}
+\begin{aligned}
+    T_{1}&=\|\tilde{V}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}\mathrm{tr}(\tilde{V}^T S_1\tilde{V})-\frac{1}{n_2}\mathrm{tr}(\tilde{V}^T S_2\tilde{V}).
+    \\
+    %&=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\tilde{V}\tilde{V}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\tilde{V}\tilde{V}^T X_{2j}}{n_2(n_2-1)}-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\tilde{V}\tilde{V}^T X_{2j}}{n_1n_2}
+\end{aligned}
+\end{equation*}
+the asymptotic normality of $T_1$ can be obtained by~\cite{Chen2010A}'s Theorem 1.
+
+\begin{proposition}\label{oracleTheorem}
+    Under Assumptions~\ref{balance}-\ref{theModel2}, if local alternative holds, that is, $\frac{n_1+n_2}{p}\|\mu_1-\mu_2\|^2\to 0$, then we have 
+    \begin{equation*}
+        \frac{T_1-\|\tilde{V}(\mu_1-\mu_2)\|^2}
+        {\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation*}
+\end{proposition}
+
+\begin{remark}
+    The asymptotic variance of $T_1$ is of order $\tau^2 p$ while the asymptotic variance of $T_{CQ}$ is of order $\tau^2 p^{2\beta}$ by~\cite{Chen2010A}'s Theorem 1. The asymptotic variance is reduced significantly if $\beta>1/2$ and $p$ is sufficiently large.
+\end{remark}
+
+%\begin{remark}If $V$ is known, the model in Assumption~\ref{theModel} is very similar to random effects model. And our idea is just like REstricted Maximum Likelihood (REML).
+%\end{remark}
+
+%\begin{remark}
+%    Suppose $\mu_1=\mu_2$. When $\beta>1/2$, the order of $T_1$'s variance is smaller than the order of $T_{CQ}$'s variance, which implies $T_1/(\sigma^2\sqrt{2\tau^2 p})$ is asymptotically independent of $T_{CQ}/\sqrt{2\tau^2 \mathrm{tr}\Sigma^2}$. Hence $T_1$ does provide additional information, although $T_1$ is inherited from $T_{CQ}$.  
+%\end{remark} 
+
+
+\subsection{New Test}
+
+Actually, $T_1$ is not a statistic since $VV^T$ and $\tilde{V}\tilde{V}^T$ are unknown. Fortunately, $V$ and $\tilde{V}$ can be estimated by $\hat{V}$ and $\hat{\tilde{V}}$, where $\hat{V}$ and $\hat{\tilde{V}}$ are the first $r$ and last $p-r$ eigenvectors of $S$, respectively. These simple estimators actually reach the optimal convergence rate. See~\cite{Cai2012Sparse}.
+
+%We are now in a position to propose a new statistic for testing the hypotheses~\eqref{problem}.
+Define
+
+\begin{equation*}
+\begin{aligned}
+    T_2&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}tr(\hat{\tilde{V}}^T S_1\hat{\tilde{V}})-\frac{1}{n_2}tr(\hat{\tilde{V}}^T S_2\hat{\tilde{V}}).
+    %T_2=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_2(n_2-1)}
+%-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_1n_2}
+\end{aligned}
+\end{equation*}
+We propose our new test statistic as
+\begin{equation}\label{myTest}
+    Q=\frac{T_2}{\hat{\sigma}^2\sqrt{2p\tau^2}},
+\end{equation}
+where $\hat{\sigma}^2$ is a ratio consistent estimator of $\sigma^2$. In next section, it will be proved that the asymptotic distribution of $Q$ is $N(0,1)$. We reject the null hypothesis if $Q$ is larger than the upper $\alpha$ quantile of $N(0,1)$.
+
+\begin{remark}
+    Compared with random projection method, our projection is determined by the structure of $S$. Hence we don't  project multiple times as random projection method did, which leads to reproducibility.
+\end{remark}
+
+
+\begin{remark} The statistic $T_2$ is invariant under shift transformation, that is, $T_2$ is invariant when adding a vector to $X_{1i}$ and $X_{2j}$ simultaneously: $X_{1i}\mapsto X_{1i}+\mu$ and $X_{2j}\mapsto X_{2j}+\mu$, $i=1,\ldots,n_1$, $j=1,\ldots,n_2$.
+\end{remark}
+
+
+\begin{remark}
+If $r$ is an unknown positive number, a consistent estimator of $r$ is
+\begin{equation}\label{estimateR}
+    \hat{r}=\textrm{argmax}_{l\leq R}\frac{\lambda_l(S)}{\lambda_{l+1}(S)},
+\end{equation}
+where $R$ is the maximum value of $r$ to be tested. See~\cite{Ahn2009Eigenvalue} for detail. Therefore, without loss of generality, we will assume that $r$ is known.
+%and deal with it saperately if $r=0$.
+\end{remark}
+
+    Theoretical results will show that the asymptotic variance of $T_2$ is significantly smaller than $T_{CQ}$. 
+    On the other hand, the new test statistic estimates $\|\tilde{V}(\mu_1-\mu_2)\|^2$. Hence the superiority of the new test will be established if 
+    
+\begin{equation}\label{yuedengyu}
+    \frac{\|\tilde{V}(\mu_1-\mu_2)\|}{\|\mu_1-\mu_2\|}\approx 1.
+\end{equation}
+Unfortunately,~\eqref{yuedengyu}
+is not always the case since there always exists some
+$\tilde{V}$ and $\mu_1-\mu_2$ such that $\|\tilde{V}(\mu_1-\mu_2)\|=0$.
+However,~\eqref{yuedengyu} is reasonable since $\tilde{V}\tilde{V}^T$ is nearly an identity matrix in the sense that
+    ${\|I_p-\tilde{V}\tilde{V}^T\|_F^2}/{\|I_p\|_F^2}=r/p\to 0$. 
+In bayes framework, if we assume that the elements of $\mu_k$ are independently generated from certain probability distribution, it can be established that 
+\begin{equation*}
+    \frac{\|\tilde{V}(\mu_1-\mu_2)\|}{\|\mu_1-\mu_2\|}\xrightarrow{P}1.
+\end{equation*}
+Such assumption of $\mu_k$ will be used in Theorem~\ref{sameTheorem}.
+
+
+Next we concern the problem of estimating $\sigma^2$. We give two different estimators and later we will prove their consistency using different techniques. Note that $\sigma^2$ can be written as
+\begin{equation}\label{jjjVariance}
+    \sigma^2=\sum_{i=r+1}^{p}\lambda_i(\Sigma)=\frac{1}{p-r}\mathrm{tr}\tilde{V}^T\Sigma\tilde{V}.
+\end{equation}
+The first estimator we propose is to directly estimate~\eqref{jjjVariance} by
+\begin{equation*}
+    \hat{\sigma}^2_{(1)}=\frac{1}{p-r}\mathrm{tr}\hat{\tilde{V}}^T S\hat{\tilde{V}}.
+\end{equation*}
+The estimator $\hat{\sigma}^2_{(1)}$ uses the smallest $p-r$ eigenvalues of $S$. However some of the smallest $p-r$ eigenvalues may be also contaminated by $\Lambda$. Hence besides $\hat{\sigma}^2_{(1)}$, we give another estimator of $\sigma^2$:
+\begin{equation*}
+    \hat{\sigma}^2_{(2)}=\frac{1}{p-4r}\sum_{i=2r+1}^{p-2r} \lambda_i(S).
+\end{equation*}
+If estimator $\hat{\sigma}^2$ of $\sigma^2$ is ratio consistent, the asymptotic distribution of~\eqref{myTest} will not change if we replace $\sigma^2$ by $\hat{\sigma}^2$  due to Slutsky's theorem.
+
+%When $\frac{\sqrt{p}}{n_1+n_2}\to 0$, the critical value of our test can be approximated by it's asymptotic distribution which we will encounter later.
+%However, it is a more practical issue to deal with the case when $n$ is small or the case when $p$ is much larger than $n$. In these cases, the null distribution is complicated and asymptotic distribution is a poor approximation of true distribution. Fortunately, permutation method can be used with the price of heavier computational burden. See~\cite{Lehmann}.
+
+
+
+\section{Theoretical results}
+
+In this section, we derive some properties of the new test statistic. Our main results require the following relationship of $n_1,n_2$ and $p$.
+\begin{assumption}\label{pAndN}
+    We assume
+    $$
+    \frac{\sqrt{p}}{n_1+n_2}\to 0.
+    $$
+\end{assumption}
+
+
+First we establish $\hat{\sigma}^2_{(1)}$ and $\hat{\sigma}^2_{(2)}$ are consistent estimators of $\sigma^2$. 
+\begin{proposition}\label{varianceEstimation}
+    Under Assumptions~\ref{balance}-\ref{theModel2}, %,~\ref{theModel},~\ref{orderOfBeta}
+     $\hat{\sigma}_{(2)}^2$ is consistent.
+%\begin{equation}
+    %\hat{\sigma}_{(2)}^2\xrightarrow{P}\sigma^2
+%\end{equation}
+    If we further assume~\ref{pAndN}, then $\hat{\sigma}_{(1)}^2$ is consistent.
+    %\begin{equation}
+        %\hat{\sigma}_{(1)}^2\xrightarrow{P}\sigma^2
+    %\end{equation}
+\end{proposition}
+
+\begin{remark}
+    Compared with $\hat{\sigma}^2_{(1)}$, $\hat{\sigma}^2_{(2)}$ uses less information. Proposition~\ref{varianceEstimation}, however, shows that $\hat{\sigma}^2_{(2)}$ is consistent without requirement of the relationship between $n$ and $p$, while $\hat{\sigma}^2_{(1)}$ requires Assumption~\ref{pAndN}.
+\end{remark}
+
+Next we derive the asymptotic normality of the new test statistic. Consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
+In many practical problems, the alternative is `dense', i.e., under $H_1$ the signals in $\mu_1-\mu_2$ spread out over a large number of co-ordinates. See~\cite{Tony2013}.
+We characterize `dense' alternative from bayes framework and assume that elements of $\mu_k$  are independently generated from normal distribution.
+Next theorem shows that  the power of our new test is asymptotically the same as~\cite{Chen2010A}'s test in this case.
+
+
+\begin{theorem}\label{sameTheorem}
+   Assume $X_{ki}\sim N(\mu_k,\Sigma)$,  $i=1,\ldots,n_k$, $k=1,2$. Suppose that assumption~\ref{balance} holds, $0<c\leq\lambda_p(\Sigma)\leq\lambda_1(\Sigma)\leq C<\infty$ where $c$ and $C$ are constant, each element of $\mu_k$ is independently generated by $N(0,{(n_k\sqrt{p})}^{-1}\psi)$ for $k=1,2$, $\psi$ is a constant and  $\hat{r}$ is estimated by~\eqref{estimateR}. If $p\to\infty$ as $n\to\infty$ and $p=o({(n_1+n_2)}^2)$, then we have
+    
+\begin{equation*}
+    \frac{T_2-\|\mu_1-\mu_2\|^2}{\sqrt{2\tau^2 \mathrm{tr}\Sigma^2}} \xrightarrow{\mathcal{L}} N(0,1).
+\end{equation*}
+\end{theorem}
+
+
+Next we establish the asymptotic normality of the new test statistic under spiked covariance model.
+Our first step is to prove the asymptotic normality under null hypothesis.
+
+\begin{theorem}\label{myPanpan}
+    Under Assumptions~\ref{balance}-\ref{pAndN} and ${\sqrt{p}}/{(n_1+n_2)}\to 0$,
+if the null hypothesis holds, then 
+    \begin{equation*}
+        \frac{T_2}{\sigma^2\sqrt{2p \tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation*}
+\end{theorem} 
+\begin{remark}
+    The critical value of the new test can be determined by Theorem~\ref{myPanpan}, that is, reject when $T_2/(\sigma^2\sqrt{2p\tau^2})>z_{1-\alpha}$.
+\end{remark}
+    Then we generalize the Theorem~\ref{myPanpan} to the case of local alternative.
+
+\begin{theorem}\label{spaceEstimation}
+    Under Assumptions~\ref{balance}-\ref{pAndN},
+if the local alternative holds, that is,
+    $$\frac{(n_1+n_2)}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
+then 
+\begin{equation*}
+        \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2p\tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
+\end{equation*}
+\end{theorem} 
+
+%\begin{remark}  Compared with~\cite{2016arXiv160202491A}'s assumption (ix) which is equivalent to assuming $\frac{p^{2\beta-1}}{n_1+n_2}\to 0$ in model~\eqref{theModel}, our assumption $\frac{\sqrt{p}}{n_1+n_2}\to 0$ doesn't involved $\beta$.
+%And when $\beta\geq \frac{3}{4}$, our assumption is weaker than~\cite{2016arXiv160202491A}'s. Note that when $\beta=\frac{1}{2}$, $\frac{\sqrt{p}}{n_1+n_2}$ is a necessary condition to make $\hat{V}\hat{V}^T$ a consistent
+%estimator of $VV^T$ (see lemma 2 in appendix). So condition $\frac{\sqrt{p}}{n_1+n_2}$ is roughly the best we can do if the relationship between $p$ and $n$ doesn't involve $\beta$.
+%\end{remark}
+
+By Proposition~\ref{varianceEstimation}  and Theorem~\ref{spaceEstimation}, the power of our new test can be obtained immediately.
+
+
+\begin{theorem}\label{testPowerh}
+    Under Assumptions~\ref{balance}-\ref{pAndN},
+    if we reject the null hypothesis when $Q$ is larger than $1-\alpha$ quantile of $N(0,1)$, then the power of our test is
+    \begin{equation*}
+        \Phi\Big(-\Phi^{-1}(1-\alpha)+\frac{\|\tilde{V}(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2p}}\Big).
+    \end{equation*}
+\end{theorem}
+
+
+\begin{remark} The power of $T_{CQ}$ is of the form
+\begin{equation*}
+    \Phi\Big(-\Phi^{-1}(1-\alpha)+\frac{\|\mu_1-\mu_2\|^2}{\sqrt{2\tau^2\mathrm{tr}\Sigma^2}}\Big).
+\end{equation*}
+If $\|\tilde{V}\mu\|/\|\mu\|\to 1$, the relative efficiency of our test with respect to Chen's test is
+\begin{equation*}
+    \sqrt{\frac{\mathrm{tr}\Sigma^2}{(p-r)\sigma^4}}\sim p^{\beta-1/2}.
+\end{equation*}
+\end{remark}
+
+\section{Unequal Variance}
+
+In this section, we concern the situation with unequal covariance matrices.
+%With the theoretic work we have done, it's not hard to deal with general case, that is, $\Sigma_1$ and $\Sigma_2$ are both spiked but don't need to be equal.
+Assume $\{X_{11},\ldots, X_{1n_1}\}$ and $\{X_{21},\ldots, X_{2n_2}\}$ are both generated from the model in Assumption~\ref{theModel}.
+Denote by $\hat{V}_k$ the first $r_k$ eigenvectors of $S_k$ for $k=1,2$.
+With a little abuse of notation, let $VV^T$ be the projection on the sum of column spaces of $V_1$ and $V_2$, that is,
+\begin{equation*}
+    VV^T =(V_1,V_2){\big({(V_1,V_2)}^T (V_1,V_2)\big)}^{+}{(V_1,V_2)}^T.
+\end{equation*}
+where $A^{+}$ is the Moore-Penrose inverse of a matrix A. Similarly, let $\hat{V}\hat{V}^T$ be the projection matrix on the sum of column spaces of $\hat{V}_1$ and $\hat{V}_2$.
+ We define $\tilde{V}\tilde{V}^T=I_{p}-VV^T$ and $\hat{\tilde{V}}\hat{\tilde{V}}^T=I_{p}-\hat{V}\hat{V}^T$. 
+
+The previous statistic can not be directly used
+since the principal subspace is different for $X_{1i}$ and $X_{2j}$. The idea here is to remove all large variance terms from $T_{CQ}$ by projecting data on the space $\tilde{V}\tilde{V}^T$. Thus, we propose a new test statistic as
+\begin{equation*}
+\begin{aligned}
+    T_3&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}\mathrm{tr}(\hat{\tilde{V}}^T S_1\hat{\tilde{V}})-\frac{1}{n_2}\mathrm{tr}(\hat{\tilde{V}}^T S_2\hat{\tilde{V}}).
+%    T_3=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_2(n_2-1)}
+%    -2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_1n_2}
+\end{aligned}
+\end{equation*}
+
+
+The theoretical results are parallel to those in equal variance setting.
+
+%Compared with~\cite{2016arXiv160202491A}, our statistic have several advantages.
+%First, our new statistic is invariance under transformation $X_{1i}\mapsto X_{1i}+\mu$ and $X_{2j}\mapsto X_{2j}+\mu$. So the null distribution of our test doesn't effected by $\mu$ and the test level can be guarenteed. 
+%Second, our statistic doesn't rely on any single eigenvector of $\hat{V}$ but on the whole principal space $\hat{V}\hat{V}^T$. As a result, our statistic is uniquely defined. 
+%Third, our statistic enjoys higher computation efficiency than~\cite{2016arXiv160202491A}'s method.
+
+\begin{theorem}\label{myXiaopanpan}
+    Under Assumptions~\ref{balance}-\ref{orderOfBeta} and~\ref{pAndN},
+     if the null hypothesis holds, then 
+\begin{equation*}
+    \frac{T_3}{\sqrt{\sigma_n^2}}\xrightarrow{\mathcal{L}}N(0,1),
+\end{equation*}
+where
+$\sigma_n^2=\frac{2(p-r_1-r_2)}{n_1(n_1-1)}\sigma_1^4+\frac{2(p-r_1-r_2)}{n_2(n_2-1)}\sigma_2^4+\frac{4(p-r_1-r_2)}{n_1n_2}\sigma_1^2\sigma_2^2$.
+\end{theorem}
+\begin{remark}
+    Even if $\hat{\tilde{V}}_k\hat{\tilde{V}}_k^T$ is an consistent estimator of $\tilde{V}_k\tilde{V}_k^T$ for $k=1,2$, $\hat{\tilde{V}}\hat{\tilde{V}}^T$ may not be an consistent estimator of $\tilde{V}\tilde{V}^T$.
+    Nevertheless, the asymptotic normality still holds.
+\end{remark}
+\begin{theorem}\label{myXiaopanpan2}
+    Under Assumptions~\ref{balance}-\ref{orderOfBeta} and~\ref{pAndN},
+ if the local alternative holds, that is,
+    $$\frac{n_1+n_2}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
+then 
+\begin{equation*}
+        \frac{T_3-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sqrt{\sigma_n^2}}\xrightarrow{\mathcal{L}} N(0,1).
+\end{equation*}
+\end{theorem} 
+
+ $\sigma_n^2$ can be estimated by ratio consistent estimator of $\sigma^2_k$ for $k=1,2$. Thus, if $n_k$ and $p$ are large and ${\sqrt{p}}/{(n_1+n_2)}$ is small, we reject when $T_3/\sqrt{\hat{\sigma}_n^2}>z_{1-\alpha}$. 
+ %If $n$ is small or $p$ is large compared with n, we use permutation method to determine critical value.
+
+
+
+
+\section{Numerical studies}
+\subsection{Simulation results}
+
+Our simulation study focus on equal variance case. 
+We generate $X_{ki}$ by the model in Assumption~\ref{theModel}, where each element of $U_{ki}$ and $Z_{ki}$ are generated from $N(0,1)$.
+$V$ is a random orthonormal matrix. 
+We generate $\lambda_i$ as $p^{\beta}$ plus a random error from $U(0,1)$.
+
+%The key to the validation of Theorem~\ref{myPanpan} is  that $T_{\textrm{dif}}=\frac{n_1n_2|T_1-T_2|}{\sqrt{2p}(n_1+n_2)\sigma^2}$ converges to $0$.
+%Here we verify it by simulation.
+%We set $n_1=n_2=n$, $p=n^i$ for $i=1,2$ and plot $T_{\textrm{dif}}$ versus $p$.
+%The results are illustrated in figure~\ref{fig:fig1}.
+%From the results we can find that $T_{\textrm{dif}}$ clearly converges to $0$ when $p=n$.
+%In the case of $p=n^2$ which is exactly beyond the assumption of Theorem~\ref{myPanpan},
+%$T_{\textrm{dif}}$ is large and it's not clear whether $T_{\textrm{dif}}$  converges to $0$.
+%\begin{figure}
+%    \centering 
+%    \includegraphics[height=6cm]{code/difference1.jpeg}
+%    \includegraphics[height=6cm]{code/difference2.jpeg}\\
+%    \includegraphics[height=6cm]{code/difference3.jpeg}
+%    \includegraphics[height=6cm]{code/difference4.jpeg}\\
+%    \includegraphics[height=6cm]{code/difference5.jpeg}
+%    \includegraphics[height=6cm]{code/difference6.jpeg}\\
+%    \caption{These are plots of $T_{\textrm{dif}}$ versus $p$. The first column and the second column are the case of $p=n$ and $p=n^2$, separately. The cases of $\beta=1,2,3$ are in the row $1,2,3$ separately. $r$ is set to be $3$ in all cases. }\label{fig:fig1}
+%\end{figure}
+
+First we simulate the level of the new test. The nominal level $\alpha=0.05$ and we set $r=2$. Samples are repeatedly generated $1000$ times to calculate empirical level.  For comparison, we also give corresponding `oracle' level which is calculated by `statistic' ${T_1}/(\sigma^2\sqrt{2p\tau^2})$ whose asymptotic normality can be guaranteed by Theorem 1 in~\cite{Chen2010A}. The results are listed in
+Table~\ref{biaoge1}. From the results, we can find that for small $n$ and $p$, even oracle level is not satisfied. Level of the new test is  a little inflated compared with oracle level and it performs better when $n$ is larger.
+
+\input{code/level.tex}
+
+
+
+Then we simulate the empirical power of our test and~\cite{Chen2010A}'s test. The simulation results of~\cite{Ma2015A} have showed that the level of the~\cite{Chen2010A}'s test can't be guaranteed when covariance is spiked. To be fair, we use permutation method to compute critical value. The validity of permutation method can be found in~\cite{Lehmann}'s Example 15.2.2. We plot the empirical power versus $\|\mu_1-\mu_2\|$ when other parameters hold constant. The results are illustrated in figure~\ref{fig:fig2}.
+From the results, we can find that when $\Sigma$ is spiked, the new test outperforms $T_{CQ}$ substantially; when $\Sigma$ is not spiked, the new test and $T_{CQ}$ are comparable.
+\begin{figure}
+    \centering 
+    \includegraphics[height=6cm]{code/fig1.jpeg}
+    \includegraphics[height=6cm]{code/fig2.jpeg}
+    \\
+    \includegraphics[height=6cm]{code/fig3.jpeg}
+    \includegraphics[height=6cm]{code/fig4.jpeg}
+    \\
+    \includegraphics[height=6cm]{code/fig5.jpeg}
+    \includegraphics[height=6cm]{code/fig6.jpeg}
+    \caption{Empirical power simulation. $\alpha$ is set to be $0.05$. $d$ is proportional to $\|\mu_1-\mu_2\|^2$. For each simulation, we do 50 permutations to determine critical value. We generate $100$ independent samples to compute empirical power. }\label{fig:fig2}
+\end{figure}
+
+%Permutation method is computation expensive. So when $p$ and $n$ are large, we simulate empirical power by asymptotic distribution. The results are illustrated in figure~\eqref{fig:fig3}.
+
+%\begin{figure}\label{fig:fig3}
+    %\centering 
+    %\includegraphics[height=6cm]{code/newfig1.jpeg}
+    %\includegraphics[height=6cm]{code/newfig2.jpeg}
+    %\\
+    %\includegraphics[height=6cm]{code/newfig3.jpeg}
+    %\includegraphics[height=6cm]{code/newfig4.jpeg}
+    %\\
+    %\includegraphics[height=6cm]{code/newfig5.jpeg}
+    %\includegraphics[height=6cm]{code/newfig6.jpeg}
+    %\caption{Empirical Power (critical values are computed by asymptotic distribution)}\label{fig:fig3}
+%\end{figure}
+
+\subsection{Real data analysis}
+In this section, we study the same practical problem as~\cite{Ma2015A} did. That is testing whether Monday stock returns are equal to those of other trading days on average. Define an observation be the log return of stocks in a day. Hence $p$ is the total number of stocks. Let sample $1$ and sample $2$ be the observations on Monday and the other trading days, respectively.  Then we would like to test $H_0\, :\mu_1=\mu_2$ v.s. $H_1\,:\mu_1\neq \mu_2$. We collected the data of $p=710$
+ stocks of China
+from 01/04/2013 to 12/31/2014. There are total $n_1=95$ Monday and $n_2=388$ other trading days. 
+
+We assume $\Sigma_1=\Sigma_2$. The first eigenvaule of $S$ is $0.14$, which is significantly larger than the others.
+In fact, the second eigenvalue is $0.02$.
+Hence there's clearly a spiked eigenvalue. We set $r=1$ and perform our new test. The $p$ value is $0.149$, which is obtained by $1000$ permutations. Hence, the null hypothesis can not be rejected for $\alpha=0.05$. We draw the same conclusion as~\cite{Ma2015A}.
+
+\section{Conclusion remark}
+
+This paper is concerned with the problem of testing the equality of means in the setting of high dimension and spiked covariance. We removes big variance terms from $T_{CQ}$ and it's power is boosted substantially. The asymptotic normality of the new statistic is proved and the asymptotic power is given. %The new test outperforms $T_{CQ}$ substantially if the variance is spiked.
+%We also generalize the test to unequal variance case.
+
+In another paper,~\cite{Zhao2016A} proved their test statistic can be written in the form of projection. Their simulation results showed that their test performs well under strong correlations.
+Our work partially explains why their test performs well although the projections are slightly different. 
+
+ Spiked covariance is an important correlation pattern and has been widely studied in terms of PCA\@. In PCA, authors focus on the principal subspace. However, our work shows that in some circumstance, the complement of principal subspace is more useful. 
+
+%Although we proved our test is still satisfied when $r=0$, the estimator $\hat{r}$ is not consistent. Therefore, it remains a question whether there's a better estimator of $r$, which is beyond the scope of this paper.
+
+Our theoretical results rely on the assumption $\sqrt{p}/(n_1+n_2)\to 0$. In the situation of small sample or very large $p$, the critical value of the new test can be determined by permutation method. Our simulation shows that the new test still performs well. It remains a theoretical interest to derive the power function in these situations.
+
+
+
+\section*{Appendix}
+We denote by $\|\cdot \|$ and $\|\cdot\|_F$ the operator and Frobenius  norm of matrix, separately.
+
+%\begin{lemma}\label{lemma1}
+%    let $X$ be a $p$-dimensional random vector with distribution $N(0,\Sigma)$. Denote the spectral decomposition of $\Sigma$ by $\Sigma =\sum_{i=1}^p \lambda_i p_i p_i^T$ with $\lambda_1\geq \cdots \geq \lambda_p$. Then $X^T p_i p_i^T X$ is stochastically larger than $X^T p_j p_{j}^T X$ for $i<j$.
+%\end{lemma}
+%\begin{proof}[\textbf{Proof}]
+%    The lemma is established immediately once we note that $X^T p_i p_i^T X/\sqrt{\lambda_i}$ is distributed as $\chi^2$ distribution with freedom $1$.
+%\end{proof}
+
+
+\begin{lemma}[Weyl's inequality]
+Let $H$ and $P$ be two symmetric matrices and $M=H+P$. If $j+k-n\geq i\geq r+s-1$, we have
+\begin{equation*}
+\lambda_j(H)+\lambda_k(P)\leq \lambda_i(M) \leq \lambda_r(H)+\lambda_s(P).
+\end{equation*}
+\end{lemma}
+\begin{corollary}\label{WeylCor}
+    Let $H$ and $P$ be two symmetric matrices and $M=H+P$. If $\mathrm{rank}(P)< k$, then
+    \begin{equation*}
+        \lambda_k(M)\leq \lambda_1(H).
+    \end{equation*}
+\end{corollary}
+
+\begin{lemma}\label{lemmaRankLim}
+    Let $H$ and $P$ be two $p\times p$ positive semi-definite matrices and $M=H+P$.
+    Suppose $\mathrm{Rank}(H)=d_1$, $\mathrm{Rank}(P)=d_2$, where $d_1$ and $d_2$ may depend on $n$. Assume $\mathrm{Rank}(M)=d_1+d_2$, $\lambda_1(M)\to 1$ and $\lambda_{d_1+d_2}(M)\to 1$, then we have
+    \begin{equation}\label{lemma2r1}
+        \lambda_1 (H)\to 1, \quad \lambda_{d_1} (H)\to 1,
+    \end{equation}
+    and
+    \begin{equation}\label{lemma2r2}
+        \lambda_1 (P)\to 1, \quad \lambda_{d_2} (P)\to 1,
+    \end{equation}
+\end{lemma}
+\begin{remark}
+    This generalizes the Cochran's theorem (See Anderson).
+\end{remark}
+\begin{proof}
+    By Weyl's inequality, $\lambda_1 (H)\leq \lambda_1 (M)\to 1$ and
+    $\lambda_{d_1} (H)\geq \lambda_{d_1+d_2}(M)\to 1$. Hence~\eqref{lemma2r1} holds. And~\eqref{lemma2r2} follows in the same way.
+\end{proof}
+
+\begin{lemma}[Convergence rate of principal space estimation]
+    Under the model in Assumption~\ref{theModel2} with condition~\eqref{balance}, assume $\Sigma_1=\Sigma_2$. Suppose $p\to \infty$ as $n\to \infty$ and $\frac{\sqrt{p}}{n_1+n_2}\to 0$. We have
+\begin{equation*}
+E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}(n_1+n_2)}).
+\end{equation*}
+\end{lemma}
+
+
+\begin{proof}[\textbf{Proof}]
+    By theorem 5 of~\cite{Cai2012Sparse}, sample principal subspace $\hat{V}\hat{V}^T$ is a minimax rate estimator of $VV^T$, namely, it reaches the minimax convergence rate
+    \begin{equation}\label{xiaopianpian}
+        \inf_{\hat{V}}\sup_{\Sigma} E\|\hat{V}\hat{V}^T-VV^T\|^2_F\asymp r\wedge (p-r)\wedge \frac{r(p-r)}{(n_1+n_2-2)h(\lambda)}
+    \end{equation}
+    as long as the right hand side tends to $0$. Here $h(\lambda)=\frac{\lambda^2}{\lambda+1}$, $a_n\asymp b_n$ represents $a_n\geq cb_n$ and $a_n\leq Cb_n$ for some positive $c,C$ for every $n$. In model of Assumption~\ref{theModel},  $r$ is fixed, $\lambda=cp^\beta$. It's obvious that the right hand side of~\eqref{xiaopianpian} is of order $\frac{p^{1-\beta}}{n_1+n_2}$. We note that it is assumed $\beta\geq \frac{1}{2}$ in model of
+    Assumption~\ref{theModel}, together with $\frac{\sqrt{p}}{n_1+n_2}\to 0$ we have
+    $\frac{p^{1-\beta}}{n_1+n_2}\to 0$. Hence
+    $\hat{V}\hat{V}^T$ reaches the optimal rate.
+
+\end{proof}
+
+\begin{lemma}\label{maxEigen}
+    Suppose that $W_n$ is a $p \times p$ matrix distributed as $\textrm{Wishart}_p(n,I_{p})$, $p/n\to c\in [0,+\infty]$. Then as $n\to \infty$,
+    $$
+        \lambda_1(W_n)=O_P(\max(n,p)).
+    $$
+\end{lemma}
+\begin{proof}[\textbf{Proof}]
+    If $p$ is bounded as $n\to \infty$, then $p$ is fixed when $n$ is sufficiently large and the lemma can be established by weak law of large numbers. Otherwise, if $p\to \infty$ as $n\to \infty$, the lemma is a direct corollary of Theorem 1.1 of~\cite{Johnstone2001On} and Theorem 2 of~\cite{Karoui2003On}.
+\end{proof}
+
+
+\input{someLatex/quadraticFormCLT.tex}
+
+
+\input{someLatex/ChenIff.tex}
+
+\input{someLatex/pcaTheory.tex}
+
+\input{someLatex/mainLimitTheorem.tex}
+
+The rest of the Appendix is devoted to the proof of propositions and theorems in the paper.
+\begin{proof}[\textbf{Proof Of Proposition 1}]
+Since $V$ and $\tilde{V}$ are orthogonal, we have
+  $$\tilde{V}^T X_{ki}\sim N(\tilde{V}\mu_k,\sigma^2 I_{p-r}).$$
+ By~\cite{Chen2010A}'s section 6.1, we have
+\begin{equation*}
+Var(T_1)=2\tau^2 p\sigma^4(1+o(1)).
+\end{equation*}
+Random sequences $\tilde{V}^T X_{ki}$ fulfill the condition of~\cite{Chen2010A}'s theorem 1, hence the conclusion follows.
+\end{proof}
+
+
+\input{someLatex/varianceEstimation.tex}
+
+% same power with Chen's method
+\begin{proof}[\textbf{Proof Of Theorem 1}]
+    Our proof starts with the observation that the elements of $\mu_1-\mu_2$ is distributed as $N(0,\tau{p}^{-\frac{1}{2}}\psi)$. Hence 
+    \begin{align}
+        {(\mu_1-\mu_2)}^T \Sigma (\mu_1-\mu_2)=O(\|\mu_1-\mu_2\|^2)\notag
+        =O_P(\tau p^{\frac{1}{2}})\notag
+        =o_P(\tau\, \mathrm{tr}\Sigma^2).\notag
+    \end{align}
+Here the second equality holds by law of large number, the first and third equalities are due to boundedness of the eigenvalues of $\Sigma$.
+    It follows that every subsequence has a further subsequence along which we have 
+\begin{equation*}
+{(\mu_1-\mu_2)}^T \Sigma (\mu_1-\mu_2)=o(\tau\, \mathrm{tr}\Sigma^2)
+\end{equation*} 
+        almost surely (a.s.). Let
+\begin{equation*}
+    \eta_n=\frac{T_{CQ}-\|\mu_1-\mu_2\|^2}{\sqrt{2\tau^2 \mathrm{tr}\Sigma^2}},
+\end{equation*}
+    then by Theorem 1 in~\cite{Chen2010A}, 
+\begin{equation*}
+    P(\eta_n\leq x | \mu_1,\mu_2)\to \Phi(x) \quad \textrm{a.s.}
+\end{equation*}
+along the further subsequence. Therefore,
+\begin{equation*}
+    P(\eta_n\leq x | \mu_1,\mu_2)\xrightarrow{P} \Phi(x).
+\end{equation*}
+We conclude from dominated convergence theorem that $\eta_n\xrightarrow{\mathcal{L}}N(0,1)$. What is left is to show that 
+\begin{equation}\label{toBe0}
+    \frac{T_{CQ}-T_2}{\sqrt{2\tau^2 \mathrm{tr}\Sigma^2}} \xrightarrow{P} 0.
+\end{equation}
+We note that
+\begin{equation*}
+\begin{aligned}
+T_{CQ}-T_2&=
+    \frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{{V}}\hat{{V}}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\hat{{V}}\hat{{V}}^T X_{2j}}{n_2(n_2-1)}
+-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\hat{{V}}\hat{{V}}^T X_{2j}}{n_1n_2}
+\\
+    &\overset{\textrm{def}}{=}P_1+P_2-2P_3.
+\end{aligned}
+\end{equation*}
+And
+\begin{equation*}
+\begin{aligned}
+    \frac{P_1}{\sqrt{2\tau^2\mathrm{tr}\Sigma^2}}=O(1)\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{V}\hat{V}^T X_{1j}}{n_1\sqrt{p}},
+\end{aligned}
+\end{equation*}
+which can be further written by
+\begin{equation*}
+\begin{aligned}
+\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{V}\hat{V}^T X_{1j}}{n_1\sqrt{p}}
+    &=\frac{n_1(n_1-1)\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_1}{n_1\sqrt{p}}- \frac{\sum_{i=1}^{n_1}{(X_{1i}-\bar{X}_1)}^T\hat{V}\hat{V}^T(X_{1i}-\bar{X}_1)}{n_1\sqrt{p}}\\
+    &\overset{\textrm{def}}{=}R_1-R_2.
+\end{aligned}
+\end{equation*}
+Now we deal with $R_1$. Since 
+    $\bar{X}_1|\mu_1\sim N(\mu_1,\frac{1}{n}\Sigma)$ and
+    $\mu_1\sim N(0,\frac{\psi}{n_1\sqrt{p}}I_p)$,
+we have $\bar{X}_1\sim N(0,\frac{1}{n_1}(\Sigma+\frac{1}{\sqrt{p}}\psi I_p))$. Hence we have $\hat{V}^T\bar{X}_1|S\sim N(0,\frac{1}{n}\hat{V}^T(\Sigma+\frac{1}{\sqrt{p}}\psi I_p)\hat{V})$ by the independence of $S$ and $(\mu_1,\bar{X}_1)$. Therefore,
+\begin{equation*}
+    \begin{aligned}
+        E[\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_1]&=
+    EE[\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_1|S]\\
+        &=E[\frac{1}{n_1}\mathrm{tr} \hat{V}^T(\Sigma+\frac{1}{\sqrt{p}}\psi I_p)\hat{V}]\\
+        &=O(\frac{1}{n_1}).
+    \end{aligned}
+\end{equation*}
+    The last equality holds because the rank of $\hat{V}$ is at most $R$ which is fixed. It follows that $R_1\xrightarrow{P} 0$.
+\begin{equation*}
+\begin{aligned}
+    R_2&=\frac{\mathrm{tr}[\hat{V}^T\sum_{i=1}^{n_1}(X_{1i}-\bar{X}_1){(X_{1i}-\bar{X}_1)}^T\hat{V}]}{n_1\sqrt{p}}\\
+    &\leq R\frac{\lambda_1(\sum_{i=1}^{n_1}(X_{1i}-\bar{X}_1){(X_{1i}-\bar{X}_1)}^T)}{n_1\sqrt{p}}.
+\end{aligned}
+\end{equation*}
+Lemma~\ref{maxEigen} implies that $\lambda_1(\sum_{i=1}^{n_1}(X_{1i}-\bar{X}_1){(X_{1i}-\bar{X}_1)}^T)=O_P(\max(n_1,p))$.
+Therefore, by noting $p=o(n_1^2)$ we have $R_2\xrightarrow{P}0$. 
+ It follows that $\frac{P_1}{\sqrt{2\tau^2\mathrm{tr}\Sigma^2}}\xrightarrow{P}0$.
+ Similar arguments lead to $\frac{P_2}{\sqrt{2\tau^2\mathrm{tr}\Sigma^2}}\xrightarrow{P}0$.
+
+\begin{align}
+    \frac{P_3}{\sqrt{2\tau^2\mathrm{tr}\Sigma^2}}&=O(1)\frac{\sqrt{n_1n_2}\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_2}{\sqrt{p}}\notag
+\\
+    &\leq O(1)\sqrt{\frac{n_1\|\hat{V}^T\bar{X}_1\|^2}{\sqrt{p}}}\sqrt{\frac{{n_2}\|\hat{V}^T\bar{X}_2\|^2}{\sqrt{p}}},\notag
+\end{align}
+where the inequality is due to Cauchy inequality. By noting the relationship with  $R_1$, the right hand side converges to $0$ in probability. And the proof is completed.
+
+
+
+\end{proof}
+
+
+% proof of space estimation theorem
+\input{someLatex/spaceEstimation.tex}
+
+\begin{proof}[\textbf{Proof Of Theorem 4}]
+    The theorem follows by Theorem~\ref{oracleTheorem}, Theorem~\ref{spaceEstimation} and Theorem~\ref{varianceEstimation}.
+\end{proof}
+
+
+\input{someLatex/theOne.tex}
+
+
+\section*{Acknowledgements}
+This work was supported by the National Natural Science Foundation of China under Grant No. 11471035, 11471030.
+
+
+\section*{References}
+
+\bibliography{mybibfile}
+
+\end{document}

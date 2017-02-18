@@ -1,0 +1,19 @@
+1. add the theory of GLRT
+
+2. add the part of large eigenvalues by Fan's method
+
+3. make clear the advantage corresponding to Aoshima's paper: less restriction of p
+
+4. Change the lemma to Bai yin's law
+
+5. make clear that \beta=0.5 is the boundary between ours' and Chen's.
+
+6. be more careful when using Weyl's inequility
+
+7. Use the new method, Replicate S by S^*
+
+8. Study the property when not converge
+
+9. permutation
+
+10. random add sign can also be used in two sample case
