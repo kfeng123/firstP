@@ -103,14 +103,14 @@ Suppose that $X_{k1},\ldots,X_{kn_k}$  are independent identically distributed (
 \begin{equation}\label{problem}
     H_0:\mu_1=\mu_2\quad \textrm{vs.}\quad H_1:\mu_1\neq \mu_2.
 \end{equation}
-In this paper, the dimension $p$ varies as $n_1$ and $n_2$ increase, i.e., high dimensional setting is adopted.
+ In this paper, high dimensional setting is adopted, i.e., the dimension $p$ varies as $n$ increase, where $n=n_1+n_2$.
 Testing hypotheses~\eqref{problem} is important in many applications, including biology, finance and economics. Quite often,  these data have strong correlations between variables. When strong correlations exist, covariance matrices are often spiked in the sense that a few eigenvalues are distinctively larger than the others. The paper is devoted to
 testing hypotheses~\eqref{problem} in high dimensional setting with spiked covariance.
 
 
-If $\Sigma_1=\Sigma_2=\Sigma$ is unknown, a classical test for hypotheses~\eqref{problem} is Hotelling's $T^2$ test.  Hotelling's test statistic is ${(\bar{X}_1-\bar{X}_2)}^T S^{-1}(\bar{X}_1-\bar{X}_2)$, where $S$ is the pooled sample covariance matrix. However, Hotelling's test is not defined when $p\geq n_1+n_2-1$.
-Moreover,~\cite{Bai1996Efiect} showed that even if $p<n_1+n_2-1$, Hotelling's test suffers from low power when $p$ is comparable to $n$.
-Perhaps, the main reason for low power of Hotelling's test is due to that $S$ is a poor estimator of $\Sigma$ when $p$ is large compared with $n_1+n_2$. See~\cite{Chen2010A} and the references therein.
+If $\Sigma_1=\Sigma_2=\Sigma$ is unknown, a classical test for hypotheses~\eqref{problem} is Hotelling's $T^2$ test.  Hotelling's test statistic is ${(\bar{X}_1-\bar{X}_2)}^T S^{-1}(\bar{X}_1-\bar{X}_2)$, where $S$ is the pooled sample covariance matrix. However, Hotelling's test is not defined when $p\geq n-1$.
+Moreover,~\cite{Bai1996Efiect} showed that even if $p<n-1$, Hotelling's test suffers from low power when $p$ is comparable to $n$.
+Perhaps, the main reason for low power of Hotelling's test is due to that $S$ is a poor estimator of $\Sigma$ when $p$ is large compared with $n$. See~\cite{Chen2010A} and the references therein.
 In high dimensional setting,  
 many test statistics in the literatures are based on an estimator of ${(\mu_1-\mu_2)}^T A(\mu_1-\mu_2)$ for a given positive definite matrix $A$. 
 For example,~\cite{Bai1996Efiect} proposed a test based on
@@ -190,7 +190,7 @@ The rest of the paper is organized as follows. In Section 2,  the model and some
 Let $\{X_{k1},\ldots,X_{kn_k}\}$, $k=1, 2$ be two independent  random samples from $p$ dimensional normal distribution with means $\mu_1$ and $\mu_2$ respectively.
 
 \begin{assumption}\label{balance}
-Assume $p\to \infty$ as $n_1, n_2\to \infty$. Furthermore, assume two samples are balanced, that is,
+Assume $p\to \infty$ as $n\to \infty$. Furthermore, assume two samples are balanced, that is,
 \begin{equation*}
     \frac{n_1}{n_2}\to \xi \in (0,+\infty).
 \end{equation*}
@@ -232,8 +232,8 @@ The restriction $\beta\geq 1/2$ is assumed in Assumption~\ref{orderOfBeta}. If $
 
 Finally, let $\tau={(n_1+n_2)}/{(n_1n_2)}$, $S$ be the pooled sample covariance.
 \begin{equation}
-S=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k} (X_{ki}-\bar{X}_k) {(X_{ki}-\bar{X}_k)}^T
-    =\frac{(n_1-1)S_1+(n_2-1)S_2}{n_1+n_2-2},
+S=\frac{1}{n-2}\sum_{k=1}^2\sum_{i=1}^{n_k} (X_{ki}-\bar{X}_k) {(X_{ki}-\bar{X}_k)}^T
+    =\frac{(n_1-1)S_1+(n_2-1)S_2}{n-2},
 \end{equation}
 where
 \begin{equation}
@@ -303,7 +303,7 @@ Under Assumption~\ref{theModel}, $\Sigma=V\Lambda V^T +\sigma^2 I_p$. The eigenv
 the asymptotic normality of $T_1$ can be obtained by~\cite{Chen2010A}'s Theorem 1.
 
 \begin{proposition}\label{oracleTheorem}
-    Under Assumptions~\ref{balance}-\ref{theModel2}, if local alternative holds, that is, $\frac{n_1+n_2}{p}\|\mu_1-\mu_2\|^2\to 0$, then we have 
+    Under Assumptions~\ref{balance}-\ref{theModel2} and local alternative, that means, $\frac{n}{p}\|\mu_1-\mu_2\|^2\to 0$, we have 
     \begin{equation*}
         \frac{T_1-\|\tilde{V}(\mu_1-\mu_2)\|^2}
         {\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}}N(0,1).
@@ -378,17 +378,13 @@ In bayes framework, if we assume that the elements of $\mu_k$ are independently 
 Such assumption of $\mu_k$ will be used in Theorem~\ref{sameTheorem}.
 
 
-Next we concern the problem of estimating $\sigma^2$. We give two different estimators and later we will prove their consistency using different techniques. Note that $\sigma^2$ can be written as
+Now we concern the problem of estimating $\sigma^2$.  Note that $\sigma^2$ can be written as
 \begin{equation}\label{jjjVariance}
-    \sigma^2=\sum_{i=r+1}^{p}\lambda_i(\Sigma)=\frac{1}{p-r}\mathrm{tr}\tilde{V}^T\Sigma\tilde{V}.
+    \sigma^2=\sum_{i=r+1}^{p}\lambda_i(\Sigma).
 \end{equation}
-The first estimator we propose is to directly estimate~\eqref{jjjVariance} by
+We estimate it by sample version:
 \begin{equation*}
-    \hat{\sigma}^2_{(1)}=\frac{1}{p-r}\mathrm{tr}\hat{\tilde{V}}^T S\hat{\tilde{V}}.
-\end{equation*}
-The estimator $\hat{\sigma}^2_{(1)}$ uses the smallest $p-r$ eigenvalues of $S$. However some of the smallest $p-r$ eigenvalues may be also contaminated by $\Lambda$. Hence besides $\hat{\sigma}^2_{(1)}$, we give another estimator of $\sigma^2$:
-\begin{equation*}
-    \hat{\sigma}^2_{(2)}=\frac{1}{p-4r}\sum_{i=2r+1}^{p-2r} \lambda_i(S).
+    \hat{\sigma}^2=\frac{1}{p-2r}\sum_{i=2r+1}^{p} \lambda_i(S).
 \end{equation*}
 If estimator $\hat{\sigma}^2$ of $\sigma^2$ is ratio consistent, the asymptotic distribution of~\eqref{myTest} will not change if we replace $\sigma^2$ by $\hat{\sigma}^2$  due to Slutsky's theorem.
 
@@ -399,40 +395,28 @@ If estimator $\hat{\sigma}^2$ of $\sigma^2$ is ratio consistent, the asymptotic 
 
 \section{Theoretical results}
 
-In this section, we derive some properties of the new test statistic. Our main results require the following relationship of $n_1,n_2$ and $p$.
+In this section, we derive some properties of the new test statistic. Our main results require the following relationship of $n$ and $p$.
 \begin{assumption}\label{pAndN}
     We assume
     $$
-    \frac{\sqrt{p}}{n_1+n_2}\to 0.
+    \frac{\sqrt{p}}{n}\to 0.
     $$
 \end{assumption}
 
 
-First we establish $\hat{\sigma}^2_{(1)}$ and $\hat{\sigma}^2_{(2)}$ are consistent estimators of $\sigma^2$. 
+First we establish $\hat{\sigma}^2$ is a consistent estimator of $\sigma^2$. 
 \begin{proposition}\label{varianceEstimation}
-    Under Assumptions~\ref{balance}-\ref{theModel2}, %,~\ref{theModel},~\ref{orderOfBeta}
-     $\hat{\sigma}_{(2)}^2$ is consistent.
-%\begin{equation}
-    %\hat{\sigma}_{(2)}^2\xrightarrow{P}\sigma^2
-%\end{equation}
-    If we further assume~\ref{pAndN}, then $\hat{\sigma}_{(1)}^2$ is consistent.
-    %\begin{equation}
-        %\hat{\sigma}_{(1)}^2\xrightarrow{P}\sigma^2
-    %\end{equation}
+    Under Assumptions~\ref{balance}-\ref{theModel2},      $\hat{\sigma}^2$ is consistent.
 \end{proposition}
 
-\begin{remark}
-    Compared with $\hat{\sigma}^2_{(1)}$, $\hat{\sigma}^2_{(2)}$ uses less information. Proposition~\ref{varianceEstimation}, however, shows that $\hat{\sigma}^2_{(2)}$ is consistent without requirement of the relationship between $n$ and $p$, while $\hat{\sigma}^2_{(1)}$ requires Assumption~\ref{pAndN}.
-\end{remark}
-
-Next we derive the asymptotic normality of the new test statistic. Consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
+Now we derive the asymptotic normality of the new test statistic. Consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
 In many practical problems, the alternative is `dense', i.e., under $H_1$ the signals in $\mu_1-\mu_2$ spread out over a large number of co-ordinates. See~\cite{Tony2013}.
 We characterize `dense' alternative from bayes framework and assume that elements of $\mu_k$  are independently generated from normal distribution.
 Next theorem shows that  the power of our new test is asymptotically the same as~\cite{Chen2010A}'s test in this case.
 
 
 \begin{theorem}\label{sameTheorem}
-   Assume $X_{ki}\sim N(\mu_k,\Sigma)$,  $i=1,\ldots,n_k$, $k=1,2$. Suppose that assumption~\ref{balance} holds, $0<c\leq\lambda_p(\Sigma)\leq\lambda_1(\Sigma)\leq C<\infty$ where $c$ and $C$ are constant, each element of $\mu_k$ is independently generated by $N(0,{(n_k\sqrt{p})}^{-1}\psi)$ for $k=1,2$, $\psi$ is a constant and  $\hat{r}$ is estimated by~\eqref{estimateR}. If $p\to\infty$ as $n\to\infty$ and $p=o({(n_1+n_2)}^2)$, then we have
+   Assume $X_{ki}\sim N(\mu_k,\Sigma)$,  $i=1,\ldots,n_k$, $k=1,2$. Suppose that assumption~\ref{balance} holds, $0<c\leq\lambda_p(\Sigma)\leq\lambda_1(\Sigma)\leq C<\infty$ where $c$ and $C$ are constant, each element of $\mu_k$ is independently generated by $N(0,{(n_k\sqrt{p})}^{-1}\psi)$ for $k=1,2$, $\psi$ is a constant and  $\hat{r}$ is estimated by~\eqref{estimateR}. If $p\to\infty$ as $n\to\infty$ and $p=o(n^2)$, then we have
     
 \begin{equation*}
     \frac{T_2-\|\mu_1-\mu_2\|^2}{\sqrt{2\tau^2 \mathrm{tr}\Sigma^2}} \xrightarrow{\mathcal{L}} N(0,1).
@@ -440,11 +424,11 @@ Next theorem shows that  the power of our new test is asymptotically the same as
 \end{theorem}
 
 
-Next we establish the asymptotic normality of the new test statistic under spiked covariance model.
+Now we establish the asymptotic normality of the new test statistic under spiked covariance model.
 Our first step is to prove the asymptotic normality under null hypothesis.
 
 \begin{theorem}\label{myPanpan}
-    Under Assumptions~\ref{balance}-\ref{pAndN} and ${\sqrt{p}}/{(n_1+n_2)}\to 0$,
+    Under Assumptions~\ref{balance}-\ref{pAndN},
 if the null hypothesis holds, then 
     \begin{equation*}
         \frac{T_2}{\sigma^2\sqrt{2p \tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
@@ -458,7 +442,7 @@ if the null hypothesis holds, then
 \begin{theorem}\label{spaceEstimation}
     Under Assumptions~\ref{balance}-\ref{pAndN},
 if the local alternative holds, that is,
-    $$\frac{(n_1+n_2)}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
+    $$\frac{n}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
 then 
 \begin{equation*}
         \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2p\tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
@@ -539,14 +523,14 @@ $\sigma_n^2=\frac{2(p-r_1-r_2)}{n_1(n_1-1)}\sigma_1^4+\frac{2(p-r_1-r_2)}{n_2(n_
 \begin{theorem}\label{myXiaopanpan2}
     Under Assumptions~\ref{balance}-\ref{orderOfBeta} and~\ref{pAndN},
  if the local alternative holds, that is,
-    $$\frac{n_1+n_2}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
+    $$\frac{n}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
 then 
 \begin{equation*}
         \frac{T_3-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sqrt{\sigma_n^2}}\xrightarrow{\mathcal{L}} N(0,1).
 \end{equation*}
 \end{theorem} 
 
- $\sigma_n^2$ can be estimated by ratio consistent estimator of $\sigma^2_k$ for $k=1,2$. Thus, if $n_k$ and $p$ are large and ${\sqrt{p}}/{(n_1+n_2)}$ is small, we reject when $T_3/\sqrt{\hat{\sigma}_n^2}>z_{1-\alpha}$. 
+ $\sigma_n^2$ can be estimated by ratio consistent estimator of $\sigma^2_k$ for $k=1,2$. Thus, if $n$ and $p$ are large and ${\sqrt{p}}/{n}$ is small, we reject when $T_3/\sqrt{\hat{\sigma}_n^2}>z_{1-\alpha}$. 
  %If $n$ is small or $p$ is large compared with n, we use permutation method to determine critical value.
 
 
@@ -636,7 +620,7 @@ Our work partially explains why their test performs well although the projection
 
 %Although we proved our test is still satisfied when $r=0$, the estimator $\hat{r}$ is not consistent. Therefore, it remains a question whether there's a better estimator of $r$, which is beyond the scope of this paper.
 
-Our theoretical results rely on the assumption $\sqrt{p}/(n_1+n_2)\to 0$. In the situation of small sample or very large $p$, the critical value of the new test can be determined by permutation method. Our simulation shows that the new test still performs well. It remains a theoretical interest to derive the power function in these situations.
+Our theoretical results rely on the assumption $\sqrt{p}/n\to 0$. In the situation of small sample or very large $p$, the critical value of the new test can be determined by permutation method. Our simulation shows that the new test still performs well. It remains a theoretical interest to study the asymptotic behavior of permutation based test in these situations.
 
 
 
@@ -649,7 +633,6 @@ We denote by $\|\cdot \|$ and $\|\cdot\|_F$ the operator and Frobenius  norm of 
 %\begin{proof}[\textbf{Proof}]
 %    The lemma is established immediately once we note that $X^T p_i p_i^T X/\sqrt{\lambda_i}$ is distributed as $\chi^2$ distribution with freedom $1$.
 %\end{proof}
-
 
 \begin{lemma}[Weyl's inequality]
 Let $H$ and $P$ be two symmetric matrices and $M=H+P$. If $j+k-n\geq i\geq r+s-1$, we have
@@ -664,29 +647,11 @@ Let $H$ and $P$ be two symmetric matrices and $M=H+P$. If $j+k-n\geq i\geq r+s-1
     \end{equation*}
 \end{corollary}
 
-\begin{lemma}\label{lemmaRankLim}
-    Let $H$ and $P$ be two $p\times p$ positive semi-definite matrices and $M=H+P$.
-    Suppose $\mathrm{Rank}(H)=d_1$, $\mathrm{Rank}(P)=d_2$, where $d_1$ and $d_2$ may depend on $n$. Assume $\mathrm{Rank}(M)=d_1+d_2$, $\lambda_1(M)\to 1$ and $\lambda_{d_1+d_2}(M)\to 1$, then we have
-    \begin{equation}\label{lemma2r1}
-        \lambda_1 (H)\to 1, \quad \lambda_{d_1} (H)\to 1,
-    \end{equation}
-    and
-    \begin{equation}\label{lemma2r2}
-        \lambda_1 (P)\to 1, \quad \lambda_{d_2} (P)\to 1,
-    \end{equation}
-\end{lemma}
-\begin{remark}
-    This generalizes the Cochran's theorem (See Anderson).
-\end{remark}
-\begin{proof}
-    By Weyl's inequality, $\lambda_1 (H)\leq \lambda_1 (M)\to 1$ and
-    $\lambda_{d_1} (H)\geq \lambda_{d_1+d_2}(M)\to 1$. Hence~\eqref{lemma2r1} holds. And~\eqref{lemma2r2} follows in the same way.
-\end{proof}
 
 \begin{lemma}[Convergence rate of principal space estimation]
-    Under the model in Assumption~\ref{theModel2} with condition~\eqref{balance}, assume $\Sigma_1=\Sigma_2$. Suppose $p\to \infty$ as $n\to \infty$ and $\frac{\sqrt{p}}{n_1+n_2}\to 0$. We have
+    Under the Assumption~\ref{balance}-\ref{theModel2}, we have
 \begin{equation*}
-E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}(n_1+n_2)}).
+E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}n}).
 \end{equation*}
 \end{lemma}
 
@@ -694,44 +659,57 @@ E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}(n_1+n_2)}).
 \begin{proof}[\textbf{Proof}]
     By theorem 5 of~\cite{Cai2012Sparse}, sample principal subspace $\hat{V}\hat{V}^T$ is a minimax rate estimator of $VV^T$, namely, it reaches the minimax convergence rate
     \begin{equation}\label{xiaopianpian}
-        \inf_{\hat{V}}\sup_{\Sigma} E\|\hat{V}\hat{V}^T-VV^T\|^2_F\asymp r\wedge (p-r)\wedge \frac{r(p-r)}{(n_1+n_2-2)h(\lambda)}
+         E\|\hat{V}\hat{V}^T-VV^T\|^2_F\asymp r\wedge (p-r)\wedge \frac{r(p-r)}{(n_1+n_2-2)h(\lambda)}
     \end{equation}
-    as long as the right hand side tends to $0$. Here $h(\lambda)=\frac{\lambda^2}{\lambda+1}$, $a_n\asymp b_n$ represents $a_n\geq cb_n$ and $a_n\leq Cb_n$ for some positive $c,C$ for every $n$. In model of Assumption~\ref{theModel},  $r$ is fixed, $\lambda=cp^\beta$. It's obvious that the right hand side of~\eqref{xiaopianpian} is of order $\frac{p^{1-\beta}}{n_1+n_2}$. We note that it is assumed $\beta\geq \frac{1}{2}$ in model of
-    Assumption~\ref{theModel}, together with $\frac{\sqrt{p}}{n_1+n_2}\to 0$ we have
-    $\frac{p^{1-\beta}}{n_1+n_2}\to 0$. Hence
-    $\hat{V}\hat{V}^T$ reaches the optimal rate.
+    as long as the right hand side tends to $0$. Here $h(\lambda)=\frac{\lambda^2}{\lambda+1}$, $a_n\asymp b_n$ represents $a_n\geq cb_n$ and $a_n\leq Cb_n$ for some positive $c,C$ for every $n$. In model of Assumption~\ref{theModel},  $r$ is fixed, $\lambda=cp^\beta$.
+    It's obvious that the right hand side of~\eqref{xiaopianpian} is of order ${p^{1-\beta}}/{n}$.
+    We note that it is assumed $\beta\geq \frac{1}{2}$ in Assumption~\ref{orderOfBeta}, together with ${\sqrt{p}}/{n}\to 0$ we have
+    ${p^{1-\beta}}/{n}\to 0$. Hence
+    $\hat{V}\hat{V}^T$ reaches the convergence rate.
 
 \end{proof}
-
-\begin{lemma}\label{maxEigen}
-    Suppose that $W_n$ is a $p \times p$ matrix distributed as $\textrm{Wishart}_p(n,I_{p})$, $p/n\to c\in [0,+\infty]$. Then as $n\to \infty$,
+\begin{lemma}[Bai-Yin's law]\label{baiyin}
+    Suppose $B_n=\frac{1}{q} Z Z^T$ where $Z$ is $p\times q$ random matrix composed of i.i.d.\ random variables with zero mean, unit variance and finite fourth moment.
+    As $q\to \infty$ and $\frac{p}{q}\to c\in [0,\infty)$, the largest and smallest non-zero eigenvalues of $B_n$ converge almost surely to ${(1+\sqrt{c})}^2$ and $(1-\sqrt{c})^2$, respectively.
+\end{lemma}
+\begin{remark}
+    Lemma~\ref{baiyin} is known as the Bai-Yin's law (\cite{bai1993limit}). As in Remark $1$ of~\cite{bai1993limit}, the smallest non-zero eigenvalue is the $p-q+1$ smallest eigenvalue of $B$ for $c>1$.
+\end{remark}
+\begin{corollary}\label{maxEigen}
+    Suppose that $W_n$ is a $p \times p$ matrix distributed as $\mathrm{Wishart}_p(n,I_{p})$, $p/n\to c\in [0,+\infty]$. Then as $n\to \infty$,
     $$
         \lambda_1(W_n)=O_P(\max(n,p)).
     $$
-\end{lemma}
+\end{corollary}
 \begin{proof}[\textbf{Proof}]
-    If $p$ is bounded as $n\to \infty$, then $p$ is fixed when $n$ is sufficiently large and the lemma can be established by weak law of large numbers. Otherwise, if $p\to \infty$ as $n\to \infty$, the lemma is a direct corollary of Theorem 1.1 of~\cite{Johnstone2001On} and Theorem 2 of~\cite{Karoui2003On}.
+    If $c\in [0,+\infty)$, by Lemma~\ref{baiyin}, we have that
+    $$
+    \frac{\lambda_1(W_n)}{n}\xrightarrow{P}{(1+c)}^2.
+    $$
+    Hence the conclusion holds. If $c=+\infty$, suppose $W_n=Z_n Z_n^T$ where $Z_n$ is a $p\times n$ matrix with all elements distributed as $N(0,1)$. Then
+    $$
+    \frac{\lambda_1(W_n)}{p}=\frac{Z_n^T Z_n}{p}\xrightarrow{P} 1,
+    $$
+    by Lemma~\ref{baiyin}, which proves the conclusion.
 \end{proof}
 
 
-\input{someLatex/quadraticFormCLT.tex}
-
-
-\input{someLatex/ChenIff.tex}
-
-\input{someLatex/pcaTheory.tex}
-
-\input{someLatex/mainLimitTheorem.tex}
 
 The rest of the Appendix is devoted to the proof of propositions and theorems in the paper.
 \begin{proof}[\textbf{Proof Of Proposition 1}]
 Since $V$ and $\tilde{V}$ are orthogonal, we have
   $$\tilde{V}^T X_{ki}\sim N(\tilde{V}\mu_k,\sigma^2 I_{p-r}).$$
- By~\cite{Chen2010A}'s section 6.1, we have
-\begin{equation*}
-Var(T_1)=2\tau^2 p\sigma^4(1+o(1)).
-\end{equation*}
-Random sequences $\tilde{V}^T X_{ki}$ fulfill the condition of~\cite{Chen2010A}'s theorem 1, hence the conclusion follows.
+Note that
+    \begin{equation*}
+        \begin{aligned}
+            {(\mu_1-\mu_2)}^T\tilde{V}\big(\tilde{V}^T\Sigma\tilde{V}\big)\tilde{V}^T(\mu_1-\mu_2)
+            &=\sigma^2{(\mu_1-\mu_2)}^T\tilde{V}\tilde{V}^T(\mu_1-\mu_2)\\
+            &\leq \sigma^2{(\mu_1-\mu_2)}^T(\mu_1-\mu_2)\\
+            &=o(\frac{p}{n})\\
+            &=o(\frac{1}{n}\mathrm{tr}{(\tilde{V}^T\Sigma\tilde{V})}^2).
+        \end{aligned}
+    \end{equation*}
+Hence the random sequences $\tilde{V}^T X_{ki}$ fulfill the condition of~\cite{Chen2010A}'s theorem 1, the conclusion follows.
 \end{proof}
 
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{16}
+\begin{thebibliography}{17}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -34,6 +34,13 @@
 \newblock Springer Series in Statistics. \bibinfo{publisher}{Springer, New
   York}, \bibinfo{year}{2010}.
 \newblock \DOIprefix\doi{10.1007/978-1-4419-0661-8}.
+%Type = Article
+\bibitem[{Bai and Yin(1993)}]{bai1993limit}
+\bibinfo{author}{Bai\xfnm[ Z.D.]}, \bibinfo{author}{Yin\xfnm[ Y.]}.
+\newblock \bibinfo{title}{Limit of the smallest eigenvalue of a large
+  dimensional sample covariance matrix}.
+\newblock \bibinfo{journal}{Annals of Probability}
+  \bibinfo{year}{1993};\bibinfo{volume}{21}(\bibinfo{number}{3}):\bibinfo{pages}{1275--1294}.
 %Type = Article
 \bibitem[{Cai et~al.(2014)Cai, Liu and Xia}]{Tony2013}
 \bibinfo{author}{Cai\xfnm[ T.T.]}, \bibinfo{author}{Liu\xfnm[ W.]},

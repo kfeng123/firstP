@@ -1,104 +1,59 @@
 
 % consistency of variance estimator 1
 \begin{proof}[\textbf{Proof Of Proposition 2}]
-    By a standard orthogonal transformation, $\hat{\sigma}_{(1)}^2$ has the same law with respect to $\frac{1}{(n_1+n_2-2)(p-r)}\mathrm{tr}\sum_{k=1}^2\sum_{i=1}^{n_i-1}\hat{\tilde{V}}^T Y_{ki}Y_{ki}^T\hat{\tilde{V}}$,
-    where $Y_{ki}=VDU^{*}_{ki}+Z_{ki}^*$. Here
-    $U_{ki}^{*}$'s are i.i.d.\ random vectors with $r$ dimensional standard normal distribution and $Z_{ki}^{*}$'s are i.i.d.\ random vectors distributed as  $N_p(0,\sigma^2 I_p)$ which are independent of $U_{ki}^{*}$'s.
-    Denote $U^{*}={(U^*_{11},\ldots,U^{*}_{1(n_1-1)},U^*_{21},\ldots,U^*_{2(n_2-1)})}^T$ and 
-    $Z^*={(Z^*_{11},\ldots,Z^*_{1(n_1-1)},Z^*_{21},\ldots,Z^*_{2(n_2-1)})}^T$. Hence we have
-        \begin{align*}
-            \hat{\sigma}_{(1)}^2=&\frac{1}{(n_1+n_2-2)(p-r)}\|U^*DV^T\hat{\tilde{V}}\|_F^2+\frac{1}{(n_1+n_2-2)(p-r)}\|Z^*\hat{\tilde{V}}\|^2_F \\
-            &+\frac{2}{(n_1+n_2-2)(p-r)}\mathrm{tr}\hat{\tilde{V}}^T Z^{*T}U^*DV^T\hat{\tilde{V}}
-            \\
-            \overset{\textrm{def}}{=}&R_1+R_2+R_3.
-            %\frac{1}{(n-1)(p-r)}tr\hat{\tilde{V}}^T VDU^{*T}U^*DV^T\hat{\tilde{V}}^T+\frac{1}{(n-1)(p-r)}tr\hat{\tilde{V}}^TZ^{*T}Z^*\hat{\tilde{V}}\\
-        \end{align*}
-
-    By Lemma~\ref{maxEigen}, we have $\lambda_1(U^{*T}U^*)=O_P(n_1+n_2-2)$. Therefore,
-    \begin{equation}
+    Note that $(n-2)S\sim \mathrm{Wishart}_p (n-2,\Sigma)$.
+    Denote by $\Sigma=OEO^T$ the spectral decomposition of $\Sigma$, where $O$ is an orthogonal matrix and $E=\mathrm{diag}(\lambda_1+\sigma^2,\ldots,\lambda_r+\sigma^2,\sigma^2,\ldots,\sigma^2)$.
+    Let $Z$ be a $p\times (n-2)$ random matrix with all elements i.i.d.\ distributed as $N(0,1)$, then
+    $$
+        S\sim \frac{1}{n-2} O E^{1/2} Z Z^T E^{1/2} O^T.
+    $$
+    Thus,
+    \begin{equation*}
         \begin{aligned}
-            R_1&=\frac{1}{(n_1+n_2-2)(p-r)}\mathrm{tr}\hat{\tilde{V}}^T VDU^{*T}U^*DV^T\hat{\tilde{V}}\\
-            &=O_P(1)\frac{1}{p-r}\mathrm{tr}\hat{\tilde{V}}^T VD^2V^T\hat{\tilde{V}}\\
-            &=O_P(1)\frac{1}{p-r}\mathrm{tr} D^2V^T(I-\hat{V}\hat{V}^T)V\\
-            &\leq O_P(1)\frac{1}{p}\sqrt{\mathrm{tr}D^4}\sqrt{\mathrm{tr}{(V^T(I-\hat{V}\hat{V}^T)V)}^2}.
-        \end{aligned}
-    \end{equation}
-    And
-    \begin{align}
-        \mathrm{tr} {(V^T(I-\hat{V}\hat{V}^T)V)}^2
-            &\leq {(\mathrm{tr} V^T(I-\hat{V}\hat{V}^T)V)}^2 \label{eq:biti1}\\
-            &=\frac{1}{4}\|VV^T-\hat{V}\hat{V}^T\|_F^4 \label{eq:biti2}\\
-            &=O(\frac{p^2}{p^{2\beta}{(n_1+n_2)}^2}).\notag
-    \end{align}
-    The inequality~\eqref{eq:biti1} holds because $V^T(I-\hat{V}\hat{V}^T)V$ is positive semi-definite and equality~\eqref{eq:biti2} is by the fact that $\mathrm{tr} V^T(I-\hat{V}\hat{V}^T)V=\frac{1}{2}\|VV^T-\hat{V}\hat{V}^T\|^2_F$. 
-    Since $\mathrm{tr}D^4=O_P(p^{2\beta})$, it follows that $R_1=O_P(\frac{1}{n_1+n_2})\xrightarrow{P}0$.
-
-    We note that
-    \begin{equation}
-        \begin{aligned}
-            &|R_2-\frac{1}{(n_1+n_2-2)(p-r)}\|Z^*\tilde{V}\|_F^2|\\
+            \hat{\sigma}^2&\sim
+            \frac{1}{(p-r)(n-2)}\sum_{i=r+1}^p \lambda_i (O E^{1/2} Z Z^T E^{1/2} O^T)\\
             &=
-            \frac{1}{(n_1+n_2-2)(p-r)}|\mathrm{tr}Z^{*T}Z^*(\hat{\tilde{V}}\hat{\tilde{V}}^T-\tilde{V}\tilde{V}^T)|\\
-            &=\frac{1}{(n_1+n_2-2)(p-r)}|\mathrm{tr}Z^{*T}Z^*(\hat{V}\hat{V}^T-VV^T)|\\
-            &\leq \frac{1}{(n_1+n_2-2)(p-r)}\|Z^{*T}Z^*\|_F\|\hat{V}\hat{V}^T-VV^T\|_F.
+            \frac{1}{(p-r)(n-2)}\sum_{i=r+1}^{n-2} \lambda_i ( Z^T E Z).
         \end{aligned}
-    \end{equation}
-    By directly calculating expectation, it's easy to check that $\|Z^{*T}Z^*\|_F=O_P((n_1+n_2-2)p)$. Since $\beta\geq 1/2$  and $\frac{\sqrt{p}}{n}\to 0$, we have
-    \begin{equation}
-        \begin{aligned}
-            \|VV^T -\hat{V}\hat{V}^T\|_F^2=O_P(\frac{p}{p^{\beta}(n_1+n_2)})=o(1).
-    \end{aligned}
-    \end{equation}
-     Therefore, $|R_2-\frac{1}{(n_1+n_2-2)(p-r)}\|Z^*\tilde{V}\|_F^2|\xrightarrow{P}0$. But $\frac{1}{(n_1+n_2-2)(p-r)}\|Z^*\hat{V}\|_F^2\xrightarrow{P}\sigma^2$ by law of large numbers, which yields $R_2\xrightarrow{P}\sigma^2$.
+    \end{equation*}
+    Denote $Z^T={(Z_{(1)}^T,Z_{(2)}^T)}^T$, where $Z_{(1)}$ is the first $r$ rows of $Z$ and $Z_{(2)}$ is the rest rows. We have
+    $$
+    Z^T E Z =Z_{(1)}^T E_1 Z_{(1)}+\sigma^2 Z_{(2)}^T Z_{(2)},
+    $$
+    where $E_1=\mathrm{diag}(\lambda_1+\sigma^2,\ldots,\lambda_r +\sigma^2)$. The first term is of rank $r$. By Weyl's inequality, we have for $i=r+1,\ldots, n-2$ that
+    $$
+    \sigma^2\lambda_i(Z_{(2)}^T Z_{(2)}) \leq \lambda_i(Z^T E Z)\leq
+    \sigma^2\lambda_{i-r}(Z_{(2)}^T Z_{(2)}).
+    $$
+    It follows that
+    $$
+    \sigma^2\sum_{i=r+1}^{n-2}\lambda_i(Z_{(2)}^T Z_{(2)}) \leq \sum_{i=r+1}^{n-2}\lambda_i(Z^T E Z)\leq
+    \sigma^2\sum_{i=1}^{n-r-2}\lambda_{i}(Z_{(2)}^T Z_{(2)}).
+    $$
+    Hence we have
+     \begin{equation*}
+         \begin{aligned}
+             &\Big|\frac{1}{(p-r)(n-2)}\sum_{i=r+1}^{n-2}\lambda_i(Z^T E Z)-
+    \frac{1}{(p-r)(n-2)} \sigma^2\sum_{i=1}^{n-2}\lambda_{i}(Z_{(2)}^T Z_{(2)})\Big|
+             \\
+             \leq & r\sigma^2\frac{1}{(p-r)(n-2)} \lambda_1 (Z_{(2)}^T Z_{(2)}).
+         \end{aligned}
+     \end{equation*}
+    By Corollary~\ref{maxEigen}, $\lambda_1 (Z_{(2)}^T Z_{(2)})=O_P(\max(n,p))$. Hence
+     \begin{equation*}
+         \begin{aligned}
+             \frac{1}{(p-r)(n-2)}\sum_{i=r+1}^{n-2}\lambda_i(Z^T E Z)
+             &=
+    \frac{1}{(p-r)(n-2)} \sigma^2\sum_{i=1}^{n-2}\lambda_{i}(Z_{(2)}^T Z_{(2)})
+             +o_P(1)\\
+             &=
+             \frac{1}{(p-r)(n-2)} \sigma^2\mathrm{tr}(Z_{(2)}^T Z_{(2)})\\
+             &\xrightarrow{P}
+             \sigma^2.
+         \end{aligned}
+     \end{equation*}
+     The last line of the above equality holds since $\mathrm{tr}(Z_{(2)}^T Z_{(2)})$ is the sum of square of the elements of $Z_{(2)}$ and law of large numbers can be invoked.
 
-    Finally, as $R_3\leq 2\sqrt{R_1}\sqrt{R_2}$ we have $R_3\xrightarrow{P}0$. It follows that $\hat{\sigma}^2_{(1)}$ is consistent.
 
-% consistency of variance estimator 2
-Next we proof the consistency of $\hat{\sigma}^2_{(2)}$.
 
-We denote
-\begin{equation}
-\begin{aligned}
-    S_{UU}=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k}(U_{ki}-\bar{U}_k){(U_{ki}-\bar{U}_k)}^T,
-\\
-    S_{ZZ}=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k}(Z_{ki}-\bar{Z}_k){(Z_{ki}-\bar{Z}_k)}^T,
-\\
-    S_{UZ}=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k}(U_{ki}-\bar{U}_k){(Z_{ki}-\bar{Z}_k)}^T,
-\\
-    S_{ZU}=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k}(Z_{ki}-\bar{Z}_k){(U_{ki}-\bar{U}_k)}^T.
-\end{aligned}
-\end{equation}
-Then 
-\begin{equation}
-\begin{aligned}
-    S&=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k}(X_{ki}-\bar{X}_k){(X_{ki}-\bar{X}_k)}^T\\
-    &=\frac{1}{n_1+n_2-2}\sum_{k=1}^2\sum_{i=1}^{n_k}(VD(U_{ki}-\bar{U}_k)+Z_{ki}-\bar{Z}_k){(VD(U_{ki}-\bar{U}_k)+Z_{ki}-\bar{Z}_k)}^T\\
-&=VDS_{UU}DV^T+VDS_{UZ}+S_{ZU}DV^T+S_{ZZ}\\
-&=VD(S_{UU}DV^T+S_{UZ})+S_{ZU}DV^T+S_{ZZ}\\
-    &\overset{\textrm{def}}{=}F_1+F_2+F_3.
-\end{aligned}
-\end{equation}
-By Weyl's inequality, we have
-\begin{equation}
-    \lambda_{p-2r}{(F_1+F_2)}+\lambda_{2r+k}(S_{ZZ})
-    \leq \lambda_{k}(S)\leq 
-    \lambda_{2r+1}(F_1+F_2)+\lambda_{k-2r}(S_{ZZ})
-\end{equation}
-for $2r+1\leq k\leq p-2r$.
-    But $rank(F_1+F_2)\leq 2r$, since $rank(F_k)\leq rank(D)=r$ for $k=1,2$. Thus the $k$th  eigenvalue of $F_1+F_2$ equals to zero, where $2r+1\leq k\leq p-2r$. In this way,
-\begin{equation}
-\lambda_{2r+k}(S_{ZZ})\leq \lambda_{k}(S)\leq \lambda_{k-2r}(S_{ZZ}).
-\end{equation}
-By above argument, we have upper bound
-\begin{equation}
-    \frac{1}{p-4r}\sum_{k=2r+1}^{p-2r}\lambda_k(S)\leq\frac{1}{p-4r}\sum_{k=1}^{p-4r}\lambda_{k}(S_{ZZ})\leq \frac{1}{p-4r}\mathrm{tr} S_{ZZ}
-\end{equation} and lower bound
-\begin{equation}
-    \frac{1}{p-4r}\sum_{k=2r+1}^{p-2r}\lambda_k(S)\geq\frac{1}{p-4r}\sum_{k=4r+1}^{p}\lambda_{k}(S_{ZZ})\geq \frac{1}{p-4r}\mathrm{tr} S_{ZZ}-\frac{4r}{p-4r}\lambda_1(S_{ZZ}).
-\end{equation}
-Thus it suffices to  prove that
-$\frac{1}{p}\mathrm{tr} S_{ZZ}\xrightarrow{P}\sigma^2$
-and
-$\frac{1}{p}\lambda_1(S_{ZZ})\xrightarrow{P}0$. 
-We note that $(n_1+n_2-2)S_{ZZ}$ is distributed as $\textrm{Wishart}_p(n_1+n_2-2,\sigma^2 I_p)$. Hence $\frac{1}{p}\mathrm{tr}(S_{ZZ})\xrightarrow{P}\sigma^2$ by law of large numbers. And $\frac{1}{p}\lambda_1(S_{ZZ})=o_P(1)$ by Lemma~\ref{maxEigen}. Therefore the consistency of $\hat{\sigma}^2_{(2)}$ is proved.
 \end{proof}
