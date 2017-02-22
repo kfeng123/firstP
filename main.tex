@@ -384,7 +384,7 @@ Now we concern the problem of estimating $\sigma^2$.  Note that $\sigma^2$ can b
 \end{equation}
 We estimate it by sample version:
 \begin{equation*}
-    \hat{\sigma}^2=\frac{1}{p-2r}\sum_{i=2r+1}^{p} \lambda_i(S).
+    \hat{\sigma}^2=\frac{1}{p-r}\sum_{i=r+1}^{p} \lambda_i(S).
 \end{equation*}
 If estimator $\hat{\sigma}^2$ of $\sigma^2$ is ratio consistent, the asymptotic distribution of~\eqref{myTest} will not change if we replace $\sigma^2$ by $\hat{\sigma}^2$  due to Slutsky's theorem.
 
@@ -676,21 +676,23 @@ E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}n}).
     Lemma~\ref{baiyin} is known as the Bai-Yin's law (\cite{bai1993limit}). As in Remark $1$ of~\cite{bai1993limit}, the smallest non-zero eigenvalue is the $p-q+1$ smallest eigenvalue of $B$ for $c>1$.
 \end{remark}
 \begin{corollary}\label{maxEigen}
-    Suppose that $W_n$ is a $p \times p$ matrix distributed as $\mathrm{Wishart}_p(n,I_{p})$, $p/n\to c\in [0,+\infty]$. Then as $n\to \infty$,
+    Suppose that $W_n$ is a $p \times p$ matrix distributed as $\mathrm{Wishart}_p(n,I_{p})$. Then as $n\to \infty$,
     $$
         \lambda_1(W_n)=O_P(\max(n,p)).
     $$
 \end{corollary}
 \begin{proof}[\textbf{Proof}]
+    Since $[0,+\infty]$ is compact, for every subsequance $\{n_{k}\}$ of $\{n\}$, there is a further subsequance $\{n_{k_l}\}$ along which $p/n\to c\in [0,+\infty]$.
+
     If $c\in [0,+\infty)$, by Lemma~\ref{baiyin}, we have that
     $$
-    \frac{\lambda_1(W_n)}{n}\xrightarrow{P}{(1+c)}^2.
+    \frac{\lambda_1(W_{n_{k_l}})}{n_{k_l}}\xrightarrow{P}{(1+c)}^2.
     $$
-    Hence the conclusion holds. If $c=+\infty$, suppose $W_n=Z_n Z_n^T$ where $Z_n$ is a $p\times n$ matrix with all elements distributed as $N(0,1)$. Then
+    Hence the conclusion holds along this subsequance. If $c=+\infty$, suppose $W_n=Z_n Z_n^T$ where $Z_n$ is a $p\times n$ matrix with all elements distributed as $N(0,1)$. Then
     $$
-    \frac{\lambda_1(W_n)}{p}=\frac{Z_n^T Z_n}{p}\xrightarrow{P} 1,
+    \frac{\lambda_1(W_{n_{k_l}})}{p}=\frac{Z_{n_{k_l}}^T Z_{n_{k_l}}}{p}\xrightarrow{P} 1,
     $$
-    by Lemma~\ref{baiyin}, which proves the conclusion.
+    by Lemma~\ref{baiyin}, which proves the conclusion along the subsequance. Now the conclusion holds by a standard subsequance argument.
 \end{proof}
 
 
@@ -797,7 +799,7 @@ Therefore, by noting $p=o(n_1^2)$ we have $R_2\xrightarrow{P}0$.
 \\
     &\leq O(1)\sqrt{\frac{n_1\|\hat{V}^T\bar{X}_1\|^2}{\sqrt{p}}}\sqrt{\frac{{n_2}\|\hat{V}^T\bar{X}_2\|^2}{\sqrt{p}}},\notag
 \end{align}
-where the inequality is due to Cauchy inequality. By noting the relationship with  $R_1$, the right hand side converges to $0$ in probability. And the proof is completed.
+where the inequality is due to Cauchy inequality. By noting the relationship with  $R_1$, the right hand side converges to $0$ in probability. The proof is completed.
 
 
 
