@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.5.17)  22 FEB 2017 10:32
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.5.17)  25 FEB 2017 21:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1119,11 +1119,12 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 )
 \c@theorem=\count172
 \c@proposition=\count173
-\c@lemma=\count174
-\c@example=\count175
-\c@assumption=\count176
-\c@condition=\count177
-\c@remark=\count178
+\c@corollary=\count174
+\c@lemma=\count175
+\c@example=\count176
+\c@assumption=\count177
+\c@condition=\count178
+\c@remark=\count179
 
 *************************************************
 * xeCJK warning: "fandol"
@@ -1136,7 +1137,7 @@ Package: booktabs 2005/04/14 v1.61803 publication quality tables
 * 
 * Font 'FandolSong-Regular' does not contain script 'CJK'.
 *************************************************
-\g__fontspec_family_FandolSong-Regular_int=\count179
+\g__fontspec_family_FandolSong-Regular_int=\count180
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1189,7 +1190,7 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count180
+\c@section@level=\count181
 )
 LaTeX Info: Redefining \ref on input line 60.
 LaTeX Info: Redefining \pageref on input line 60.
@@ -1276,7 +1277,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 * 
 * Font 'FandolFang-Regular' does not contain script 'CJK'.
 *************************************************
-\g__fontspec_family_FandolFang-Regular_int=\count181
+\g__fontspec_family_FandolFang-Regular_int=\count182
 LaTeX Font Info:    Try loading font information for EU1+lmtt on input line 93.
 
 (/usr/share/texlive/texmf-dist/tex/latex/euenc/eu1lmtt.fd
@@ -1316,15 +1317,23 @@ File: code/fig5.jpeg Graphic file (type QTm)
 File: code/fig6.jpeg Graphic file (type QTm)
  <use  "code/fig6.jpeg" >
 
-LaTeX Warning: Float too large for page by 18.45155pt on input line 585.
+LaTeX Warning: Float too large for page by 18.45155pt on input line 584.
 
-[12] [13] [14] [15] [16] (./someLatex/varianceEstimation.tex [17]) [18]
-Overfull \hbox (14.59496pt too wide) detected at line 758
+[12] [13] [14] [15]
+Overfull \hbox (9.07637pt too wide) in paragraph at lines 678--679
+[]  \EU1/lmr/bx/n/10 Corollary 3. []\EU1/lmr/m/it/10 Suppose that $\OML/cmm/m/i
+t/10 W[]$ \EU1/lmr/m/it/10 is a $\OML/cmm/m/it/10 p \OMS/cmsy/m/n/10 ^^B \OML/c
+mm/m/it/10 p$ \EU1/lmr/m/it/10 matrix distributed as $[][]\OT1/cmr/m/n/10 (\OML
+/cmm/m/it/10 n; I[]\OT1/cmr/m/n/10 )$\EU1/lmr/m/it/10 .
+ []
+
+[16] (./someLatex/varianceEstimation.tex [17]) [18]
+Overfull \hbox (14.59496pt too wide) detected at line 757
 [] []
  []
 
 
-Overfull \hbox (16.97774pt too wide) detected at line 772
+Overfull \hbox (16.97774pt too wide) detected at line 771
 [] []
  []
 
@@ -1383,19 +1392,19 @@ Overfull \hbox (12.27753pt too wide) detected at line 138
  []
 
 [29]) (./main.bbl [30] [31])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 828.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 824.
  [32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 828.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 824.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 828.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 828.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 828.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 824.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 824.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 824.
  ) 
 Here is how much of TeX's memory you used:
- 25229 strings out of 493638
- 458113 string characters out of 6146796
- 486273 words of memory out of 5000000
- 28384 multiletter control sequences out of 15000+600000
+ 25233 strings out of 493638
+ 458160 string characters out of 6146796
+ 486312 words of memory out of 5000000
+ 28388 multiletter control sequences out of 15000+600000
  14263 words of font info for 73 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  47i,17n,74p,10426b,823s stack positions out of 5000i,500n,10000p,200000b,80000s

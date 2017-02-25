@@ -48,8 +48,8 @@
 \theoremstyle{plain}
 \newtheorem{theorem}{\quad\quad Theorem}
 \newtheorem{proposition}{\quad\quad Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{\quad\quad Corollary}
+\newtheorem{lemma}{\quad\quad Lemma}
 \newtheorem{example}{Example}
 \newtheorem{assumption}{\quad\quad Assumption}
 \newtheorem{condition}{Condition}
@@ -395,23 +395,25 @@ If estimator $\hat{\sigma}^2$ of $\sigma^2$ is ratio consistent, the asymptotic 
 
 \section{Theoretical results}
 
-In this section, we derive some properties of the new test statistic. Our main results require the following relationship of $n$ and $p$.
-\begin{assumption}\label{pAndN}
-    We assume
-    $$
-    \frac{\sqrt{p}}{n}\to 0.
-    $$
-\end{assumption}
-
-
-First we establish $\hat{\sigma}^2$ is a consistent estimator of $\sigma^2$. 
+In this section, we derive some properties of the new test statistic.
+First we establish $\hat{\sigma}^2$ is a consistent estimator of $\sigma^2$. Notice the results  
 \begin{proposition}\label{varianceEstimation}
     Under Assumptions~\ref{balance}-\ref{theModel2},      $\hat{\sigma}^2$ is consistent.
 \end{proposition}
 
-Now we derive the asymptotic normality of the new test statistic. Consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
+Now we derive the asymptotic normality of the new test statistic.
+Our main results require the following relationship of $n$ and $p$.
+\begin{assumption}\label{pAndN}
+    Assume
+    $
+    {\sqrt{p}}/{n}\to 0.
+    $
+\end{assumption}
+
+
+ Consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
 In many practical problems, the alternative is `dense', i.e., under $H_1$ the signals in $\mu_1-\mu_2$ spread out over a large number of co-ordinates. See~\cite{Tony2013}.
-We characterize `dense' alternative from bayes framework and assume that elements of $\mu_k$  are independently generated from normal distribution.
+Similar to bayes models, we assume a normal prior distribution for $\mu_k$ to characterize `dense' alternative.
 Next theorem shows that  the power of our new test is asymptotically the same as~\cite{Chen2010A}'s test in this case.
 
 
@@ -434,9 +436,6 @@ if the null hypothesis holds, then
         \frac{T_2}{\sigma^2\sqrt{2p \tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
     \end{equation*}
 \end{theorem} 
-\begin{remark}
-    The critical value of the new test can be determined by Theorem~\ref{myPanpan}, that is, reject when $T_2/(\sigma^2\sqrt{2p\tau^2})>z_{1-\alpha}$.
-\end{remark}
     Then we generalize the Theorem~\ref{myPanpan} to the case of local alternative.
 
 \begin{theorem}\label{spaceEstimation}
@@ -457,13 +456,13 @@ then
 By Proposition~\ref{varianceEstimation}  and Theorem~\ref{spaceEstimation}, the power of our new test can be obtained immediately.
 
 
-\begin{theorem}\label{testPowerh}
+\begin{corollary}\label{testPowerh}
     Under Assumptions~\ref{balance}-\ref{pAndN},
     if we reject the null hypothesis when $Q$ is larger than $1-\alpha$ quantile of $N(0,1)$, then the power of our test is
     \begin{equation*}
         \Phi\Big(-\Phi^{-1}(1-\alpha)+\frac{\|\tilde{V}(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2p}}\Big).
     \end{equation*}
-\end{theorem}
+\end{corollary}
 
 
 \begin{remark} The power of $T_{CQ}$ is of the form
@@ -809,9 +808,6 @@ where the inequality is due to Cauchy inequality. By noting the relationship wit
 % proof of space estimation theorem
 \input{someLatex/spaceEstimation.tex}
 
-\begin{proof}[\textbf{Proof Of Theorem 4}]
-    The theorem follows by Theorem~\ref{oracleTheorem}, Theorem~\ref{spaceEstimation} and Theorem~\ref{varianceEstimation}.
-\end{proof}
 
 
 \input{someLatex/theOne.tex}
