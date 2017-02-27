@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.5.17)  25 FEB 2017 21:51
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  27 FEB 2017 10:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1317,10 +1317,10 @@ File: code/fig5.jpeg Graphic file (type QTm)
 File: code/fig6.jpeg Graphic file (type QTm)
  <use  "code/fig6.jpeg" >
 
-LaTeX Warning: Float too large for page by 18.45155pt on input line 584.
+LaTeX Warning: Float too large for page by 18.45155pt on input line 586.
 
 [12] [13] [14] [15]
-Overfull \hbox (9.07637pt too wide) in paragraph at lines 678--679
+Overfull \hbox (9.07637pt too wide) in paragraph at lines 679--680
 []  \EU1/lmr/bx/n/10 Corollary 3. []\EU1/lmr/m/it/10 Suppose that $\OML/cmm/m/i
 t/10 W[]$ \EU1/lmr/m/it/10 is a $\OML/cmm/m/it/10 p \OMS/cmsy/m/n/10 ^^B \OML/c
 mm/m/it/10 p$ \EU1/lmr/m/it/10 matrix distributed as $[][]\OT1/cmr/m/n/10 (\OML
@@ -1328,12 +1328,12 @@ mm/m/it/10 p$ \EU1/lmr/m/it/10 matrix distributed as $[][]\OT1/cmr/m/n/10 (\OML
  []
 
 [16] (./someLatex/varianceEstimation.tex [17]) [18]
-Overfull \hbox (14.59496pt too wide) detected at line 757
+Overfull \hbox (14.59496pt too wide) detected at line 758
 [] []
  []
 
 
-Overfull \hbox (16.97774pt too wide) detected at line 771
+Overfull \hbox (16.97774pt too wide) detected at line 772
 [] []
  []
 
@@ -1353,7 +1353,7 @@ L/cmm/m/it/10 V[][]$\EU1/lmr/m/n/10 , $[][]$,$\OML/cmm/m/it/10 S$\EU1/lmr/m/n/1
 0 ).
  []
 
-[25] [26]) (./someLatex/theOne.tex
+[25] [26]) (./someLatex/theOne.tex [27]
 Overfull \hbox (25.60976pt too wide) in paragraph at lines 40--42
 \EU1/lmr/m/n/10 The first term converges to $\OT1/cmr/m/n/10 0$ \EU1/lmr/m/n/10
  because $[][][][]\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 S[]; S[]\
@@ -1361,7 +1361,7 @@ OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^X \OML/cmm/m/it/10 N\OT1/cmr/m/n/10 (0\OML/
 cmm/m/it/10 ; [][][][][]\OT1/cmr/m/n/10 )$
  []
 
-[27]
+
 Overfull \hbox (36.28258pt too wide) in paragraph at lines 58--62
 []\EU1/lmr/m/n/10 To prove $\OML/cmm/m/it/10 R[] [] \OT1/cmr/m/n/10 0$\EU1/lmr/
 m/n/10 , we note that $[] [][] \OML/cmm/m/it/10 X[]VV[]X[] \OMS/cmsy/m/n/10 ^^@
@@ -1392,18 +1392,18 @@ Overfull \hbox (12.27753pt too wide) detected at line 138
  []
 
 [29]) (./main.bbl [30] [31])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 824.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 825.
  [32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 824.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 825.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 824.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 824.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 824.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 825.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 825.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 825.
  ) 
 Here is how much of TeX's memory you used:
  25233 strings out of 493638
  458160 string characters out of 6146796
- 486312 words of memory out of 5000000
+ 486316 words of memory out of 5000000
  28388 multiletter control sequences out of 15000+600000
  14263 words of font info for 73 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
