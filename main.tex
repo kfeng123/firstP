@@ -323,15 +323,23 @@ the asymptotic normality of $T_1$ can be obtained by~\cite{Chen2010A}'s Theorem 
 
 
 \subsection{New Test}
+We denote by $\hat{V}$ and $\hat{\tilde{V}}$ the first $r$ and last $p-r$ eigenvectors of $S$ respectively.
+Similarly, we denote by  $\hat{V}_i$ and $\hat{\tilde{V}}_i$ the first $r$ and last $p-r$ eigenvectors of $S_i$ respectively, $i=1,2$.
+ As the estimators of their population counterparts, these simple statistics actually reach the optimal convergence rate. See~\cite{Cai2012Sparse}.
 
-Actually, $T_1$ is not a statistic since $VV^T$ and $\tilde{V}\tilde{V}^T$ are unknown. Fortunately, $V$ and $\tilde{V}$ can be estimated by $\hat{V}$ and $\hat{\tilde{V}}$, where $\hat{V}$ and $\hat{\tilde{V}}$ are the first $r$ and last $p-r$ eigenvectors of $S$, respectively. These simple estimators actually reach the optimal convergence rate. See~\cite{Cai2012Sparse}.
+Since $T_1$ depends on subspace $\tilde{V}\tilde{V}^T$ which is unknown, we must estimate it.
+The first part of $T_1$ is $\|\tilde{V}^T (\bar{X}_1-\bar{X}_2)\|^2$.
+We estimate it directly by $\|\hat{\tilde{V}}^T (\bar{X}_1-\bar{X}_2)\|^2$.
+Note that the second part of $T_1$ is $\frac{1}{n_1}\mathrm{tr}(\tilde{V}^T S_1\tilde{V})$. Since it only involves sample one,
+we estimate it by $\frac{1}{n_1}\mathrm{tr}(\hat{\tilde{V}}_1^T S_1\hat{\tilde{V}}_1)$. Similarly, we estimate the third part of $T_1$ by $\frac{1}{n_2}\mathrm{tr}(\hat{\tilde{V}}_2^T S_2\hat{\tilde{V}}_2)$.
+
 
 %We are now in a position to propose a new statistic for testing the hypotheses~\eqref{problem}.
 Define
 
 \begin{equation*}
 \begin{aligned}
-    T_2&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}tr(\hat{\tilde{V}}^T S_1\hat{\tilde{V}})-\frac{1}{n_2}tr(\hat{\tilde{V}}^T S_2\hat{\tilde{V}}).
+    T_2&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}tr(\hat{\tilde{V}}_1^T S_1\hat{\tilde{V}}_1)-\frac{1}{n_2}tr(\hat{\tilde{V}}_2^T S_2\hat{\tilde{V}}_2).
     %T_2=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_2(n_2-1)}
 %-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_1n_2}
 \end{aligned}
@@ -340,10 +348,11 @@ We propose our new test statistic as
 \begin{equation}\label{myTest}
     Q=\frac{T_2}{\hat{\sigma}^2\sqrt{2p\tau^2}},
 \end{equation}
-where $\hat{\sigma}^2$ is a ratio consistent estimator of $\sigma^2$. In next section, it will be proved that the asymptotic distribution of $Q$ is $N(0,1)$. We reject the null hypothesis if $Q$ is larger than the upper $\alpha$ quantile of $N(0,1)$.
+where $\hat{\sigma}^2$ is a ratio consistent estimator of $\sigma^2$. In next section, it will be proved that the asymptotic distribution under null of $Q$ is $N(0,1)$. We reject the null hypothesis when $Q$ is larger than the upper $\alpha$ quantile of $N(0,1)$.
 
 \begin{remark}
-    Compared with random projection method, our projection is determined by the structure of $S$. Hence we don't  project multiple times as random projection method did, which leads to reproducibility.
+    Compared with random projection method, our projection is determined by the structure of $S_1$, $S_2$ and $S$.
+    We don't  project multiple times as random projection method did, which leads to reproducibility in practice.
 \end{remark}
 
 
@@ -356,12 +365,13 @@ If $r$ is an unknown positive number, a consistent estimator of $r$ is
 \begin{equation}\label{estimateR}
     \hat{r}=\textrm{argmax}_{l\leq R}\frac{\lambda_l(S)}{\lambda_{l+1}(S)},
 \end{equation}
-where $R$ is the maximum value of $r$ to be tested. See~\cite{Ahn2009Eigenvalue} for detail. Therefore, without loss of generality, we will assume that $r$ is known.
+where $R$ is a hyperparameter. See~\cite{Ahn2009Eigenvalue} for detail. Therefore, without loss of generality, we will assume that $r$ is known.
 %and deal with it saperately if $r=0$.
 \end{remark}
 
     Theoretical results will show that the asymptotic variance of $T_2$ is significantly smaller than $T_{CQ}$. 
-    On the other hand, the new test statistic estimates $\|\tilde{V}(\mu_1-\mu_2)\|^2$. Hence the superiority of the new test will be established if 
+    On the other hand, the new test statistic estimates $\|\tilde{V}(\mu_1-\mu_2)\|^2$.
+    Then the superiority of the new test will be established if 
     
 \begin{equation}\label{yuedengyu}
     \frac{\|\tilde{V}(\mu_1-\mu_2)\|}{\|\mu_1-\mu_2\|}\approx 1.
@@ -396,22 +406,9 @@ If estimator $\hat{\sigma}^2$ of $\sigma^2$ is ratio consistent, the asymptotic 
 \section{Theoretical results}
 
 In this section, we derive some properties of the new test statistic.
-First we establish $\hat{\sigma}^2$ is a consistent estimator of $\sigma^2$. Notice the results  
-\begin{proposition}\label{varianceEstimation}
-    Under Assumptions~\ref{balance}-\ref{theModel2},      $\hat{\sigma}^2$ is consistent.
-\end{proposition}
-
-Now we derive the asymptotic normality of the new test statistic.
-Our main results require the following relationship of $n$ and $p$.
-\begin{assumption}\label{pAndN}
-    Assume
-    $
-    {\sqrt{p}}/{n}\to 0.
-    $
-\end{assumption}
 
 
- Consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
+First we consider the case  when the eigenvalues of $\Sigma$ is bounded, i.e., there is no clear correlation between variables.
 In many practical problems, the alternative is `dense', i.e., under $H_1$ the signals in $\mu_1-\mu_2$ spread out over a large number of co-ordinates. See~\cite{Tony2013}.
 Similar to bayesian models, we assume a normal prior distribution for $\mu_k$ to characterize `dense' alternative.
 When the eigenvalues of $\Sigma$ is bounded, spike variance model is not valid. Hence some estimators in our test procedure make no sense. Particularly, if  $\hat{r}$ is estimated by~\eqref{estimateR}. the $\hat{r}$ is nothing but a random integer not greater than $R$ and $\hat{V}\hat{V}^T$ is just a random projection. In this case, the difference of our test statistic and~\cite{Chen2010A}'s is small.
@@ -429,6 +426,30 @@ The next theorem shows that  the power of our new test is asymptotically the sam
 
 
 Now we establish the asymptotic normality of the new test statistic under spiked covariance model.
+We first give a result of the convergence rate of $\hat{\sigma}^2$.
+\begin{proposition}\label{varianceEstimation}
+    Under Assumptions~\ref{balance}-\ref{theModel2}, we have that%      $\hat{\sigma}^2$ is consistent.
+    $$
+    \hat{\sigma}^2=\sigma^2 + O_P(\frac{\max (n,p)}{np}).
+    $$
+\end{proposition}
+Proposition~\ref{varianceEstimation} implies that $\hat{\sigma}^2$ is a consistent estimator of $\sigma^2$.   
+
+To derive the asymptotic normality of the new test statistic, we require the following relationship of $n$ and $p$.
+\begin{assumption}\label{pAndN}
+    Assume
+    $
+    {\sqrt{p}}/{n}\to 0.
+    $
+\end{assumption}
+The assumption~\ref{pAndN} looks restrictive.
+However, it may not be possible to relaxed since the asymptotic normality of $\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2$ requires 
+\begin{equation}\label{eqREML}
+    \frac{\lambda_1\big(\big(\hat{\tilde{V}}^T \Sigma \hat{\tilde{V}}\big)^2\big)}{\mathrm{tr}\big(\big(\hat{\tilde{V}}^T \Sigma \hat{\tilde{V}}\big)^2\big)
+}\xrightarrow{P} 0,
+\end{equation}
+see Example 5.1 of~\cite{jiang1996reml}. And~\eqref{eqREML} is equivalent to Assumption~\ref{pAndN} by Lemma~\ref{conRateLemma} in appendix.
+
 Our first step is to prove the asymptotic normality under null hypothesis.
 
 \begin{theorem}\label{myPanpan}
@@ -438,7 +459,9 @@ if the null hypothesis holds, then
         \frac{T_2}{\sigma^2\sqrt{2p \tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
     \end{equation*}
 \end{theorem} 
-    Then we generalize the Theorem~\ref{myPanpan} to the case of local alternative.
+ 
+
+ Theorem~\ref{myPanpan} can be generalized to the case of local alternatives.
 
 \begin{theorem}\label{spaceEstimation}
     Under Assumptions~\ref{balance}-\ref{pAndN},
@@ -460,7 +483,7 @@ By Proposition~\ref{varianceEstimation}  and Theorem~\ref{spaceEstimation}, the 
 
 \begin{corollary}\label{testPowerh}
     Under Assumptions~\ref{balance}-\ref{pAndN},
-    if we reject the null hypothesis when $Q$ is larger than $1-\alpha$ quantile of $N(0,1)$, then the power of our test is
+    if we reject the null hypothesis when $Q$ is larger than $1-\alpha$ quantile of $N(0,1)$, then the asymptotic power function of our test is
     \begin{equation*}
         \Phi\Big(-\Phi^{-1}(1-\alpha)+\frac{\|\tilde{V}(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2p}}\Big).
     \end{equation*}
@@ -648,7 +671,7 @@ Let $H$ and $P$ be two symmetric matrices and $M=H+P$. If $j+k-n\geq i\geq r+s-1
 \end{corollary}
 
 
-\begin{lemma}[Convergence rate of principal space estimation]
+\begin{lemma}[Convergence rate of principal space estimation]\label{conRateLemma}
     Under the Assumption~\ref{balance}-\ref{theModel2}, we have
 \begin{equation*}
 E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}n}).
@@ -704,11 +727,11 @@ Since $V$ and $\tilde{V}$ are orthogonal, we have
 Note that
     \begin{equation*}
         \begin{aligned}
-            {(\mu_1-\mu_2)}^T\tilde{V}\big(\tilde{V}^T\Sigma\tilde{V}\big)\tilde{V}^T(\mu_1-\mu_2)
-            &=\sigma^2{(\mu_1-\mu_2)}^T\tilde{V}\tilde{V}^T(\mu_1-\mu_2)\\
-            &\leq \sigma^2{(\mu_1-\mu_2)}^T(\mu_1-\mu_2)\\
-            &=o(\frac{p}{n})\\
-            &=o(\frac{1}{n}\mathrm{tr}{(\tilde{V}^T\Sigma\tilde{V})}^2).
+            &{(\mu_1-\mu_2)}^T\tilde{V}\big(\tilde{V}^T\Sigma\tilde{V}\big)\tilde{V}^T(\mu_1-\mu_2)
+            =\sigma^2{(\mu_1-\mu_2)}^T\tilde{V}\tilde{V}^T(\mu_1-\mu_2)\\
+            \leq &\sigma^2{(\mu_1-\mu_2)}^T(\mu_1-\mu_2)
+            =o(\frac{p}{n})
+            =o(\frac{1}{n}\mathrm{tr}{(\tilde{V}^T\Sigma\tilde{V})}^2).
         \end{aligned}
     \end{equation*}
 Hence the random sequences $\tilde{V}^T X_{ki}$ fulfill the condition of~\cite{Chen2010A}'s theorem 1, the conclusion follows.

@@ -42,18 +42,24 @@
     By Corollary~\ref{maxEigen}, $\lambda_1 (Z_{(2)}^T Z_{(2)})=O_P(\max(n,p))$. Hence
      \begin{equation*}
          \begin{aligned}
-             \frac{1}{(p-r)(n-2)}\sum_{i=r+1}^{n-2}\lambda_i(Z^T E Z)
-             &=
+             &\frac{1}{(p-r)(n-2)}\sum_{i=r+1}^{n-2}\lambda_i(Z^T E Z)\\
+             =&
     \frac{1}{(p-r)(n-2)} \sigma^2\sum_{i=1}^{n-2}\lambda_{i}(Z_{(2)}^T Z_{(2)})
-             +o_P(1)\\
-             &=
-             \frac{1}{(p-r)(n-2)} \sigma^2\mathrm{tr}(Z_{(2)}^T Z_{(2)})\\
-             &\xrightarrow{P}
-             \sigma^2.
+             +O_P(\frac{\max(n,p)}{np})\\
+             =&
+             \frac{1}{(p-r)(n-2)} \sigma^2\mathrm{tr}(Z_{(2)}^T Z_{(2)})
+             +O_P(\frac{\max(n,p)}{np})\\
+             =&
+             \sigma^2+
+                +O_P(\frac{1}{\sqrt{np}})
+             +O_P(\frac{\max(n,p)}{np}).\\
          \end{aligned}
      \end{equation*}
-     The last line of the above equality holds since $\mathrm{tr}(Z_{(2)}^T Z_{(2)})$ is the sum of square of the elements of $Z_{(2)}$ and law of large numbers can be invoked.
-
+     The last line of the above equality holds since $\mathrm{tr}(Z_{(2)}^T Z_{(2)})$ is the sum of square of the elements of $Z_{(2)}$ and thus central limit theorem can be invoked.
+The theorem follows by noting that
+$$
+    O_{P}(\frac{1}{\sqrt{np}})=O_P(\frac{\sqrt{np}}{np})= O_P(\frac{\max (n,p)}{np}).
+$$
 
 
 \end{proof}
