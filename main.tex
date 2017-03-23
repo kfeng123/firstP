@@ -217,15 +217,14 @@ From Assumption~\ref{theModel}, $V_k V_k^T$ is the orthogonal projection matrix 
 
 
 \begin{assumption}\label{orderOfBeta}
-    Assume that there is some constant $\kappa$ such that
+    Assume that there is some constant $\kappa>0$ and $\beta\geq \frac{1}{2}$ such that
     \begin{equation*}
-    \kappa \lambda\geq \lambda_{k1}\geq \cdots \geq\lambda_{kr_k}\geq \lambda>0,
+        \kappa p^{\beta}\geq \lambda_{k1}\geq \cdots \geq\lambda_{kr_k}\geq \kappa^{-1}p^{\beta}.
 \end{equation*}
-    where $\lambda=cp^\beta$ for some $c>0$ and $\beta\geq \frac{1}{2}$.
 \end{assumption}
 
 
-The restriction $\beta\geq 1/2$ is assumed in Assumption~\ref{orderOfBeta}. If $\beta< 1/2$, condition~\eqref{chenscondition} is meet and~\cite{Chen2010A}'s  method is valid. 
+The restriction $\beta\geq 1/2$ breaks down the Condition~\eqref{chenscondition}. If $\beta< 1/2$, Condition~\eqref{chenscondition} is meet and~\cite{Chen2010A}'s  method is valid. 
  Hence $\beta=1/2$ is the boundary of the scope between $T_{CQ}$ and our new test.
 The case $\beta=1$ corresponds to the factor model in paper~\cite{Ma2015A} with some restrictions of parameters.
 
@@ -305,7 +304,7 @@ the asymptotic normality of $T_1$ can be obtained by~\cite{Chen2010A}'s Theorem 
 \begin{proposition}\label{oracleTheorem}
     Under Assumptions~\ref{balance}-\ref{theModel2} and local alternative, that means, $\frac{n}{p}\|\mu_1-\mu_2\|^2\to 0$, we have 
     \begin{equation*}
-        \frac{T_1-\|\tilde{V}(\mu_1-\mu_2)\|^2}
+        \frac{T_1-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}
         {\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}}N(0,1).
     \end{equation*}
 \end{proposition}
@@ -325,7 +324,7 @@ the asymptotic normality of $T_1$ can be obtained by~\cite{Chen2010A}'s Theorem 
 \subsection{New Test}
 We denote by $\hat{V}$ and $\hat{\tilde{V}}$ the first $r$ and last $p-r$ eigenvectors of $S$ respectively.
 Similarly, we denote by  $\hat{V}_i$ and $\hat{\tilde{V}}_i$ the first $r$ and last $p-r$ eigenvectors of $S_i$ respectively, $i=1,2$.
- As the estimators of their population counterparts, these simple statistics actually reach the optimal convergence rate. See~\cite{Cai2012Sparse}.
+ As estimators of their population counterparts, these simple statistics actually reach the optimal convergence rate. See~\cite{Cai2012Sparse}.
 
 Since $T_1$ depends on subspace $\tilde{V}\tilde{V}^T$ which is unknown, we must estimate it.
 The first part of $T_1$ is $\|\tilde{V}^T (\bar{X}_1-\bar{X}_2)\|^2$.
@@ -339,14 +338,14 @@ Define
 
 \begin{equation*}
 \begin{aligned}
-    T_2&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}tr(\hat{\tilde{V}}_1^T S_1\hat{\tilde{V}}_1)-\frac{1}{n_2}tr(\hat{\tilde{V}}_2^T S_2\hat{\tilde{V}}_2).
+    T_2&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}\mathrm{tr}(\hat{\tilde{V}}_1^T S_1\hat{\tilde{V}}_1)-\frac{1}{n_2}\mathrm{tr}(\hat{\tilde{V}}_2^T S_2\hat{\tilde{V}}_2).
     %T_2=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_2(n_2-1)}
 %-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_1n_2}
 \end{aligned}
 \end{equation*}
 We propose our new test statistic as
 \begin{equation}\label{myTest}
-    Q=\frac{T_2}{\hat{\sigma}^2\sqrt{2p\tau^2}},
+    Q=\frac{T_2}{\hat{\sigma}^2\sqrt{2\tau^2 p}},
 \end{equation}
 where $\hat{\sigma}^2$ is a ratio consistent estimator of $\sigma^2$. In next section, it will be proved that the asymptotic distribution under null of $Q$ is $N(0,1)$. We reject the null hypothesis when $Q$ is larger than the upper $\alpha$ quantile of $N(0,1)$.
 
@@ -430,7 +429,7 @@ We first give a result of the convergence rate of $\hat{\sigma}^2$.
 \begin{proposition}\label{varianceEstimation}
     Under Assumptions~\ref{balance}-\ref{theModel2}, we have that%      $\hat{\sigma}^2$ is consistent.
     $$
-    \hat{\sigma}^2=\sigma^2 + O_P(\frac{\max (n,p)}{np}).
+    \hat{\sigma}^2=\sigma^2 + O_P\Big(\frac{\max (n,p)}{np}\Big).
     $$
 \end{proposition}
 Proposition~\ref{varianceEstimation} implies that $\hat{\sigma}^2$ is a consistent estimator of $\sigma^2$.   
@@ -442,43 +441,38 @@ To derive the asymptotic normality of the new test statistic, we require the fol
     {\sqrt{p}}/{n}\to 0.
     $
 \end{assumption}
-The assumption~\ref{pAndN} looks restrictive.
-However, it may not be possible to relaxed since the asymptotic normality of $\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2$ requires 
-\begin{equation}\label{eqREML}
-    \frac{\lambda_1\big(\big(\hat{\tilde{V}}^T \Sigma \hat{\tilde{V}}\big)^2\big)}{\mathrm{tr}\big(\big(\hat{\tilde{V}}^T \Sigma \hat{\tilde{V}}\big)^2\big)
-}\xrightarrow{P} 0,
-\end{equation}
-see Example 5.1 of~\cite{jiang1996reml}. And~\eqref{eqREML} is equivalent to Assumption~\ref{pAndN} by Lemma~\ref{conRateLemma} in appendix.
 
-Our first step is to prove the asymptotic normality under null hypothesis.
-
-\begin{theorem}\label{myPanpan}
-    Under Assumptions~\ref{balance}-\ref{pAndN},
-if the null hypothesis holds, then 
-    \begin{equation*}
-        \frac{T_2}{\sigma^2\sqrt{2p \tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
-    \end{equation*}
-\end{theorem} 
  
 
- Theorem~\ref{myPanpan} can be generalized to the case of local alternatives.
 
-\begin{theorem}\label{spaceEstimation}
+\begin{theorem}\label{myPanpan}
     Under Assumptions~\ref{balance}-\ref{pAndN},
 if the local alternative holds, that is,
     $$\frac{n}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
 then 
 \begin{equation*}
-        \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2p\tau^2}}\xrightarrow{\mathcal{L}}N(0,1).
+        \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}}N(0,1).
 \end{equation*}
 \end{theorem} 
+\begin{remark}
+The Assumption~\ref{pAndN} is a strong condition.
+However, it may not be able to relax it. In fact, the asymptotic normality of $T_2$'s main term $\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2$ requires 
+\begin{equation}\label{eqREML}
+    \frac{\lambda_1\big(\big(\hat{\tilde{V}}^T \Sigma \hat{\tilde{V}}\big)^2\big)}{\mathrm{tr}\big(\big(\hat{\tilde{V}}^T \Sigma \hat{\tilde{V}}\big)^2\big)
+}\xrightarrow{P} 0,
+\end{equation}
+see Lemma~\ref{quadraticFormCLT} in appendix. And~\eqref{eqREML} is equivalent to Assumption~\ref{pAndN} by Lemma~\ref{conRateLemma} in appendix.
+\end{remark}
+
+
+
 
 %\begin{remark}  Compared with~\cite{2016arXiv160202491A}'s assumption (ix) which is equivalent to assuming $\frac{p^{2\beta-1}}{n_1+n_2}\to 0$ in model~\eqref{theModel}, our assumption $\frac{\sqrt{p}}{n_1+n_2}\to 0$ doesn't involved $\beta$.
 %And when $\beta\geq \frac{3}{4}$, our assumption is weaker than~\cite{2016arXiv160202491A}'s. Note that when $\beta=\frac{1}{2}$, $\frac{\sqrt{p}}{n_1+n_2}$ is a necessary condition to make $\hat{V}\hat{V}^T$ a consistent
 %estimator of $VV^T$ (see lemma 2 in appendix). So condition $\frac{\sqrt{p}}{n_1+n_2}$ is roughly the best we can do if the relationship between $p$ and $n$ doesn't involve $\beta$.
 %\end{remark}
 
-By Proposition~\ref{varianceEstimation}  and Theorem~\ref{spaceEstimation}, the power of our new test can be obtained immediately.
+By Proposition~\ref{varianceEstimation}  and Theorem~\ref{myPanpan}, the power function of the new test can be obtained immediately.
 
 
 \begin{corollary}\label{testPowerh}
@@ -500,6 +494,12 @@ By Proposition~\ref{varianceEstimation}  and Theorem~\ref{spaceEstimation}, the 
 \end{equation*}
 which is large when $\beta>1/2$ and $\|\tilde{V}(\mu_1-\mu_2)\|/\|\mu_1-\mu_2\|$ is close to $1$.
 
+When Assumption~\ref{pAndN} doesn't met, the asymptotic normality are not valid.
+However, this does not mean the new statistic can not be used.
+In fact, since the samples are exchangeable under null hypothesis, we can always use permutation method to determine the critical value.
+We will see from simulation results that the new test has good power behavior even in large $p$ small $n$ case.
+
+
 \section{Unequal Variance}
 
 In this section, we concern the situation with unequal covariance matrices.
@@ -517,7 +517,7 @@ The previous statistic can not be directly used
 since the principal subspace is different for $X_{1i}$ and $X_{2j}$. The idea here is to remove all large variance terms from $T_{CQ}$ by projecting data on the space $\tilde{V}\tilde{V}^T$. Thus, we propose a new test statistic as
 \begin{equation*}
 \begin{aligned}
-    T_3&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}\mathrm{tr}(\hat{\tilde{V}}^T S_1\hat{\tilde{V}})-\frac{1}{n_2}\mathrm{tr}(\hat{\tilde{V}}^T S_2\hat{\tilde{V}}).
+    T_3&=\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}\mathrm{tr}(\hat{\tilde{V}}_1^T S_1\hat{\tilde{V}}_1)-\frac{1}{n_2}\mathrm{tr}(\hat{\tilde{V}}_2^T S_2\hat{\tilde{V}}_2).
 %    T_3=\frac{\sum_{i\neq j}^{n_1}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{1j}}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}X_{2i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_2(n_2-1)}
 %    -2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T\hat{\tilde{V}}\hat{\tilde{V}}^T X_{2j}}{n_1n_2}
 \end{aligned}
@@ -533,9 +533,11 @@ The theoretical results are parallel to those in equal variance setting.
 
 \begin{theorem}\label{myXiaopanpan}
     Under Assumptions~\ref{balance}-\ref{orderOfBeta} and~\ref{pAndN},
-     if the null hypothesis holds, then 
+     if 
+    $$\frac{n}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
+     then we have
 \begin{equation*}
-    \frac{T_3}{\sqrt{\sigma_n^2}}\xrightarrow{\mathcal{L}}N(0,1),
+    \frac{T_3-\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2}{\sqrt{\sigma_n^2}}\xrightarrow{\mathcal{L}} N(0,1).
 \end{equation*}
 where
 $\sigma_n^2=\frac{2(p-r_1-r_2)}{n_1(n_1-1)}\sigma_1^4+\frac{2(p-r_1-r_2)}{n_2(n_2-1)}\sigma_2^4+\frac{4(p-r_1-r_2)}{n_1n_2}\sigma_1^2\sigma_2^2$.
@@ -543,18 +545,10 @@ $\sigma_n^2=\frac{2(p-r_1-r_2)}{n_1(n_1-1)}\sigma_1^4+\frac{2(p-r_1-r_2)}{n_2(n_
 \begin{remark}
     Even if $\hat{\tilde{V}}_k\hat{\tilde{V}}_k^T$ is an consistent estimator of $\tilde{V}_k\tilde{V}_k^T$ for $k=1,2$, $\hat{\tilde{V}}\hat{\tilde{V}}^T$ may not be an consistent estimator of $\tilde{V}\tilde{V}^T$.
     Nevertheless, the asymptotic normality still holds.
+    However, the centering term should be $\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2$ and can not be replaced by $\|\tilde{V}^T(\mu_1-\mu_2)\|^2$.
 \end{remark}
-\begin{theorem}\label{myXiaopanpan2}
-    Under Assumptions~\ref{balance}-\ref{orderOfBeta} and~\ref{pAndN},
- if the local alternative holds, that is,
-    $$\frac{n}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1),$$
-then 
-\begin{equation*}
-        \frac{T_3-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sqrt{\sigma_n^2}}\xrightarrow{\mathcal{L}} N(0,1).
-\end{equation*}
-\end{theorem} 
 
- $\sigma_n^2$ can be estimated by ratio consistent estimator of $\sigma^2_k$ for $k=1,2$. Thus, if $n$ and $p$ are large and ${\sqrt{p}}/{n}$ is small, we reject when $T_3/\sqrt{\hat{\sigma}_n^2}>z_{1-\alpha}$. 
+ $\sigma_n^2$ can be estimated by ratio consistent estimators of $\sigma^2_k$ for $k=1,2$. Thus, if $n$ and $p$ are large and ${\sqrt{p}}/{n}$ is small, we reject when $T_3/\sqrt{\hat{\sigma}_n^2}>z_{1-\alpha}$. 
  %If $n$ is small or $p$ is large compared with n, we use permutation method to determine critical value.
 
 
@@ -719,22 +713,137 @@ E\|\hat{V}\hat{V}^T-VV^T\|^2_F =O(\frac{p}{p^{\beta}n}).
 \end{proof}
 
 
+\begin{lemma}\label{quadraticFormCLT}
+    Suppose $X_{n}$ is a $k_n$ dimensional standard normal random vector and $A_n$ is a $k_n\times k_n$ symmetric matrix. Then a necessary and sufficient condition for
+    \begin{equation}\label{quadratic}
+        \frac{X_n^T A_n X_n-\mathrm{E}X_n^T A_n X_n}{{[\mathrm{Var}(X_n^T A_n X_n)]}^{1/2}}\xrightarrow{\mathcal{L}}N(0,1)
+    \end{equation}
+    is that
+    \begin{equation}\label{quadraticEigen}
+        \frac{\lambda_{\max}(A_n^2)}{\mathrm{tr}(A_n^2)}\to 0.
+    \end{equation}
+\end{lemma}
+\begin{remark}
+This lemma is from the Example 5.1 of~\cite{jiang1996reml}. Here we give a proof by characteristic function.
+\end{remark}
+\begin{proof}
+    Let $\lambda_1(A_n)\geq\cdots\geq \lambda_{k_n}(A_n)$ be the eigenvalues of $A_n$, then 
+    \begin{equation}
+        \frac{X_n^T A_n X_n-\mathrm{E}X_n^T A_n X_n}{{[\mathrm{Var}(X_n^T A_n X_n)]}^{1/2}}=\sum_{i=1}^{k_n}\frac{\lambda_i(A_n)}{{\big[2\mathrm{tr}(A_n^2)\big]}^{1/2}}(Z_{ni}^2-1),
+    \end{equation}
+    where $Z_{ni}$'s ($i=1,\ldots,k_n$) are independent standard normal random variables.
+
+    If~\ref{quadraticEigen} holds, then
+    \begin{equation*}
+        \begin{aligned}
+            &\sum_{i=1}^{k_n}\mathrm{E}\Big[\frac{\lambda_i^2(A_n)}{2\mathrm{tr}(A_n^2)}{(Z_{ni}^2-1)}^2\Big\{\frac{\lambda_i^2(A_n)}{2\mathrm{tr}(A_n^2)}{(Z_{ni}^2-1)}^2\geq \epsilon\Big\}\Big]\\
+            \leq&\sum_{i=1}^{k_n}
+            \frac{\lambda_i^2(A_n)}{2\mathrm{tr}(A_n^2)}
+            \mathrm{E}\Big[{(Z_{n1}^2-1)}^2\Big\{\frac{\lambda_{\max}(A_n^2)}{2\mathrm{tr}(A_n^2)}{(Z_{n1}^2-1)}^2\geq \epsilon\Big\}\Big]\\
+            =&
+            \frac{1}{2}\mathrm{E}\Big[{(Z_{n1}^2-1)}^2\Big\{\frac{\lambda_{\max}(A_n^2)}{2\mathrm{tr}(A_n^2)}{(Z_{n1}^2-1)}^2\geq \epsilon\Big\}\Big]\to 0.
+        \end{aligned}
+    \end{equation*}
+    Hence~\ref{quadratic} follows by Lindeberg's central limit theorem.
+
+    Conversely, if~\ref{quadratic} holds, we will prove that there is a subsequence of $\{n\}$ along which~\ref{quadraticEigen} holds. Then~\ref{quadraticEigen} will hold by a standard contradiction argument. 
+
+    Denote $c_{ni}=\lambda_i(A_n)/{\big[2\mathrm{tr}(A_n^2)\big]}^{1/2}$ ($i=1,\ldots,k_n$), we have $c_{ni}\in[-\sqrt{2}/2,\sqrt{2}/2]$.
+    Since~\ref{quadratic} holds, the characteristic function of
+        $
+        \sum_{i=1}^{k_n}c_{ni}(Z_{ni}^2-1)
+    $
+    converges to $\exp(-t^2/2)$ for every $t$. For $t\in (-1,1)$, we have
+    \begin{equation*}
+        \begin{aligned}
+            &\log \mathrm{E}\exp{\big(it \sum_{j=1}^{k_n}c_{nj}(Z_{nj}^2-1)\big)}
+            =
+            -i(\sum_{j=1}^{k_n}c_{nj})t-
+            \frac{1}{2}\sum_{j=1}^{k_n}\log(1-i2c_{nj}t)\\
+            =&
+            -i(\sum_{j=1}^{k_n}c_{nj})t+
+            \frac{1}{2}\sum_{j=1}^{k_n}\sum_{l=1}^{+\infty}\frac{1}{l}{(i2c_{nj}t)}^l
+            =
+            -i(\sum_{j=1}^{k_n}c_{nj})t+
+            \frac{1}{2}\sum_{l=1}^{+\infty}\Big[\sum_{j=1}^{k_n}{(c_{nj})}^l\Big]\frac{1}{l}{(i2t)}^l\\
+            =&-\frac{1}{2}t^2+
+            \frac{1}{2}\sum_{l=3}^{+\infty}\Big[\sum_{j=1}^{k_n}{(c_{nj})}^l\Big]\frac{1}{l}{(i2t)}^l.
+        \end{aligned}
+    \end{equation*}
+    Denote $b_{nl}=\sum_{j=1}^{k_n}{(c_{nj})}^l$, $n=1,2,\cdots$ and $l=3,4,\cdots$. For $l\geq 3$, $\big|\sum_{j=1}^{k_n}{(c_{nj})}^l\big|\leq \big|\sum_{j=1}^{k_n}{(c_{nj})}^2\big|=1/2$.
+    By Helly's selection theorem, there's a subsequence of $\{n\}$ along which $\lim_{n\to \infty}b_{nl}=b_l$ exists for every $l$.
+    Apply dominated convergence theorem to this subsequence we have
+            $\log \mathrm{E}\exp{\big(it \sum_{j=1}^{k_n}c_{nj}(Z_{nj}^2-1)\big)}\to
+            -\frac{1}{2}t^2+
+            \frac{1}{2}\sum_{l=3}^{+\infty}b_l\frac{1}{l}{(i2t)}^l$ for $t\in(-1/2,1/2)$.
+            By the property of power series, we have $b_l=0$ for $l\geq 3$. Then~\ref{quadraticEigen} follows by noting that $b_{n4}\geq \max_j{(c_{nj})}^4$.
+\end{proof}
+
 
 The rest of the Appendix is devoted to the proof of propositions and theorems in the paper.
 \begin{proof}[\textbf{Proof Of Proposition 1}]
 Since $V$ and $\tilde{V}$ are orthogonal, we have
-  $$\tilde{V}^T X_{ki}\sim N(\tilde{V}\mu_k,\sigma^2 I_{p-r}).$$
-Note that
+    $$\tilde{V}^T X_{ki}=\tilde{V}^T\mu_i+ \tilde{V}^T Z_{ki}\sim N(\tilde{V}^T\mu_k,\sigma^2 I_{p-r})\quad \textrm{$k=1,2$ and $i=1,\ldots,n_k$}.$$
+    
+    %By Lemma~\ref{quadraticFormCLT},
+
+    Let $\bar{Z}_1$ and $\bar{Z}_2$ be the sample mean of $\{Z_{1i}\}$ and $\{Z_{2i}\}$ respectively. Then
     \begin{equation*}
         \begin{aligned}
-            &{(\mu_1-\mu_2)}^T\tilde{V}\big(\tilde{V}^T\Sigma\tilde{V}\big)\tilde{V}^T(\mu_1-\mu_2)
-            =\sigma^2{(\mu_1-\mu_2)}^T\tilde{V}\tilde{V}^T(\mu_1-\mu_2)\\
-            \leq &\sigma^2{(\mu_1-\mu_2)}^T(\mu_1-\mu_2)
-            =o(\frac{p}{n})
-            =o(\frac{1}{n}\mathrm{tr}{(\tilde{V}^T\Sigma\tilde{V})}^2).
+            &\|\tilde{V}^T(\bar{X}_1-\bar{X}_2)\|^2
+            =\|\tilde{V}^T(\mu_1-\mu_2)+\tilde{V}^T(\bar{Z}_1-\bar{Z}_2)\|^2\\
+            =&\|\tilde{V}^T(\mu_1-\mu_2)\|^2+\|\tilde{V}^T(\bar{Z}_1-\bar{Z}_2)\|^2+
+            2{(\mu_1-\mu_2)}^T\tilde{V}\tilde{V}^T(\bar{Z}_1-\bar{Z}_2).
         \end{aligned}
     \end{equation*}
-Hence the random sequences $\tilde{V}^T X_{ki}$ fulfill the condition of~\cite{Chen2010A}'s theorem 1, the conclusion follows.
+But
+    \begin{equation*}
+        \begin{aligned}
+            &2{(\mu_1-\mu_2)}^T\tilde{V}\tilde{V}^T(\bar{Z}_1-\bar{Z}_2)\sim N(0,4\sigma^2 \tau \|\tilde{V}^T(\mu_1-\mu_2)\|^2)\\
+            =& O_P(\sqrt{\tau}\|\tilde{V}^T(\mu_1-\mu_2)\| )=o_P(\frac{\sqrt{p}}{n}).
+        \end{aligned}
+    \end{equation*}
+    Then
+    \begin{equation}\label{prop1eq1}
+        \begin{aligned}
+            &\|\tilde{V}^T(\bar{X}_1-\bar{X}_2)\|^2
+            =\|\tilde{V}^T(\mu_1-\mu_2)\|^2+\|\tilde{V}^T(\bar{Z}_1-\bar{Z}_2)\|^2+
+            o_P(\frac{\sqrt{p}}{n}).
+        \end{aligned}
+    \end{equation}
+    Note that
+    $
+    \frac{1}{n_i} \tilde{V}^T S_i \tilde{V}\sim
+    \frac{\sigma^2}{n_i(n_i-1)}Wishart_{p-r}(n_i-1,I_{p-r})
+    $, $i=1,2$.
+    Then 
+    \begin{equation*}
+        \begin{aligned}
+            &\frac{1}{n_i} \mathrm{tr}(\tilde{V}^T S_i \tilde{V})\sim \frac{\sigma^2}{n_i(n_i-1)}\chi^2_{(p-r)(n_i-1)}\\
+            =&
+            \sigma^2\frac{p-r}{n_i}(1+O_P(\frac{1}{\sqrt{(p-r)(n_i-1)}})),
+        \end{aligned}
+    \end{equation*}
+    where the second line holds by central limit theorem. It follows that
+    \begin{equation}\label{prop1eq2}
+        \begin{aligned}
+            &\frac{1}{n_1} \mathrm{tr}(\tilde{V}^T S_1 \tilde{V})+
+            \frac{1}{n_2} \mathrm{tr}(\tilde{V}^T S_2 \tilde{V})=\sigma^2 \tau (p-r)+o_P(\frac{\sqrt{p}}{n}).
+        \end{aligned}
+    \end{equation}
+
+    By~\eqref{prop1eq1} and~\eqref{prop1eq2}, we have
+    \begin{equation}
+        \begin{aligned}
+            \frac{T_1-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2 p}}
+            =
+            \frac{\|\tilde{V}^T(\bar{Z}_1-\bar{Z}_2)\|^2-
+                \sigma^2 \tau (p-r)}{\sigma^2\sqrt{2\tau^2 p}}
+                +o_P(1).
+        \end{aligned}
+    \end{equation}
+The proposition follows by noting that
+$\|\tilde{V}^T(\bar{Z}_1-\bar{Z}_2)\|^2\sim \sigma^2\tau\chi^2_{p-r}$.
 \end{proof}
 
 
@@ -799,10 +908,10 @@ Now we deal with $R_1$. Since
 we have $\bar{X}_1\sim N(0,\frac{1}{n_1}(\Sigma+\frac{1}{\sqrt{p}}\psi I_p))$. Hence we have $\hat{V}^T\bar{X}_1|S\sim N(0,\frac{1}{n}\hat{V}^T(\Sigma+\frac{1}{\sqrt{p}}\psi I_p)\hat{V})$ by the independence of $S$ and $(\mu_1,\bar{X}_1)$. Therefore,
 \begin{equation*}
     \begin{aligned}
-        E[\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_1]&=
+        &E[\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_1]=
     EE[\bar{X}_1^T\hat{V}\hat{V}^T\bar{X}_1|S]\\
-        &=E[\frac{1}{n_1}\mathrm{tr} \hat{V}^T(\Sigma+\frac{1}{\sqrt{p}}\psi I_p)\hat{V}]\\
-        &=O(\frac{1}{n_1}).
+        =&E[\frac{1}{n_1}\mathrm{tr} \hat{V}^T(\Sigma+\frac{1}{\sqrt{p}}\psi I_p)\hat{V}]
+        =O(\frac{1}{n_1}).
     \end{aligned}
 \end{equation*}
     The last equality holds because the rank of $\hat{V}$ is at most $R$ which is fixed. It follows that $R_1\xrightarrow{P} 0$.

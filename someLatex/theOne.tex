@@ -1,149 +1,34 @@
-\begin{proof}[\textbf{Proof Of Theorem 4}]
-    The proof is based on Theorem~\ref{myPanpan} and procedure runs almost the same. The notation is parallel to Theorem~\ref{myPanpan}. Denote by $O_{m\times n}$ the $m\times n$ matrix with all elements equal to $0$. First we consider term
-\begin{equation*}
-    R_1'=\frac{n_1}{\sqrt{p}}(\bar{X}_1^T VV^T\bar{X}_1-\bar{X}_1^T \hat{V}\hat{V}^T\bar{X}_1),
-\end{equation*}
-and
-\begin{equation*}
-    R_2'=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}(X_{1i}^T VV^T X_{1i}-X_{1i}^T \hat{V}\hat{V}^T X_{1i}).
-\end{equation*}
-We note that $VV^T\geq V_1 V_1^T$. Define $V_{2\ominus 1}V_{2\ominus 1}^T=VV^T-V_1 V_1^T$. From the fact that $rank(V)\leq r_1+r_2$ and $V_{2\ominus 1}^T V_1=O_{r_2\times r_1}$, it can easily deduced that $\frac{n_1}{\sqrt{p}}\bar{X}_1^T VV^T\bar{X}_1-\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_1V_1^T\bar{X}_1\xrightarrow{P}0$. Hence to proof $R_1'\xrightarrow{P}0$, we only need to consider
-\begin{equation*}
-\frac{n_1}{\sqrt{p}}(\bar{X}_1^T V_1V_1^T \bar{X}_1-\bar{X}_1^T \hat{V}\hat{V}^T \bar{X}_1),
-\end{equation*}
-which can be further decomposed into three parts
-
-    \begin{equation*}
-        Q_1'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_1(I_{r_1}-V_1^T\hat{V}\hat{V}^T V_1)V_1^T \bar{X}_1,
-    \end{equation*}
-    \begin{equation*}
-        Q_2'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}\hat{V}^T V_1V_1^T \bar{X}_1,
-    \end{equation*}
-    \begin{equation*}
-        Q_3'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}\hat{V}^T \tilde{V}_1\tilde{V}_1^T \bar{X}_1.
-    \end{equation*}
-We note that $Q_1'\leq n_1\bar{X}_1^T V_1(I_{r_1}-V_1^T\hat{V}_1\hat{V}_1^T V_1)V_1^T \bar{X}_1/\sqrt{p}$ which converges to $0$ by Theorem~\ref{myPanpan}.  $Q_2'$ can be written as
-
-    \begin{equation*}
-    \begin{aligned}
-        Q_2'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_1\hat{V}_1^T V_1V_1^T \bar{X}_1
-        +\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T V_1V_1^T \bar{X}_1.
-        \end{aligned}
-    \end{equation*}
-    The first term converges to $0$ by Theorem~\ref{myPanpan}.  For the second term we have
-    \begin{equation*}
-    \begin{aligned}
-&\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T V_1V_1^T \bar{X}_1\\
-&\leq
-\sqrt{\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T \tilde{V}_1\tilde{V}_1^T \bar{X}_1}\sqrt{\frac{n_1}{\sqrt{p}}\bar{X}_1^T {V}_1{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T V_1V_1^T \bar{X}_1}.
-    \end{aligned}
-    \end{equation*}
-The first term converges to $0$ because $\hat{V}_{2\ominus 1}^T \tilde{V}_1\tilde{V}_1^T \bar{X}_1|(S_1,S_2)\sim N(0,\frac{\sigma_1^2}{n_1}\hat{V}_{2\ominus 1}^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{2\ominus 1})$ whose conditional variance is dominated by $\frac{\sigma^2_1}{n_1}$. And for the second term, we have
-\begin{equation*}
-\begin{aligned}
-\frac{n_1}{\sqrt{p}}\bar{X}_1^T {V}_1{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T V_1V_1^T \bar{X}_1
-&\leq
-\frac{n_1}{\sqrt{p}}\bar{X}_1^T {V}_1{V}_1^T\hat{\tilde{V}}_{1}\hat{\tilde{V}}_{1}^T V_1V_1^T \bar{X}_1\\
-&\leq
-\frac{n_1}{\sqrt{p}}\|{V}_1^T\hat{\tilde{V}}_{1}\hat{\tilde{V}}_{1}^T V_1\|\|V_1^T \bar{X}_1\|^2\\
-&\leq O(1)\frac{n_1}{\sqrt{p}}\|V_1 V_1^T -\hat{V}_1\hat{V}_1^T\|^2_F \frac{p^{\beta}}{n_1}\\
-&=O(\frac{\sqrt{p}}{n_1})\xrightarrow{P}0.
-\end{aligned}
-\end{equation*}
-$Q_3'=
-\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T \tilde{V}_1\tilde{V}_1^T \bar{X}_1+
-\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{1}\hat{V}_{1}^T \tilde{V}_1\tilde{V}_1^T \bar{X}_1$
-    converges to $0$ in probability by combining Theorem~\ref{myPanpan} and the argument above. Hence $R_1'\xrightarrow{P}0$.
-
-To prove $R_2'\xrightarrow{P}0$, we note that
- $\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T VV^T X_{1i}-
-\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T V_1V_1^T X_{1i}\xrightarrow{P}0$.
-    Hence it suffices to consider the following three parts
-    \begin{equation*}
-        W_1'=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T V_1(I_{r_1}-V_1^T\hat{V}\hat{V}^T V_1)V_1^T X_{1i},
-    \end{equation*}
-    \begin{equation*}
-        W_2'=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T \tilde{V}_1\tilde{V}_1^T\hat{V}\hat{V}^T V_1V_1^T X_{1i}
-    \end{equation*}
-    and
-    \begin{equation*}
-        W_3'=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T \tilde{V}_1\tilde{V}_1^T\hat{V}\hat{V}^T \tilde{V}_1\tilde{V}_1^T X_{1i}.
-    \end{equation*}
-$W_1'\xrightarrow{P}0$ by $\hat{V}\hat{V}^T\leq \hat{V}_1\hat{V}_1^T$ and Theorem~\ref{myPanpan}.
-\begin{equation*}
-\begin{aligned}
-        W_2'=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T \tilde{V}_1\tilde{V}_1^T\hat{V}_1\hat{V}_1^T V_1V_1^T X_{1i}+\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T \tilde{V}_1\tilde{V}_1^T\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T V_1V_1^T X_{1i}.
-\end{aligned}
-\end{equation*}
-The first term converges to $0$ by Theorem~\ref{myPanpan}. As for the second term, we can use the similar technique as we deal with $W_2$ and the fact $\hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T\leq \hat{\tilde{V}}\hat{\tilde{V}}^T$.
-The proof of $W_3'\xrightarrow{P}0$ runs the same as the case of $W_3$.
-
-Finally it suffices to proof following four terms converges to $0$ in probability
-
-    \begin{equation*}
-        M_1'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_{r_1+r_2}-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_2,
-    \end{equation*}
-    \begin{equation*}
-        M_2'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T VV^T \bar{X}_2,
-    \end{equation*}
-    \begin{equation*}
-        M_3'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T {V}{V}^T\hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_2,
-    \end{equation*}
-    and
-    \begin{equation*}
-        M_4'=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_2.
-    \end{equation*}
-
-We note that 
-\begin{equation*}
-M_1'\leq\sqrt{\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_{r_1+r_2}-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_1}\sqrt{\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_{r_1+r_2}-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_2}.
-\end{equation*}
-Hence to prove $M_1'\xrightarrow{P} 0$, it suffices to prove $\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_{r_1+r_2}-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_1\xrightarrow{P}0$. 
-We note that
-\begin{equation*}
-\begin{aligned}
-&\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_{r_1+r_2}-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_1\\
-&=(\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_1V_1^T \bar{X}_1-\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_1V_1^T \hat{V}\hat{V}^T V_1 V_1^T \bar{X}_1)
-\\
-&+\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_{2\ominus 1}V_{2\ominus 1}^T \bar{X}_1-
-2\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_{2\ominus 1}V_{2\ominus 1}^T \hat{V}\hat{V}^T V_1 V_1^T \bar{X}_1
-\\
-&-\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_{2\ominus 1}V_{2\ominus 1}^T \hat{V}\hat{V}^T V_{2\ominus 1}V_{2\ominus 1}^T\bar{X}_1
-\\
-&=L_1+L_2-2L_3-L_4.
-\end{aligned}
-\end{equation*}
-Check that $L_1=Q_1'$. It's also clear that $L_2\xrightarrow{P}0$. To deal with $L_3$, we note that
-\begin{equation}\label{xiaojiqiao1}
-\begin{aligned}
-    &|\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_{2\ominus 1}V_{2\ominus 1}^T \hat{V}_1\hat{V}_1^T V_1 V_1^T \bar{X}_1|
-\\
-    &\leq \frac{n_1}{\sqrt{p}}\|V_{2\ominus 1}^T\bar{X}_1\|\|V^T_{2\ominus 1}\hat{V}_1\|_F\|\hat{V}_1^T V_1{V}_1^T\bar{X}_1\|\\
-&\leq
-\frac{n_1}{\sqrt{p}}O(\frac{1}{\sqrt{n_1}})\sqrt{tr(\hat{V}_1^T V_{2\ominus 1}V_{2\ominus 1}^T\hat{V}_1)}O(\frac{\sqrt{p^{\beta}}}{\sqrt{n_1}}).
-\end{aligned}
-\end{equation}
-But 
-\begin{equation*}
-tr(\hat{V}_1^T V_{2\ominus 1}V_{2\ominus 1}^T\hat{V}_1)\leq tr(\hat{V}_1^T \tilde{V}_1\tilde{V}_1^T\hat{V}_1)=\|V_1V_1^T- \hat{V}_1\hat{V}_1^T\|_F^2=O_P(\frac{p}{p^{\beta}n_1}).
-\end{equation*}
-And
-\begin{equation}\label{xiaojiqiao2}
-\begin{aligned}
-|\frac{n_1}{\sqrt{p}}\bar{X}_1^T V_{2\ominus 1}V_{2\ominus 1}^T \hat{V}_{2\ominus 1}\hat{V}_{2\ominus 1}^T V_1 V_1^T \bar{X}_1|
-&\leq \frac{n_1}{\sqrt{p}}\|V^T_{2\ominus 1}\hat{V}_{2\ominus 1}V_{2\ominus 1}^T\bar{X}_1\|\|\hat{V}_{2\ominus 1}^T V_1\|_F \|{V}_1^T\bar{X}_1\|\\
-&\leq
-\frac{n_1}{\sqrt{p}}O(\frac{1}{\sqrt{n_1}})\sqrt{tr(\hat{V}_{2\ominus 1}^T V_{1}V_{1}^T\hat{V}_{2\ominus 1})}O(\frac{\sqrt{p^{\beta}}}{\sqrt{n_1}}).
-\end{aligned}
-\end{equation}
-But
-\begin{equation*}
-tr(\hat{V}_{2\ominus 1}^T V_{1}V_{1}^T\hat{V}_{2\ominus 1})\leq tr(\hat{\tilde{V}}_1^T {V}_1{V}_1^T\hat{\tilde{V}}_1)=\|V_1V_1^T- \hat{V}_1\hat{V}_1^T\|_F^2=O_P(\frac{p}{p^{\beta}n_1}).
-\end{equation*}
-Therefore $L_3\xrightarrow{P}0$. And $L_4\xrightarrow{P}0$ for trival reason.
- $M_2'$ can be similarly treated by technique~\eqref{xiaojiqiao1} and~\eqref{xiaojiqiao2}. Since $\sqrt{n_1}\hat{V}^T\tilde{V}\tilde{V}^T\bar{X}_2$ is bounded in probability, we have $M_4'\xrightarrow{P} 0$, which completes the proof.
-
-    \end{proof}
-\begin{proof}[\textbf{Proof Of Theorem 5}]
-    The theorem follows by the same method as Theorem~\ref{spaceEstimation}.
+\begin{proof}[\textbf{Proof Of Theorem~\ref{myXiaopanpan}}]
+    The method of Theorem~\ref{myPanpan}'s proof can still work here with some modifications.
+    The term $P_3$ in THeorem~\ref{myPanpan}'s proof disappears in the current circumstance.
+    The other two terms can be treated as before if we can show that
+    $$
+    \lambda_1(\hat{\tilde{V}}^T \Sigma_k \hat{\tilde{V}}) =O_P(\frac{p}{n})\quad \textrm{k=1,2.}
+    $$
+    In fact,
+    $$
+    \lambda_1(\hat{\tilde{V}}^T \Sigma_k \hat{\tilde{V}})
+    =
+    \lambda_1(\hat{\tilde{V}}^T V_k D^2_k V_k^T \hat{\tilde{V}}) + \sigma^2
+    \leq
+    \kappa p^{\beta}\lambda_1(\hat{\tilde{V}}^T V_k V_k^T \hat{\tilde{V}}) +\sigma^2.
+    $$
+    But
+    $$
+    \lambda_1(\hat{\tilde{V}}^T V_k V_k^T \hat{\tilde{V}})
+    =
+    \lambda_1( V_k^T(I_p- \hat{V}\hat{V}^T) V_k)
+    \leq
+    \lambda_1( V_k^T(I_p- \hat{V}_k\hat{V}_k^T) V_k).
+    $$
+    The last inequality holds since $\hat{V}\hat{V}^T$ is the projection on the sum space of $\hat{V}_1\hat{V}_1^T$ and $\hat{V}_2\hat{V}_2^T$ and hence $\hat{V}\hat{V}^T\geq \hat{V}_1\hat{V}_1^T$.
+    Thus,
+    $$
+    \lambda_1(\hat{\tilde{V}}^T V_k V_k^T \hat{\tilde{V}})
+    \leq \frac{1}{2}\|V_k V_k^T - \hat{V}_k\hat{V}_k^T\|^2_F=O_P(\frac{p}{np^{\beta}}).
+    $$
+    Therefore,
+    $
+    \lambda_1(\hat{\tilde{V}}^T \Sigma_k \hat{\tilde{V}})
+    =O_P(\frac{p}{n})$.
 \end{proof}

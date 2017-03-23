@@ -1,277 +1,162 @@
 
-\begin{proof}[\textbf{Proof Of Theorem 2}]
-    By~\cite{Chen2010A}'s Theorem 1, we have
-    \begin{equation*}
-        \frac{n_1 n_2 T_1}{\sqrt{2p}n\sigma^2}\xrightarrow{\mathcal{L}}N(0,1).
-    \end{equation*}
-    It suffices to prove
-\begin{equation*}
-\frac{n_1n_2(T_1-T_2)}{\sqrt{2p}n\sigma^2}\xrightarrow{P}0.
-\end{equation*}
-Since the test statistic is invariant under transformation $X_{1i}\mapsto X_{1i}+\mu$, $X_{2j}\mapsto X_{2j}+\mu$, without loss of generality, we assume $\mu_1=\mu_2=0$.
-    By noting that $\hat{\tilde{V}}\hat{\tilde{V}}^T -\tilde{V}\tilde{V}^T =VV^T -\hat{V}\hat{V}^T $ we have ${n_1n_2(T_1-T_2)}/{(\sqrt{2p}n\sigma^2)}=P_1+P_2-2P_3$, where
+\begin{proof}[\textbf{Proof Of Theorem~\ref{myPanpan}}]
 
+    Note that $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=\sum_{i=r+1}^p \lambda_i(S_i)$, $i=1,2$. Similar to Proposition~\ref{varianceEstimation}, we have that $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=(p-r)\sigma^2+O_P(\frac{\max(n,p)}{n})$, $i=1,2$.
+    Hence
 \begin{equation*}
-        P_1=\frac{n_2\sum_{i\neq j}X_{1i}^T(VV^T-\hat{V}\hat{V}^T)X_{1j}}{\sqrt{2p}(n_1+n_2)(n_1-1)\sigma^2},
+        \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2 p}}
+        =
+        \frac{\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2
+        -\sigma^2\tau (p-r)
+        }{\sigma^2\sqrt{2\tau^2 p}}
+        +O_P(\frac{\max(n,p)}{n\sqrt{p}}).
 \end{equation*}
-\begin{equation*}
-        P_2=\frac{n_1\sum_{i\neq j}X_{2i}^T(VV^T-\hat{V}\hat{V}^T)X_{2j}}{\sqrt{2p}(n_1+n_2)(n_2-1)\sigma^2},
-\end{equation*}
-\begin{equation*}
-        P_3=\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}X_{1i}^T(VV^T-\hat{V}\hat{V}^T)X_{2j}}{\sqrt{2p}(n_1+n_2)\sigma^2}.
-\end{equation*}
-Write
+    By Assumption~\ref{pAndN}, $\frac{\max(n,p)}{n\sqrt{p}}=\max(\frac{1}{\sqrt{p}},\frac{\sqrt{p}}{n})\to 0$.
+    And
 \begin{equation*}
     \begin{aligned}
-        P_1=O(1)\frac{\sum_{i\neq j}X_{1i}^T(VV^T-\hat{V}\hat{V}^T)X_{1j}}{n_1\sqrt{p}}
-        =O(1)(R_1-R_2),
+        &\frac{\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2
+        -\sigma^2\tau (p-r)
+        }{\sigma^2\sqrt{2\tau^2 p}}
+        \\
+        =&\frac{1}{\sigma^2\sqrt{2\tau^2 p}}\Big(
+        \|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\sigma^2 \tau (p-r)+\\
+        &2{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)
+        +\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2
+        \Big).
     \end{aligned}
 \end{equation*}
-where
-\begin{equation*}
-    R_1=\frac{n_1}{\sqrt{p}}(\bar{X}_1^T VV^T\bar{X}_1-\bar{X}_1^T \hat{V}\hat{V}^T\bar{X}_1)
-\end{equation*}
-and 
-\begin{equation*}
-    R_2=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}(X_{1i}^T VV^T X_{1i}-X_{1i}^T \hat{V}\hat{V}^T X_{1i}).
-\end{equation*}
-To deal with $R_1$, we further decompose $\bar{X}_1^T \hat{V}\hat{V}^T\bar{X}_1$  into $3$ parts
+Let 
+\begin{align*}
+    P_1&=\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\sigma^2 \tau (p-r),\\
+    P_2&=2{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big),\\
+    P_3&=\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2.
+\end{align*}
+To prove the theorem, we only need to show that
+$$
+    \frac{P_1}{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}} N(0,1),
+    \quad
+    \frac{P_2}{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{P} 0
+    \quad
+    \textrm{and}
+    \quad
+    \frac{P_3}{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{P}0.
+    $$
+    We first deal with $P_2$.
+    To proves the convergence in probability, we only need to prove the convergence in $L^2$.
+    Note that $\bar{X}_1$, $\bar{X}_2$ and $S$ are mutually independent. And $\hat{\tilde{V}}\hat{\tilde{V}}^T$ only depends on $S$, thus
     \begin{equation*}
-    \begin{aligned} 
-        \bar{X}_1^T \hat{V}\hat{V}^T\bar{X}_1=&
-        \bar{X}_1^T (VV^T+\tilde{V}\tilde{V}^T) \hat{V}\hat{V}^T (VV^T+\tilde{V}\tilde{V}^T)\bar{X}_1\\
-        =&\bar{X}_1^T VV^T \hat{V}\hat{V}^T VV^T \bar{X}_1
-        +2\bar{X}_1^T \tilde{V}\tilde{V}^T \hat{V}\hat{V}^T VV^T \bar{X}_1\\
-        &+\bar{X}_1^T VV^T \hat{V}\hat{V}^T VV^T \bar{X}_1.\\
-    \end{aligned}
-    \end{equation*} 
-    The above decomposition is a technique we will use many times. $R_1$ can thus be written by $R_1=Q_1-2Q_2-Q_3$, where
-    \begin{equation*}
-        Q_1=\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_r-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_1,
-    \end{equation*}
-    \begin{equation*}
-        Q_2=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T VV^T \bar{X}_1,
-    \end{equation*}
-    \begin{equation*}
-        Q_3=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_1.
-    \end{equation*}
-    It's clear that $V^T \bar{X}_1 \sim N_r(0,\frac{1}{n}(\Lambda+\sigma^2 I_p))$, $\tilde{V}^T \bar{X}_1 \sim N_{p-r}(0,\frac{\sigma^2 }{n}I_p)$ and $S$ are mutually independent.  $\|V^T\bar{X}_1\|^2=O_P(\frac{p^{\beta}}{n_1})$.  $I_r-V^T \hat{V}\hat{V}^T V$ is a positive semi-difinite matrix which only relies  on $S$. Combining these observations, we have
-    
-
-    \begin{equation}\label{myQ1}
         \begin{aligned}
-            |Q_1|&\leq \frac{n_1}{\sqrt{p}}\|I_r-V^T \hat{V}\hat{V}^T V\| \|V^T\bar{X}_1\|^2\\
-            &\leq \frac{n_1}{\sqrt{p}}\mathrm{tr}(I_r-V^T \hat{V}\hat{V}^T V) \|V^T\bar{X}_1\|^2\\
-            &=\frac{n_1}{2\sqrt{p}}\|VV^T -\hat{V}\hat{V}^T\|^2_F \|V^T\bar{X}_1\|^2\\
-            &=O_P(1)\frac{n_1}{\sqrt{p}}\frac{p}{p^{\beta}n_1}\frac{p^\beta}{n_1}\xrightarrow{P}0.
+            &\mathrm{E} P_2^2
+            =
+            \mathrm{E}[\mathrm{E} P_2^2|S]= 4\tau \mathrm{E}[{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\hat{\tilde{V}}^T\Sigma \hat{\tilde{V}}\hat{\tilde{V}}^T(\mu_1-\mu_2)]\\
+            \leq &
+             4\tau\mathrm{E}[\lambda_1(\hat{\tilde{V}}^T\Sigma \hat{\tilde{V}}) {(\mu_1-\mu_2)}^T \hat{\tilde{V}}\hat{\tilde{V}}^T(\mu_1-\mu_2)]
+            \leq 
+             4\tau\|\mu_1-\mu_2\|^2
+             \mathrm{E}[\lambda_1(\hat{\tilde{V}}^T\Sigma \hat{\tilde{V}}) ]\\
+             =&
+             O(\frac{\sqrt{p}}{n^2})
+             \mathrm{E}[\lambda_1(\hat{\tilde{V}}^T (VD^2V^T +\sigma^2 I_p) \hat{\tilde{V}})]
+             \leq 
+             O(\frac{\sqrt{p}}{n^2})
+             \big(\kappa p^{\beta}\mathrm{E}[\lambda_1(\hat{\tilde{V}}^T VV^T  \hat{\tilde{V}})]+\sigma^2\big).\\
         \end{aligned}
-    \end{equation}
-
-We next prove $Q_2\xrightarrow{L^2}0$.
-\begin{align}
-        E(Q_2^2)&=\frac{n_1^2}{p}E(\bar{X}_1^T \tilde{V} \tilde{V}^T \hat{V}\hat{V}^T VV^T \bar{X}_1\bar{X}_1^T VV^T \hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_1)\label{myQ2}\\
-        &=\frac{n_1^2}{p}E(\bar{X}_1^T \tilde{V} \tilde{V}^T \hat{V}\hat{V}^T V\frac{1}{n_1}(\Lambda+\sigma^2I_r)V^T \hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_1)\notag\\
-        &=O(1)\frac{n_1p^{\beta}}{p}\mathrm{E}(\bar{X}_1^T \tilde{V} \tilde{V}^T \hat{V}\hat{V}^T VV^T \hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_1)\notag\\
-        &=O(1)\frac{n_1p^{\beta}}{p}\mathrm{E}\, \mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T VV^T \hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_1\bar{X}_1^T \tilde{V} )\notag\\
-        &=O(1)\frac{n_1p^{\beta}}{p}\frac{\sigma^2}{n_1}\mathrm{E}\, \mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T VV^T \hat{V}\hat{V}^T \tilde{V})\notag\\
-        &\leq O(1)\frac{p^{\beta}}{p}\mathrm{E}\, \mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T I_p \hat{V}\hat{V}^T \tilde{V})\notag\\
-        &= O(1)\frac{p^{\beta}}{p}\mathrm{E}\, \mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T \tilde{V})\notag\\
-        &= O(1)\frac{p^{\beta}}{p}\mathrm{E}\, \mathrm{tr}( \hat{V}\hat{V}^T (I_p-VV^T ))\notag\\
-        &= O(1)\frac{p^{\beta}}{p}\frac{1}{2}\mathrm{E}\|VV^T -\hat{V}\hat{V}^T \|_F^2\notag\\
-        &= O(\frac{1}{n_1})\to 0.\notag
-\end{align}
-Similarly,
-\begin{align}
-        E(Q_3)&=\frac{n_1}{\sqrt{p}}\frac{\sigma^2}{n_1}E\, \mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T \tilde{V})\label{myQ3}\\
-        &\leq \frac{r\sigma^2}{\sqrt{p}}\to 0.   \notag
-\end{align}
-By~\eqref{myQ1},~\eqref{myQ2} and~\eqref{myQ3}, $R_1\xrightarrow{P}0$. Next we deal with $R_2$. Write $R_2=W_1-2W_2-W_3$, where
-
-    \begin{equation*}
-        W_1=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T V(I_r-V^T\hat{V}\hat{V}^T V)V^T X_{1i},
     \end{equation*}
+    By the following useful relationship
     \begin{equation*}
-        W_2=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T VV^T X_{1i},
-    \end{equation*}
-    \begin{equation*}
-        W_3=\frac{1}{n_1\sqrt{p}}\sum_{i=1}^{n_1}X_{1i}^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T \tilde{V}\tilde{V}^T X_{1i}.
-    \end{equation*}
-It is seen that independence property does not holds anymore compared with the case we deal with $R_1$. Nevertheless, the form is of sum, which makes it possible to apply law of large numbers.
-
-We note that
-    \begin{equation}\label{803W1}
         \begin{aligned}
-            W_1&=\frac{1}{n_1\sqrt{p}}\mathrm{tr} ((I_r-V^T\hat{V}\hat{V}^T V)\sum_{i=1}^{n_1}V^T X_{1i}X_{1i}^T V).
+\lambda_1(\hat{\tilde{V}}^T VV^T  \hat{\tilde{V}})
+            \leq
+            \mathrm{tr}(\hat{\tilde{V}}^T VV^T  \hat{\tilde{V}})
+            =
+            \frac{1}{2}\|VV^T-\hat{V}\hat{V}^T\|^2_F
         \end{aligned}
-    \end{equation}
-By law of large numbers, 
-\begin{equation*}
-\frac{1}{n_1}{(\Lambda+\sigma^2 I_{r})}^{-\frac{1}{2}}\sum_{i=1}^{n_1}V^T X_{1i}X_{1i}^T V {(\Lambda+\sigma^2 I_{r})}^{-\frac{1}{2}}\xrightarrow{P}I_{r}.
-\end{equation*}
-Hence $\lambda_1(\sum_{i=1}^{n_1}V^T X_{1i}X_{1i}^T V )=O_P(n_1 p^{\beta})$. Substituting it into~\eqref{803W1} yields
+    \end{equation*}
+    and Lemma~\ref{conRateLemma}, we have that
+    \begin{equation*}
+        \begin{aligned}
+            &\mathrm{E} P_2^2
+             =
+             O(\frac{\sqrt{p}}{n^2})
+             \big(O(\frac{p}{n})+\sigma^2\big)
+             =o(\frac{p}{n^2}).
+        \end{aligned}
+    \end{equation*}
+    As for $P_3$. To prove the convergence in probability, here we prove the convergence in $L^1$: 
+    \begin{equation*}
+        \begin{aligned}
+            &\mathrm{E}|P_3|=
+            \mathrm{E}\big|{(\mu_1-\mu_2)}^T(\hat{\tilde{V}}\hat{\tilde{V}}^T-\tilde{V}\tilde{V}^T)(\mu_1-\mu_2)\big|
+            \leq 
+            \|\mu_1-\mu_2\|^2\mathrm{E}\|\hat{\tilde{V}}\hat{\tilde{V}}^T-\tilde{V}\tilde{V}^T\|\\
+            =& 
+            \|\mu_1-\mu_2\|^2\mathrm{E}\|\hat{V}\hat{V}^T-VV^T\|
+            \leq 
+            \|\mu_1-\mu_2\|^2\sqrt{\mathrm{E}\|\hat{V}\hat{V}^T-VV^T\|^2}\\
+            \leq &
+            \|\mu_1-\mu_2\|^2\sqrt{\mathrm{E}\|\hat{V}\hat{V}^T-VV^T\|^2_F}
+            =O(\frac{\sqrt{p}}{n})\sqrt{O(\frac{p}{p^{\beta}n})}=o(\frac{\sqrt{p}}{n}).
+        \end{aligned}
+    \end{equation*}
 
-\begin{equation}\label{myW1}
-    \begin{aligned}
-        W_1&\leq O_P(1)\frac{p^{\beta}}{\sqrt{p}}\mathrm{tr}(I_r-V^T \hat{V}\hat{V}^T V)\\
-        &=O_P(1)\frac{p^{\beta}}{\sqrt{p}}\|VV^T -\hat{V}\hat{V}^T\|^2_F\\
-        &=O_P(1)\frac{p^\beta}{\sqrt{p}}\frac{p}{p^\beta n_1}\\
-        &=O_P(\frac{\sqrt{p}}{n_1})\xrightarrow{P}0.
-    \end{aligned}
-\end{equation}
- Next we deal with $W_2$. By cauchy inequality, we have
-\begin{equation*}
-    \begin{aligned}
-        W_2 &=\frac{1}{n_2 \sqrt{p}}\mathrm{tr} \tilde{V}^T \hat{V}\hat{V}^T V (\sum_{i=1}^{n_1}V^T X_{1i}X_{1i}^T \tilde{V})\\
-        &\leq \frac{1}{n_2 \sqrt{p}}\sqrt{\mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T VV^T \hat{V}\hat{V}^T \tilde{V})}\sqrt{\mathrm{tr}(VZZ^T \tilde{V}\tilde{V}^T ZZ^T V^T)},
-    \end{aligned}
-\end{equation*}
-where $Z=(X_{11},\ldots,X_{1n_1})$. Note that
-\begin{equation*}
-    \begin{aligned}
-        \mathrm{tr}(\tilde{V}^T \hat{V}\hat{V}^T VV^T \hat{V}\hat{V}^T \tilde{V})&\leq \mathrm{tr} (\tilde{V}^T\hat{V}\hat{V}^T\tilde{V})=\frac{1}{2}\|VV^T-\hat{V}\hat{V}^T\|^2_F
-    \end{aligned}
-\end{equation*}
-and
-\begin{equation*}
-    \begin{aligned}
-        \mathrm{tr}(VZZ^T \tilde{V}\tilde{V}^T ZZ^T V^T)&\leq
-        \lambda_1 (Z^T\tilde{V}\tilde{V}^T Z)\mathrm{tr}(VZZ^T V^T).
-    \end{aligned}
-\end{equation*}
-$Z^T\tilde{V}\tilde{V}^T Z$ is distributed as $\textrm{Wishart}_{n}(p-r,\sigma^2 I_{n_1})$, hence $\lambda_1 (Z^T\tilde{V}\tilde{V}^T Z)=O_P(\max(n_1,p))$ by Lemma~\ref{maxEigen}. Again by law of large numbers $\mathrm{tr}(VZZ^T V^T)=O(p^{\beta} n_1)$. Combining the argument above yields
-\begin{equation}\label{myW2}
-    \begin{aligned}
-        W_2&=O_P(1)\frac{1}{n_1\sqrt{p}}\sqrt{\frac{p}{p^{\beta}n_1}}\sqrt{\max(n_1,p)p^{\beta}n_1}\\
-        &=O_P(\frac{\sqrt{\max(n_1,p)}}{n_1})\xrightarrow{P}0.
-    \end{aligned}
+    Now we prove the asymptotic normality of $P_1$. To make clear the sense of convergence, we need a metric for weak convergence. For two distribution function $F$ and $G$, the Levy metric $\rho$ of $F$ and $G$ is defined as
+    $$
+   \rho(F,G) =\inf\{\epsilon:F(x-\epsilon)-\epsilon\leq G(x)\leq F(x+\epsilon)+\epsilon\quad \textrm{for all $x$}\}.
+    $$
+    It's well known that $\rho(F_n,F)\to 0$ if and only if $F_n\xrightarrow{\mathcal{L}}F$.
+
+    The conditional distribution of
+    $\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)$ given $S$ is $N(0,\tau \hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})$.
+As we have shown,
+    $$
+    \lambda_1(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\leq \frac{1}{2}\kappa p^\beta \|VV^T -\hat{V}\hat{V}^T\|^2_F+\sigma^2=O_P(\frac{p}{n}+1).
+    $$
+    On the other hand,
+    $
+    \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})=\sigma^2
+    $ for $i=r+1,\ldots,p-r$. Then
+    $$
+    (p-2r)\sigma^4
+    \leq
+    \mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2
+    \leq
+    {\big(\frac{p}{n}+1\big)}^2O_P(1)
+    +
+    (p-2r)\sigma^4,
+    $$ 
+or 
+\begin{equation}\label{traceA1}
+\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2=p\sigma^4(1+o_P(1)).
 \end{equation}
 
-To deal with $W_3$, note that $\tilde{V}^T\sum_{i=1}^{n_1}X_{1i}X_{1i}^T\tilde{V}$ is of distribution $\textrm{Wishart}_{p-r}(n,\sigma^2 I_{p-r})$. By Lemma~\ref{maxEigen}, $\lambda_1(\tilde{V}^T\sum_{i=1}^{n_1}X_{1i}X_{1i}^T\tilde{V})=O_P(\max(p,n_1))$. 
-Hence
-
-\begin{equation}\label{myW3}
-    \begin{aligned}
-        W_3&=\frac{1}{n_1\sqrt{p}}\mathrm{tr}(\hat{V}^T\tilde{V}\tilde{V}^T\sum_{i=1}^{n_1}X_{1i}X_{1i}^T\tilde{V}\tilde{V}^T \hat{V})\\
-        &\leq \frac{O_{P}(\max(n_1,p))}{n_1\sqrt{p}}\mathrm{tr} \hat{V}^T\tilde{V}\tilde{V}^T\hat{V}\xrightarrow{P}0,
-    \end{aligned}
+    It follows that
+\begin{equation}\label{inProbC}
+        \frac{\lambda_1^2(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}
+        =O_P\Big(\frac{{(p/n+1)}^2}{p}\Big)=o_P(1).
 \end{equation}
-due to $\mathrm{tr} \hat{V}^T\tilde{V}\tilde{V}^T\hat{V}=O_P(1)$. Combining~\eqref{myW1},~\eqref{myW2} and~\eqref{myW3} gives $R_2\xrightarrow{P}0$. So far, it has been proved that $P_1\xrightarrow{P}0$. By symmetry, $P_2\xrightarrow{P}0$. 
+Then for every subsequence of $\{n\}$, there's a further subsequence along which~\eqref{inProbC} holds almost surely.
+By Lemma~\ref{quadraticFormCLT}, for every subsequence of $\{n\}$, there's a further subsequence along which we have
+$$
+\rho\Big(\mathcal{L}\Big(\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\Big|S\Big),N(0,1)\Big)\xrightarrow{a.s.} 0.
+$$
+It means that
+$$
+\rho\Big(\mathcal{L}\Big(\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\Big|S\Big),N(0,1)\Big)\xrightarrow{P} 0.
+$$
+Thus the weak convergence also holds unconditionally:
+$$
+\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\xrightarrow{\mathcal{L}}N(0,1).
+$$
 
-We proceed to deal with $P_3$. Note that $P_3=O(1)(M_1-M_2-M_3-M_4)$, where
-    \begin{equation*}
-        M_1=\frac{n_1}{\sqrt{p}}\bar{X}_1^T V(I_r-V^T\hat{V}\hat{V}^T V)V^T \bar{X}_2,
-    \end{equation*}
-    \begin{equation*}
-        M_2=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T VV^T \bar{X}_2,
-    \end{equation*}
-    \begin{equation*}
-        M_3=\frac{n_1}{\sqrt{p}}\bar{X}_1^T {V}{V}^T\hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_2,
-    \end{equation*}
-    \begin{equation*}
-        M_4=\frac{n_1}{\sqrt{p}}\bar{X}_1^T \tilde{V}\tilde{V}^T\hat{V}\hat{V}^T \tilde{V}\tilde{V}^T \bar{X}_2.
-    \end{equation*}
-Since $\|V^T\bar{X}_i\|^2=O_P(\frac{p^{\beta}}{n_1})$ for $i=1,2$, we have
-    \begin{equation}\label{myM1}
-        \begin{aligned}
-            |M_1|&\leq \frac{n_1}{\sqrt{p}}\|I_r-V^T \hat{V}\hat{V}^T V\| \|V^T\bar{X}_1\|\|V^T\bar{X}_2\|\\
-            &\leq \frac{n_1}{2\sqrt{p}}\|VV^T -\hat{V}\hat{V}^T\|^2_F \|V^T\bar{X}_1\|\|V^T\bar{X}_2\|\\
-            &=O_P(1)\frac{n_1}{\sqrt{p}}\frac{p}{p^{\beta}n_1}\frac{p^\beta}{n_1}\xrightarrow{P}0.
-        \end{aligned}
-    \end{equation}
-The joint distribution of ($V^T\bar{X}_2$, $\tilde{V}^T\bar{X}_1$,$S$) is identity to that of ($V^T\bar{X}_1$, $\tilde{V}^T\bar{X}_1$,$S$). Therefore, $M_2$ has the same distribution with $Q_2$ and converges to $0$ in probability. The same reasoning yields $M_3\xrightarrow{P}0$.
-
-    Applying cauchy inequality gives
-    \begin{equation*}
-        \begin{aligned}
-            M_4\leq \sqrt{\frac{n_1}{\sqrt{p}}\bar{X}_1^T\tilde{V}\tilde{V}^T \hat{V}\hat{V}^T \tilde{V}\tilde{V}^T\bar{X}_1}
-            \sqrt{\frac{n_1}{\sqrt{p}}\bar{X}_2^T\tilde{V}\tilde{V}^T \hat{V}\hat{V}^T \tilde{V}\tilde{V}^T\bar{X}_2}.
-        \end{aligned}
-    \end{equation*}
-    Then $M_4\xrightarrow{P} 0$ by the same reason as $Q_3\xrightarrow{P} 0$, and consequently $P_3\xrightarrow{P}0$. This finishes the proof.
-
+Similar to~\eqref{traceA1} we have
+\begin{equation}\label{traceA2}
+    \mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})=(p-r)\sigma^2\big(1+O_P\big(\frac{1}{n}+\frac{1}{p}\big)\big).
+\end{equation}
+By~\eqref{traceA1},~\eqref{traceA2} and Slulsk's theorem,
+$$
+\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\sigma^2\tau(p-r) }{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}}N(0,1).
+$$
+Now the desired asymptotic properties of $P_1$, $P_2$ and $P_3$ are established, the theorem follows.
 \end{proof}
 
-\begin{proof}[\textbf{Proof Of Theorem 3}]
-    By~\cite{Chen2010A}'s Theorem 1, we have
-    \begin{equation*}
-        \frac{n_1 n_2 (T_1-\|\tilde{V}(\mu_1-\mu_2)\|^2)}{\sqrt{2p}(n_1+n_2)\sigma^2}\xrightarrow{\mathcal{L}}N(0,1).
-    \end{equation*}
-    It suffices to prove
-\begin{equation*}
-\frac{n_1n_2(T_1-T_2)}{\sqrt{2p}(n_1+n_2)\sigma^2}\xrightarrow{P}0.
-\end{equation*}
-Write $T_1=T_1^{(1)}+T_1^{(2)}$, where
-\begin{equation*}
-\begin{aligned}
-    T_1^{(1)}=&\frac{\sum_{i\neq j}^{n_1}{(X_{1i}-\mu_1)}^T\tilde{V}\tilde{V}^T(X_{1j}-\mu_1)}{n_1(n_1-1)}+\frac{\sum_{i\neq j}^{n_2}{(X_{2i}-\mu_2)}^T\tilde{V}\tilde{V}^T(X_{2j}-\mu_2)}{n_2(n_2-1)}
-\\
-    &-2\frac{\sum_{i=1}^{n_1}\sum_{j=1}^{n_2}{(X_{1i}-\mu_1)}^T\tilde{V}\tilde{V}^T(X_{2j}-\mu_2)}{n_1n_2}
-\end{aligned}
-\end{equation*}
-and
-\begin{equation*}
-\begin{aligned}
-    T_1^{(2)}=&2{(\bar{X_{1}}-\mu_1)}^T\tilde{V}\tilde{V}^T(\mu_1-\mu_2)+{(\bar{X_{2}}-\mu_2)}^T\tilde{V}\tilde{V}^T(\mu_2-\mu_1)
-\\
-&+\|\tilde{V}(\mu_1-\mu_2)\|^2.
-\end{aligned}
-\end{equation*}
-    Similarly, $T_2=T_2^{(1)}+T_2^{(2)}$. By Theorem~\ref{myPanpan}, it holds that
-    \begin{equation}\label{yintianHaha}
-        \begin{aligned}
-            \frac{n_1n_2(T_2^{(1)}-T_1^{(1)})}{\sqrt{2p}(n_1+n_2)\sigma^2}\xrightarrow{P}0.
-        \end{aligned}
-    \end{equation}
-We are left with the task of dealing with $T_{1}^{(2)}$ and $T_{2}^{(2)}$. Note that
-\begin{align}
-    \frac{n_1n_2(T_2^{(2)}-T_1^{(2)})}{\sqrt{2p}(n_1+n_2)\sigma^2}=&O(1)\frac{n_1}{\sqrt{p}}{(\bar{X_{1}}-\mu_1)}^T(VV^T -\hat{V}\hat{V}^T)(\mu_1-\mu_2)+
-\label{yumenHaha1}\\
-    &O(1)\frac{n_2}{\sqrt{p}}{(\bar{X_{2}}-\mu_2)}^T(VV^T-\hat{V}\hat{V}^T)(\mu_2-\mu_1)+
-\label{yumenHaha2}\\
-    &O(1)\frac{n_1+n_2}{\sqrt{p}}{(\mu_1-\mu_2)}^T(VV^T-\hat{V}\hat{V}^T)(\mu_1-\mu_2).
-\label{yumenHaha3}
-\end{align}
-
-    We proceed to deal with the~\eqref{yumenHaha1}.
-\begin{align}
-    &E|\frac{n_1}{\sqrt{p}}{(\bar{X_{1}}-\mu_1)}^T(VV^T-\hat{V}\hat{V}^T)(\mu_1-\mu_2)|^2
-\label{theStartHaha}
-\\
-    &=\frac{n_1^2}{p}E{(\mu_1-\mu_2)}^T(VV^T-\hat{V}\hat{V}^T)\frac{\Sigma}{n_1}(VV^T-\hat{V}\hat{V}^T)(\mu_1-\mu_2)
-    \notag\\
-    &=O(n_1p^{\beta-1})E{(\mu_1-\mu_2)}^T{(VV^T-\hat{V}\hat{V}^T)}^2(\mu_1-\mu_2)
-    \notag\\
-&\leq
-O(n_1p^{\beta-1})\|\mu_1-\mu_2\|^2E\|VV^T-\hat{V}\hat{V}^T\|^2_F
-    \notag\\
-    &=O(n_1p^{\beta-1})\frac{p}{p^{\beta}n_1}\|\mu_1-\mu_2\|^2
-    \notag\\
-    &=O(\|\mu_1-\mu_2\|^2).
-    \notag
-\end{align}
-Combining with conditions $\frac{(n_1+n_2)}{\sqrt{p}}\|\mu_1-\mu_2\|^2=O(1)$ and $\frac{\sqrt{p}}{n_1+n_2}\to 0$, it follows that~\eqref{theStartHaha} converges to $0$ in probability.
-    By symmetry,~\eqref{yumenHaha2} also converges to $0$ in probability. It remains to deal with~\eqref{yumenHaha3}. But
-\begin{align}
-    &E|\frac{n_1+n_2}{\sqrt{p}}{(\mu_1-\mu_2)}^T(VV^T-\hat{V}\hat{V}^T )(\mu_1-\mu_2)|
-\label{mmmHaha}
-\\
-&\leq
-\frac{n_1+n_2}{\sqrt{p}}\|\mu_1-\mu_2\|^2 E\|VV^T-\hat{V}\hat{V}^T\|
-\notag
-\\
-    &\leq    \frac{n_1+n_2}{\sqrt{p}}\|\mu_1-\mu_2\|^2 \sqrt{E\|VV^T-\hat{V}\hat{V}^T\|^2}
-\notag
-\\
-    &\leq O(1)\sqrt{E\|VV^T-\hat{V}\hat{V}^T\|^2_F}.
-\notag
-\end{align}
-Since $E\|VV^T-\hat{V}\hat{V}^T\|^2_F=O(\frac{p}{p^{\beta}n_1})$ and $\beta\geq 1/2$,~\eqref{mmmHaha} converges to $0$.
-
-It follows that
-\begin{equation*}
-\begin{aligned}
-\frac{n_1n_2(T_2^{(2)}-T_1^{(2)})}{\sqrt{2p}(n_1+n_2)\sigma^2}\xrightarrow{P}0.
-\end{aligned}
-\end{equation*}
-Together with~\eqref{yintianHaha}, the theorem follows.
-\end{proof}
