@@ -1,3 +1,5 @@
+1. state that LRT can not be used since eigenvalue and eigenvectors can not be estimated consistently, refer to some literatures. Make clear spiked model and factor model are similar.
+
 2. add the part of large eigenvalues by Fan's method
 
 3. make clear the advantage corresponding to Aoshima's paper: less restriction of p
