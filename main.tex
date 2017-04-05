@@ -440,7 +440,60 @@ The next theorem shows that  the power of our new test is asymptotically the sam
     $$
     \frac{\|\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})+\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2-\|\mu_1-\mu_2\|^2-\tau p \sigma^2}{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}}N(0,1).
     $$
-    Independent of data, generate a $p$ dimensional random orthogonal matrix with Haar invariant distribution.
+    Independent of data, generate a $p\times p$ random orthogonal matrix with Haar invariant distribution. It can be seen that
+    $
+    \big(O(\bar{Z}_1-\bar{Z}_2), OSO^T\big)\sim
+    \big((\bar{Z}_1-\bar{Z}_2), S\big)
+    $ and are independent of $O$.
+    Note that the eigenvectors of $OSO^T$ are $(O\hat{V},O\hat{\tilde{V}})$, hence
+    $
+    \big(O(\bar{Z}_1-\bar{Z}_2), O\hat{\tilde{V}}\big)\sim
+    \big((\bar{Z}_1-\bar{Z}_2), \hat{\tilde{V}}\big)
+    $.
+    It follows that
+    \begin{equation*}
+    \begin{aligned}
+\|\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})+\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2
+        &=
+    \|(O\hat{\tilde{V}})^T O(\bar{Z_1}-\bar{Z_2})+(O\hat{\tilde{V}})^T O(\mu_1-\mu_2)\|^2\\
+        &\sim
+\|\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})+\hat{\tilde{V}}^T O(\mu_1-\mu_2)\|^2.
+\end{aligned}
+\end{equation*}
+    Note that $O(\mu_1-\mu_2)/\|\mu_1-\mu_2\|$ is uniformly distributed on the unit ball in $\mathbb{R}^p$. Independent of data and $O$, generate a random variable $R>0$ with $R^2\sim\chi^2_p$. Then 
+    $$
+    \xi \overset{def}{=} R \frac{O(\mu_1-\mu_2)}{\|\mu_1-\mu_2\|}\sim N_p(0_p,I_p).
+    $$
+And we have
+    \begin{equation}\label{hTheorem:4}
+\begin{aligned}
+    &\|\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})+\hat{\tilde{V}}^T O(\mu_1-\mu_2)\|^2\\
+    =&
+    \|\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})\|^2+\frac{\|\hat{\tilde{V}}^T\xi\|^2}{R^2}\|\mu_1-\mu_2\|^2+\frac{\|\mu_1-\mu_2\|}{R}\xi^T\hat{\tilde{V}}\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2}).
+\end{aligned}
+\end{equation}
+    Since $\hat{\tilde{V}}^T(\bar{Z}_1-\bar{Z}_2)|\hat{\tilde{V}}\sim N_{p-\hat{r}}(0_{p-\hat{r}},\tau\sigma^2 I_{p-\hat{r}})$, we have by CLT that
+    \begin{equation}\label{hTheorem:1}
+    \frac{\|\hat{\tilde{V}}^T(\bar{Z}_1-\bar{Z}_2)\|^2-\tau(p-\hat{r})\sigma^2}{\sigma^2\sqrt{2\tau^2(p-\hat{r})}}\xrightarrow{\mathcal{L}}N(0,1).
+    \end{equation}
+    Note that $\hat{\tilde{V}}^T\xi|\hat{\tilde{V}}\sim N_{p-\hat{r}}(0_{p-\hat{r}},I_{p-\hat{r}})$, then by CLT, we have 
+    $$\|\hat{\tilde{V}}^T\xi\|^2=(p-\hat{r})(1+O_P(\frac{1}{\sqrt{p-\hat{r}}}))=p(1+O_P(\frac{1}{\sqrt{p}})).$$
+    Similarly, $R^2=p(1+O_P(\frac{1}{\sqrt{p}}))$.
+    Then
+    \begin{equation}\label{hTheorem:2}
+    \frac{\|\hat{\tilde{V}}^T\xi\|^2}{R^2}\|\mu_1-\mu_2\|^2=\|\mu_1-\mu_2\|^2+O_P(\frac{1}{\sqrt{p}})\|\mu_1-\mu_2\|^2.
+    \end{equation}
+    We note that $\xi^T\hat{\tilde{V}}\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})\big|\big(\hat{\tilde{V}},(\bar{Z}_1-\bar{Z}_2)\big)\sim N(0,\|\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})\|^2)$, hence
+    $$
+    \xi^T\hat{\tilde{V}}\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})
+    =O_P(1)\|\hat{\tilde{V}}^T(\bar{Z}_1-\bar{Z}_2)\|=O_P(\sqrt{\tau p}).
+    $$
+    It follows that
+    \begin{equation}\label{hTheorem:3}
+    \frac{\|\mu_1-\mu_2\|}{R}\xi^T\hat{\tilde{V}}\hat{\tilde{V}}^T(\bar{Z_1}-\bar{Z_2})=O_P(\sqrt{\tau})\|\mu_1-\mu_2\|.
+    \end{equation}
+    By~\eqref{hTheorem:4},~\eqref{hTheorem:1},~\eqref{hTheorem:2} and \eqref{hTheorem:3}, we have that
+
 \end{proof}
 
 Now we establish the asymptotic normality of the new test statistic under spiked covariance model.

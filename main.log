@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  5 APR 2017 22:14
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.5.17)  6 APR 2017 00:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1301,7 +1301,7 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 [1
 
 
-] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] (./code/level.tex)
+] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] (./code/level.tex)
 File: code/fig1.jpeg Graphic file (type QTm)
 
 <use  "code/fig1.jpeg" >
@@ -1317,18 +1317,18 @@ File: code/fig5.jpeg Graphic file (type QTm)
 File: code/fig6.jpeg Graphic file (type QTm)
  <use  "code/fig6.jpeg" >
 
-LaTeX Warning: Float too large for page by 18.45155pt on input line 622.
+LaTeX Warning: Float too large for page by 18.45155pt on input line 675.
 
-[13] [14] [15] [16]
-Overfull \hbox (9.07637pt too wide) in paragraph at lines 715--716
+[14] [15] [16] [17]
+Overfull \hbox (9.07637pt too wide) in paragraph at lines 768--769
 []  \EU1/lmr/bx/n/10 Corollary 3. []\EU1/lmr/m/it/10 Suppose that $\OML/cmm/m/i
 t/10 W[]$ \EU1/lmr/m/it/10 is a $\OML/cmm/m/it/10 p \OMS/cmsy/m/n/10 ^^B \OML/c
 mm/m/it/10 p$ \EU1/lmr/m/it/10 matrix distributed as $[][]\OT1/cmr/m/n/10 (\OML
 /cmm/m/it/10 n; I[]\OT1/cmr/m/n/10 )$\EU1/lmr/m/it/10 .
  []
 
-[17]
-Overfull \hbox (15.78859pt too wide) in paragraph at lines 770--776
+[18] [19]
+Overfull \hbox (15.78859pt too wide) in paragraph at lines 823--829
 []\EU1/lmr/m/n/10 Denote $\OML/cmm/m/it/10 c[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/
 10 ^^U[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 )/[][]$ \EU1/lmr/m
 /n/10 ($\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; [] ; k[]$\EU1/
@@ -1337,13 +1337,13 @@ lmr/m/n/10 ), we have $\OML/cmm/m/it/10 c[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10
 2]$\EU1/lmr/m/n/10 .
  []
 
-[18]
-Overfull \hbox (3.19302pt too wide) detected at line 791
+
+Overfull \hbox (3.19302pt too wide) detected at line 844
 [] []
  []
 
 
-Overfull \hbox (11.00288pt too wide) in paragraph at lines 791--799
+Overfull \hbox (11.00288pt too wide) in paragraph at lines 844--852
 \EU1/lmr/m/n/10 Denote $\OML/cmm/m/it/10 b[] \OT1/cmr/m/n/10 = [][] [][]$\EU1/l
 mr/m/n/10 , $\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/
 m/n/10 2\OML/cmm/m/it/10 ; [] $ \EU1/lmr/m/n/10 and $\OML/cmm/m/it/10 l \OT1/cm
@@ -1352,8 +1352,8 @@ r/m/n/10 = 3\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; [] $\EU1/lmr
 mr/m/n/10 , $[] [][] [][][] \OMS/cmsy/m/n/10 ^^T
  []
 
-[19] (./someLatex/varianceEstimation.tex [20]) [21]
-Overfull \hbox (23.29994pt too wide) in paragraph at lines 931--938
+[20] (./someLatex/varianceEstimation.tex [21]) [22]
+Overfull \hbox (23.29994pt too wide) in paragraph at lines 984--991
 \EU1/lmr/m/n/10 Then $\OMS/cmsy/m/n/10 j[]\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 V
 []\OT1/cmr/m/n/10 ^^F[]\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 ^
 ^@ []\OT1/cmr/m/n/10 ^^F[]\OMS/cmsy/m/n/10 j ^^T [][] \OML/cmm/m/it/10 ^^U[]\OT
@@ -1361,8 +1361,8 @@ Overfull \hbox (23.29994pt too wide) in paragraph at lines 931--938
  Hence [] holds. By [], [], []
  []
 
-[22]
-Overfull \hbox (38.58032pt too wide) detected at line 952
+[23]
+Overfull \hbox (38.58032pt too wide) detected at line 1005
 [] []
  []
 
@@ -1377,7 +1377,7 @@ Overfull \hbox (20.05505pt too wide) detected at line 28
 [] []
  []
 
-[23]
+[24]
 Overfull \hbox (2.61203pt too wide) detected at line 101
 [] []
  []
@@ -1392,29 +1392,29 @@ V[]\OT1/cmr/m/n/10 )[]$ \EU1/lmr/m/n/10 given $\OML/cmm/m/it/10 S$ \EU1/lmr/m/n
 /m/n/10 ^^F[]\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 )$\EU1/lmr/m/n/10 .
  []
 
-[24]
+[25]
 Overfull \hbox (3.5844pt too wide) in paragraph at lines 137--140
 \EU1/lmr/m/n/10 Then for every subsequence of $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/
 10 n\OMS/cmsy/m/n/10 g$\EU1/lmr/m/n/10 , there’s a further subsequence along wh
 ich []
  []
 
-[25]) (./someLatex/theOne.tex) (./main.bbl [26] [27])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 986.
- [28]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 986.
+[26]) (./someLatex/theOne.tex) (./main.bbl [27] [28])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1039.
+ [29]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1039.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 986.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 986.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 986.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1039.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1039.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1039.
  ) 
 Here is how much of TeX's memory you used:
- 25227 strings out of 493638
- 458111 string characters out of 6146796
- 486179 words of memory out of 5000000
- 28382 multiletter control sequences out of 15000+600000
+ 25231 strings out of 493638
+ 458159 string characters out of 6146796
+ 486368 words of memory out of 5000000
+ 28386 multiletter control sequences out of 15000+600000
  14263 words of font info for 73 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  47i,12n,74p,10426b,791s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.pdf (28 pages).
+Output written on main.pdf (29 pages).
