@@ -45,6 +45,16 @@
 \usepackage{color}
 \usepackage{booktabs}
 
+\DeclareMathOperator{\mytr}{tr}
+\DeclareMathOperator{\mydiag}{diag}
+\DeclareMathOperator{\myrank}{Rank}
+\DeclareMathOperator{\myE}{E}
+\DeclareMathOperator{\myVar}{Var}
+
+
+
+
+
 \theoremstyle{plain}
 \newtheorem{theorem}{\quad\quad Theorem}
 \newtheorem{proposition}{\quad\quad Proposition}
@@ -243,7 +253,7 @@ S_k=\frac{1}{n_k -1}\sum_{i=1}^{n_k} (X_{ki}-\bar{X}_k) {(X_{ki}-\bar{X}_k)}^T
 is the sample covariance  of the sample $k$, $k=1,2$.
 
 We write $\xi\sim \eta$ to denote the random variable $\xi$ and $\eta$ have the same distribution.
-For nonrandom positive sequence $\{a_n\}$ and $\{b_n\}$, $a_n\asymp b_n$ represents $a_n\geq cb_n$ and $a_n\leq Cb_n$ for some positive $c,C$ for every $n$.
+For nonrandom positive sequence $\{a_n\}$ and $\{b_n\}$, $a_n\asymp b_n$ represents $a_n=O(b_n)$ and $b_n=O(a_n)$ as $n\to \infty$.
 
 \section{Methodology}
 
@@ -258,40 +268,44 @@ To simplify notations, the subscript $k$ of $\Sigma_k$, $V_k$, $D_k$, $\Lambda_k
 %\end{equation}
 
 \subsection{Motivation}
- %Facing a testing problem, a general pattern to derive a new test can be summarized as $3$ steps.
- %The first step is to propose a new statistic $T(X)$. 
- %Usually,  $T(X)$ is chosen to be an estimator of certain `distance' between null and alternative. $\mathrm{E}T=0$ under null and $\mathrm{E}T> 0$  under alternative.
- In high dimensional setting, many test procedures for hypotheses~\eqref{problem} is based on a statistic $T(X)$ which estimates ${(\mu_1-\mu_2)}^T A(\mu_1-\mu_2)$.
- Usually, $T(X)$ satisfies $\mathrm{E}T=0$ under null hypothesis and $\mathrm{E}T> 0$  under alternative.
- To determine the critical value, the asymptotic distribution of $T$ need to be derived, say 
- $$\frac{T-\textrm{E}T}{\sqrt{\textrm{Var}(T)}}\xrightarrow{\mathcal{L}} N(0,1).$$
- Since $\textrm{Var}(T)$ may depend on parameters, a ratio consistent estimator $\widehat{\textrm{Var}(T)}$ of $\textrm{Var}(T)$ is necessary. Then
- the rejection region of a level $\alpha$ test can be defined as $T(X)\geq \widehat{\textrm{Var}(T)}^{\frac{1}{2}}z_{1-\alpha}$ where $z_{1-\alpha}$ is the $1-\alpha$ quantile of $N(0,1)$. 
-% Tests derived by the above pattern have an advantage in that it's clear what kind of alternatives the test favors. Many test procedures have been proposed for different $A$. In essence, test procedures for different $A$ are incomparable since they test different alternatives. For example, $T_{CQ}$ outperforms $T_S$ when $\Sigma$ is nearly an identity matrix. However, $T_S$ performs better when different variables are in different scales. 
-%In general, it remains an important question that how to boost test power for a given `distance'.
-The asymptotic power of the test is 
-$$\Phi(\frac{\mathrm{E}T}{\sqrt{\mathrm{Var}(T)}}-z_{1-\alpha}).$$
-Thus, a general idea to boost the power of test is to reduce the variance $\mathrm{Var}(T)$ while the mean $\mathrm{E}(T)$ varies relatively little.
 
-Now we revisit $T_{BS}$ and $T_{CQ}$ which are both based on the estimation of $\|\mu_1-\mu_2\|^2$.
-The main body of both $T_{BS}$ and $T_{CQ}$ is
+    In~\cite{Chen2010A}, to prove the asymptotic normality of $T_{CQ}$, they assumed condition~\eqref{chenscondition}.
+    The following proposition tells that~\eqref{chenscondition} is also necessary for the normality of $T_{CQ}$.
+\begin{proposition}\label{newIf}
+    Suppose $X_{ki}\sim N_p(0,\Sigma)$, $k=1,2$, $i=1,2,\ldots,n_k$. Suppose Assumption~\ref{balance} holds.
+    Then~\eqref{chenscondition} is a necessary and sufficient condition for 
+    \begin{equation}
+        \frac{T_{CQ}-\mathrm{E}T_{CQ}}{{\big[\mathrm{Var}(T_{CQ})\big]}^{1/2}}\xrightarrow{L}N(0,1).
+    \end{equation}
+\end{proposition}
+The Proposition~\ref{newIf} implies that under spiked covariance,~\cite{Chen2010A}'s method can not guarantee the test level.
+To this end,~\cite{Ma2015A} proposed a test procedure which is based on $T_{CQ}$ and has the correct asymptotic test level.
+In their paper, $\Sigma$'s first few eigenvalues are assumed to be of order $p$.
+
+Note that $T_{BS}$, $T_{CQ}$ and~\cite{Ma2015A}'s method are all based on
 $
-    \tau{(\bar{X}_1-\bar{X}_2)}^T (\bar{X}_1-\bar{X}_2)
-$, and can be written as
+    \tau\|\bar{X}_1-\bar{X}_2\|^2
+$, which can be written as the sum of two parts
 \begin{equation}\label{mot:1}
-    \tau{(\bar{X}_1-\bar{X}_2)}^T V V^T (\bar{X}_1-\bar{X}_2)+
-    \tau{(\bar{X}_1-\bar{X}_2)}^T \tilde{V} \tilde{V}^T (\bar{X}_1-\bar{X}_2).
+    \tau \|V^T (\bar{X}_1-\bar{X}_2)\|^2+
+    \tau\|\tilde{V}^T (\bar{X}_1-\bar{X}_2)\|^2.
 \end{equation}
-Under the null hypotheses, it can be seen that $\tau{(\bar{X}_1-\bar{X}_2)}^T V V^T (\bar{X}_1-\bar{X}_2)\sim \sum_{i=1}^r (\lambda_i+\sigma^2)\chi^2_1$ with variance $\sum_{i=1}^r 2(\lambda_i+\sigma^2)^2$ and $\tau{(\bar{X}_1-\bar{X}_2)}^T \tilde{V} \tilde{V}^T (\bar{X}_1-\bar{X}_2)\sim \sigma^2\chi^2_{p-r}$ with variance $2\sigma^4 (p-r)$.
+Under the null hypotheses, we have
+$$\myVar\big(\tau \|V^T (\bar{X}_1-\bar{X}_2)\|^2\big)=\sum_{i=1}^r 2(\lambda_i+\sigma^2)^2,\quad 
+\myVar\big(\|\tilde{V}^T (\bar{X}_1-\bar{X}_2)\|^2\big)=2\sigma^4 (p-r).$$
 The ratio of the two variance is
 $$
 \frac{\sum_{i=1}^r 2(\lambda_i+\sigma^2)^2}{2\sigma^4 (p-r)}
 \asymp
-p^{2\beta-1}.
+p^{2\beta-1},
 $$
-Thus when $\beta>1/2$, the variance of the first term of~\eqref{mot:1} is very large compared with the second term while the signal it contains may be relatively weak since it only involves $r$ dimension.
- By our previous argument, in~\eqref{mot:1}, we remove the first term and only use the second term.
-We define the following statistic
+which tends to $\infty$ as $p\to \infty$ for $\beta>1/2$.
+On the other hand, $
+    \tau \|V^T (\bar{X}_1-\bar{X}_2)\|^2
+$ only involves the signal from $r$ dimension.
+Thus, compared with the second term of~\eqref{mot:1}, the first term has larger variance and tends to contain much weaker signal.
+ This motivates us to drop the first part of~\eqref{mot:1} and only use the second part.
+After adjustment of expectation, we define the following statistic
 \begin{equation*}
 \begin{aligned}
     T_{1}&=\|\tilde{V}^T(\bar{X}_1-\bar{X}_2)\|^2-\frac{1}{n_1}\mathrm{tr}(\tilde{V}^T S_1\tilde{V})-\frac{1}{n_2}\mathrm{tr}(\tilde{V}^T S_2\tilde{V}).
@@ -310,10 +324,9 @@ We define the following statistic
 %If we assume there are correlations between $p$ variables, e.g. $\Sigma=(1-c)I+c\bm{1}_p \bm{1}_p^T$ where c is a constant fulfill $-\frac{1}{p-1}<c<1$, then $\frac{n_1 n_2}{n_1+n_2} {(\bar{X}_1-\bar{X}_2)}^T  p_1 p_1^T (\bar{X}_1-\bar{X}_2)$ distributed as $(cp+1-c)\chi^2_1$ whose variance is of order $p^2$ while $\frac{n_1 n_2}{n_1+n_2}\sum_{i=2}^p {(\bar{X}_1-\bar{X}_2)}^T  p_i p_i^T (\bar{X}_1-\bar{X}_2)$ is distributed as $(1-c)\chi^2_{p-1}$ whose variance is of order $p$. 
 %The large variance is totally caused by term $p\chi^2_1$. 
 %If we remove $\frac{n_1 n_2}{n_1+n_2} {(\bar{X}_1-\bar{X}_2)}^T  p_1 p_1^T (\bar{X}_1-\bar{X}_2)$ from $T_{BS}$, the variance of $T_{BS}$ can be significantly reduced to order $p$ from order $p^2$.
-
 %Note that $\Sigma=(1-c)I+c\bm{1}_p+\bm{1}_p^T$ is just a special case of spiked covariance.
-Proposition~\ref{oracleTheorem} gives the asymptotic distribution of $T_1$.
 
+Proposition~\ref{oracleTheorem} shows that the asymptotic distribution of $T_1$ is normal.
 \begin{proposition}\label{oracleTheorem}
     Under Assumptions~\ref{balance}-\ref{theModel2} and local alternative, that means, $\frac{n}{p}\|\mu_1-\mu_2\|^2\to 0$, we have 
     \begin{equation*}
@@ -322,17 +335,19 @@ Proposition~\ref{oracleTheorem} gives the asymptotic distribution of $T_1$.
     \end{equation*}
 \end{proposition}
 
-\begin{remark}
-    The asymptotic variance of $T_1$ is of order $\tau^2 p$ while the asymptotic variance of $T_{CQ}$ is of order $\tau^2 p^{2\beta}$ by~\cite{Chen2010A}'s Theorem $1$.
-    The asymptotic variance is reduced significantly if $\beta>1/2$ and $p$ is sufficiently large.
-\end{remark}
 
 
 In another point of view,
 $T_1$ is obtained by transforming $X_{ki}$ to $\tilde{V}^T X_{ki}$ ($i=1,\ldots, n_k$, $k=1,2$) and then invoking the statistic of~\cite{Chen2010A}.
 Several test procedures have been proposed through random projection to lower dimensional space, for example,~\cite{Lopes2015A},~\cite{Thulin2014A} and~\cite{Srivastava2014RAPTT}.
-Proposition~\ref{oracleTheorem} implies that transforming $X_{ki}$ to $\tilde{V}^T X_{ki}$ is optimal in terms of reducing the variance. Note that the transformation removes the nuisance parameters $\lambda_1,\ldots,\lambda_r$. Based on $\tilde{V}^T X_{ki}$, the likelihood ratio test statistic is
-    $\|\tilde{V}^T (\bar{X}_1-\bar{X}_2)\|^2$. In this sense, $T_1$ can be seen as a restricted likelihood ratio test.
+For any $p\times (p-r)$ column orthonormal matrix $O_{p\times (p-r)}$, we have
+$$
+\myVar\big(\|O_{p\times (p-r)}^T(\bar{X}_1-\bar{X}_2)\|^2\big)\geq \myVar\big(\|\tilde{V}^T(\bar{X}_1-\bar{X}_2)\|^2\big).
+$$
+Hence $\tilde{V}$ is the optimal transformation in the sense of reducing variance.
+ Based on $\tilde{V}^T X_{ki}$, the likelihood ratio test statistic for hypothesis~\eqref{problem} is
+    $\|\tilde{V}^T (\bar{X}_1-\bar{X}_2)\|^2$ which coincides with our proposal.
+    In this view, $T_1$ can be regarded as a restricted likelihood ratio test.
 
 
 
@@ -676,13 +691,24 @@ From the results, we can find that when $\Sigma$ is spiked, the new test outperf
 %\end{figure}
 
 \subsection{Real data analysis}
-In this section, we study the same practical problem as~\cite{Ma2015A} did. That is testing whether Monday stock returns are equal to those of other trading days on average. Define an observation be the log return of stocks in a day. Hence $p$ is the total number of stocks. Let sample $1$ and sample $2$ be the observations on Monday and the other trading days, respectively.  Then we would like to test $H_0\, :\mu_1=\mu_2$ v.s. $H_1\,:\mu_1\neq \mu_2$. We collected the data of $p=710$
+In this section, we study the practical problem considered in~\cite{Ma2015A}.
+That is testing whether Monday stock returns are equal to those of other trading days on average.
+Define an observation be the log return of stocks in a day.
+Hence $p$ is the total number of stocks.
+Let sample $1$ and sample $2$ be the observations on Monday and the other trading days, respectively.
+Then we would like to test $H_0\, :\mu_1=\mu_2$ v.s. $H_1\,:\mu_1\neq \mu_2$.
+We collected the data of $p=710$
  stocks of China
 from 01/04/2013 to 12/31/2014. There are total $n_1=95$ Monday and $n_2=388$ other trading days. 
 
-We assume $\Sigma_1=\Sigma_2$. The first eigenvaule of $S$ is $0.14$, which is significantly larger than the others.
+We assume $\Sigma_1=\Sigma_2$.
+The first eigenvaule of $S$ is $0.14$, which is significantly larger than the others.
 In fact, the second eigenvalue is $0.02$.
-Hence there's clearly a spiked eigenvalue. We set $r=1$ and perform our new test. The $p$ value is $0.149$, which is obtained by $1000$ permutations. Hence, the null hypothesis can not be rejected for $\alpha=0.05$. We draw the same conclusion as~\cite{Ma2015A}.
+Hence there's clearly a spiked eigenvalue.
+We set $r=1$ and perform our new test.
+The $p$ value is $0.149$, which is obtained by $1000$ permutations.
+Hence, the null hypothesis can not be rejected for $\alpha=0.05$.
+We draw the same conclusion as~\cite{Ma2015A}.
 
 \section{Conclusion remark}
 
@@ -838,7 +864,62 @@ This lemma is from the Example 5.1 of~\cite{jiang1996reml}. Here we give a proof
 \end{proof}
 
 
+
+
 The rest of the Appendix is devoted to the proof of propositions and theorems in the paper.
+
+\begin{proof}[\textbf{Proof Of Proposition~\ref{newIf}}]
+    We first note that~\eqref{chenscondition} is equivalent to
+\begin{equation}\label{ChenMaxEigen}
+    \frac{\lambda_{\max}(\Sigma)}{{\big(\mathrm{tr}\Sigma^2\big)}^{1/2}}\to 0.
+\end{equation}
+
+    Let $X_{ki}=\Sigma^{1/2}Z_{ki}$ with $Z_{ki}$ distributed as $N_p(0,I_{p})$.
+    Denote $Z={(Z_{11},\ldots,Z_{1n_1},Z_{21},\ldots,Z_{2n_2})}^T$. Then $T_{CQ}$ is a quadratic form of $Z$ and we can write
+        $$
+        T_{CQ}=Z^T \big( B_n\otimes \Sigma \big) Z,
+        $$
+    where 
+    \begin{equation*}
+        B_n=\begin{pmatrix}
+            \frac{1}{n_1(n_1-1)}(n_1\gamma_1\gamma_1^T-I_{n_1})&
+            -\frac{1}{\sqrt{n_1 n_2}}\gamma_1 \gamma_2^T\\
+            -\frac{1}{\sqrt{n_1 n_2}}\gamma_2 \gamma_1^T&
+            \frac{1}{n_2(n_2-1)}(n_2\gamma_2\gamma_2^T-I_{n_2})\\
+        \end{pmatrix},
+    \end{equation*}
+    $\gamma_1$ is an $n_1$ dimensional vector with all elements equal to $1/\sqrt{n_1}$ and $\gamma_2$ is an $n_2$ dimensional vector with all elements equal to $1/\sqrt{n_2}$.
+
+    By direct calculation, it can be seen that $B_n$'s eigenvalues are $-1/n_1(n_1-1)$, $-1/n_2(n_2-1)$, $(n_1+n_2)/n_1 n_2$ and $0$ with multiplicities $n_1-1$, $n_2-1$, $1$ and $1$ respectively.
+    The eigenspace corresponding to $-1/n_1(n_1-1)$ is
+    \begin{equation*}
+        \{{(\eta^T,\underbrace{0,\ldots,0}_{n_2})}^T|\, \textrm{$\eta\in \mathbb{R}^{n_1}$ and $\eta^T \gamma_1=0$}\}.
+    \end{equation*}
+    The eigenspace corresponding to $-1/n_2(n_2-1)$ is
+    \begin{equation*}
+        \{{(\underbrace{0,\ldots,0}_{n_1},\eta^T)}^T| \, \textrm{$\eta\in\mathbb{R}^{n_2}$ and $\eta^T \gamma_2=0$}\}.
+    \end{equation*}
+    The eigenvector corresponding to $(n_1+n_2)/n_1n_2$ is
+    \begin{equation*}
+        {\Big(-\sqrt{\frac{n_2}{n_1+n_2}}\gamma_1^T, \sqrt{\frac{n_1}{n_1+n_2}}\gamma_2^T\Big)}^T.
+    \end{equation*}
+    The eigenvector corresponding to $0$ is
+    \begin{equation*}
+        {\Big(\sqrt{\frac{n_1}{n_1+n_2}}\gamma_1^T, \sqrt{\frac{n_2}{n_1+n_2}}\gamma_2^T\Big)}^T.
+    \end{equation*}
+It follows that 
+    \begin{equation*}
+        \mathrm{tr}{(B_n\otimes \Sigma)}^2=\mathrm{tr}(B_n^2)\mathrm{tr}\Sigma^2=(\frac{1}{n_1(n_1-1)}+\frac{1}{n_1(n_1-1)}+\frac{2}{n_1 n_2})\mathrm{tr}\Sigma^2.
+    \end{equation*}
+And
+    \begin{equation*}
+        \lambda_{\max}\Big({(B_n\otimes \Sigma)}^2\Big)=\lambda_{\max}(B_n^2)\lambda_{\max}(\Sigma^2)={\Big(\frac{1}{n_1}+\frac{1}{n_2}\Big)}^2\lambda_{\max}(\Sigma^2).
+    \end{equation*}
+    The theorem follows by Lemma~\ref{quadraticFormCLT}.
+\end{proof}
+
+
+
 \begin{proof}[\textbf{Proof Of Proposition~\ref{oracleTheorem}}]
 Since $V$ and $\tilde{V}$ are orthogonal, we have
     $$\tilde{V}^T X_{ki}=\tilde{V}^T\mu_i+ \tilde{V}^T Z_{ki}\sim N(\tilde{V}^T\mu_k,\sigma^2 I_{p-r})\quad \textrm{$k=1,2$ and $i=1,\ldots,n_k$}.$$
