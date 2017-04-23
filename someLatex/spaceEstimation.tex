@@ -1,7 +1,8 @@
 
 \begin{proof}[\textbf{Proof Of Theorem~\ref{myPanpan}}]
 
-    Note that $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=\sum_{i=r+1}^p \lambda_i(S_i)$, $i=1,2$. Similar to Proposition~\ref{varianceEstimation}, we have that $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=(p-r)\sigma^2+O_P(\frac{\max(n,p)}{n})$, $i=1,2$.
+    Note that $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=\sum_{i=r+1}^p \lambda_i(S_i)$, $i=1,2$.
+    Similar to Proposition~\ref{varianceEstimation}, we have $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=(p-r)\sigma^2+O_P(\frac{\max(n,p)}{n})$, $i=1,2$.
     Hence
 \begin{equation*}
         \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2 p}}
@@ -11,7 +12,7 @@
         }{\sigma^2\sqrt{2\tau^2 p}}
         +O_P(\frac{\max(n,p)}{n\sqrt{p}}).
 \end{equation*}
-    By Assumption~\ref{pAndN}, $\frac{\max(n,p)}{n\sqrt{p}}=\max(\frac{1}{\sqrt{p}},\frac{\sqrt{p}}{n})\to 0$.
+    By Assumption~\ref{pAndN}, ${n^{-1}p^{-1/2}}{\max(n,p)}=\max({p}^{-1/2},{p}^{1/2}/n)\to 0$.
     And
 \begin{equation*}
     \begin{aligned}
@@ -44,7 +45,7 @@ $$
     $$
     We first deal with $P_2$.
     To proves the convergence in probability, we only need to prove the convergence in $L^2$.
-    Note that $\bar{X}_1$, $\bar{X}_2$ and $S$ are mutually independent. And $\hat{\tilde{V}}\hat{\tilde{V}}^T$ only depends on $S$, thus
+    Note that $\bar{X}_1$, $\bar{X}_2$, and $S$ are mutually independent and $\hat{\tilde{V}}\hat{\tilde{V}}^T$ only depends on $S$. Thus
     \begin{equation*}
         \begin{aligned}
             &\mathrm{E} P_2^2
@@ -83,7 +84,7 @@ $$
              =o(\frac{p}{n^2}).
         \end{aligned}
     \end{equation*}
-    As for $P_3$. To prove the convergence in probability, here we prove the convergence in $L^1$: 
+    Next we deal with $P_3$. To prove the convergence in probability, we prove the convergence in $L^1$.
     \begin{equation*}
         \begin{aligned}
             &\mathrm{E}|P_3|=
@@ -108,26 +109,28 @@ $$
 
     The conditional distribution of
     $\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)$ given $S$ is $N(0,\tau \hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})$.
-As we have shown,
+It can be seen that the distribution of $\tau^{-1}\big\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\big\|^2$ is the same as
+\begin{equation*}
+    \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2,
+\end{equation*}
+where $\xi_i$ is i.i.d. distributed as $N(0,1)$, $i=1,\ldots, p$, and $\xi_i$'s are independent of $\hat{\tilde{V}}$.
+    Note that
     $$
-    \lambda_1(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\leq \frac{1}{2}\kappa p^\beta \|VV^T -\hat{V}\hat{V}^T\|^2_F+\sigma^2=O_P(\frac{p}{n}+1).
+     \lambda_1(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\leq 
+    \frac{1}{2}\kappa p^\beta \|VV^T -\hat{V}\hat{V}^T\|^2_F+\sigma^2.
     $$
-    On the other hand,
+    Hence $\lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})=O_P({p}/{n}+1)$, $i=1,\ldots,r$.
+    Moreover, by Weyl's inequality,
     $
     \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})=\sigma^2
-    $ for $i=r+1,\ldots,p-r$. Then
-    $$
-    (p-2r)\sigma^4
-    \leq
-    \mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2
-    \leq
+    $, $i=r+1,\ldots,p-r$.
+    Therefore
+\begin{equation}\label{traceA1}
+\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2=
     {\big(\frac{p}{n}+1\big)}^2O_P(1)
     +
-    (p-2r)\sigma^4,
-    $$ 
-or 
-\begin{equation}\label{traceA1}
-\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2=p\sigma^4(1+o_P(1)).
+    (p-2r)\sigma^4
+    =p\sigma^4(1+o_P(1)).
 \end{equation}
 
     It follows that
@@ -137,14 +140,14 @@ or
 \end{equation}
 Then for every subsequence of $\{n\}$, there's a further subsequence along which~\eqref{inProbC} holds almost surely.
 By Lemma~\ref{quadraticFormCLT}, for every subsequence of $\{n\}$, there's a further subsequence along which we have
-$$
+\begin{equation}\label{aseq}
 \rho\Big(\mathcal{L}\Big(\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\Big|S\Big),N(0,1)\Big)\xrightarrow{a.s.} 0.
-$$
-It means that
-$$
-\rho\Big(\mathcal{L}\Big(\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\Big|S\Big),N(0,1)\Big)\xrightarrow{P} 0.
-$$
-Thus the weak convergence also holds unconditionally:
+\end{equation}
+It means that~\eqref{aseq} tends to $0$ in probability.
+%$$
+%\rho\Big(\mathcal{L}\Big(\frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\Big|S\Big),N(0,1)\Big)\xrightarrow{P} 0.
+%$$
+It can be seen that the weak convergence also holds unconditionally.
 $$
 \frac{\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\|^2-\tau\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})}{\sqrt{2\tau^2\mathrm{tr}(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})^2}}\xrightarrow{\mathcal{L}}N(0,1).
 $$
@@ -160,3 +163,24 @@ $$
 Now the desired asymptotic properties of $P_1$, $P_2$ and $P_3$ are established, the theorem follows.
 \end{proof}
 
+\begin{proof}[\textbf{Proof of Theorem~\ref{chilimthm}}]
+    From the proof of the Theorem~\ref{myPanpan}, the distribution
+    $
+\tau^{-1}\big\|\hat{\tilde{V}}^T\big(\bar{X}_1-\bar{X}_2\big)\big\|^2
+$ is the same as 
+\begin{equation*}
+    \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2,
+\end{equation*}
+where $\xi_i$ is i.i.d. distributed as $N(0,1)$, $i=1,\ldots, p$, and $\xi_i$'s are independent of $\hat{\tilde{V}}$.
+Note that
+$\lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})
+   = 
+    p^{\beta}\lambda_i(\hat{\tilde{V}}^TVV^T\hat{\tilde{V}})+\sigma^2
+    $, $i=1,\ldots, p-r$, then
+\begin{equation*}
+    \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2
+=
+    \sum_{i=1}^r p^{\beta}\lambda_i(\hat{\tilde{V}}^TVV^T\hat{\tilde{V}})\xi_i^2+
+    \sigma^2\sum_{i=1}^{p-r}\xi_i^2.
+\end{equation*}
+\end{proof}
