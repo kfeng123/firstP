@@ -1,9 +1,9 @@
 
 \begin{proof}[\textbf{Proof Of Theorem~\ref{myPanpan}}]
 
-    Note that $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=\sum_{i=r+1}^p \lambda_i(S_i)$, $i=1,2$.
-    Similar to Proposition~\ref{varianceEstimation}, we have $\mathrm{tr}(\hat{\tilde{V_i}}^T S_i\hat{\tilde{V_i}})=(p-r)\sigma^2+O_P(\frac{\max(n,p)}{n})$, $i=1,2$.
-    Hence
+    Note that $\mathrm{tr}(\hat{\tilde{V_k}}^T S_k\hat{\tilde{V_k}})=\sum_{i=r+1}^p \lambda_i(S_i)$, $k=1,2$.
+    Similar to Proposition~\ref{varianceEstimation}, we have $\mathrm{tr}(\hat{\tilde{V_k}}^T S_k\hat{\tilde{V_k}})=(p-r)\sigma^2+O_P({\max(n,p)}/{n})$, $k=1,2$.
+    Then
 \begin{equation*}
         \frac{T_2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2 p}}
         =
@@ -13,7 +13,7 @@
         +O_P(\frac{\max(n,p)}{n\sqrt{p}}).
 \end{equation*}
     By Assumption~\ref{pAndN}, ${n^{-1}p^{-1/2}}{\max(n,p)}=\max({p}^{-1/2},{p}^{1/2}/n)\to 0$.
-    And
+    Note that
 \begin{equation*}
     \begin{aligned}
         &\frac{\|\hat{\tilde{V}}^T(\bar{X}_1-\bar{X}_2)\|^2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2
@@ -33,7 +33,7 @@ Let
     P_2&=2{(\mu_1-\mu_2)}^T \hat{\tilde{V}}\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big),\\
     P_3&=\|\hat{\tilde{V}}^T(\mu_1-\mu_2)\|^2-\|\tilde{V}^T(\mu_1-\mu_2)\|^2.
 \end{align*}
-To prove the theorem, we only need to show that
+To prove the theorem, it suffices to show that
 $$
     \frac{P_1}{\sigma^2\sqrt{2\tau^2 p}}\xrightarrow{\mathcal{L}} N(0,1),
     \quad
@@ -58,13 +58,13 @@ $$
              \mathrm{E}[\lambda_1(\hat{\tilde{V}}^T\Sigma \hat{\tilde{V}}) ]\\
              =&
              O(\frac{\sqrt{p}}{n^2})
-             \mathrm{E}[\lambda_1(\hat{\tilde{V}}^T (VD^2V^T +\sigma^2 I_p) \hat{\tilde{V}})]
+             \mathrm{E}[\lambda_1(\hat{\tilde{V}}^T (V\Lambda V^T +\sigma^2 I_p) \hat{\tilde{V}})]
              \leq 
              O(\frac{\sqrt{p}}{n^2})
              \big(\kappa p^{\beta}\mathrm{E}[\lambda_1(\hat{\tilde{V}}^T VV^T  \hat{\tilde{V}})]+\sigma^2\big).\\
         \end{aligned}
     \end{equation*}
-    By the following useful relationship
+    By the relationship
     \begin{equation*}
         \begin{aligned}
 \lambda_1(\hat{\tilde{V}}^T VV^T  \hat{\tilde{V}})
@@ -109,11 +109,12 @@ $$
 
     The conditional distribution of
     $\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)$ given $S$ is $N(0,\tau \hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})$.
-It can be seen that the distribution of $\tau^{-1}\big\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\big\|^2$ is the same as
-\begin{equation*}
+It can be seen that 
+$$\tau^{-1}\big\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\big\|^2
+\sim
     \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2,
-\end{equation*}
-where $\xi_i$ is i.i.d. distributed as $N(0,1)$, $i=1,\ldots, p$, and $\xi_i$'s are independent of $\hat{\tilde{V}}$.
+    $$
+where $\{\xi_i\}_{i=1}^{p-r}$ are i.i.d. standard normal random variables which are independent of $\hat{\tilde{V}}$.
     Note that
     $$
      \lambda_1(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\leq 
@@ -164,23 +165,69 @@ Now the desired asymptotic properties of $P_1$, $P_2$ and $P_3$ are established,
 \end{proof}
 
 \begin{proof}[\textbf{Proof of Theorem~\ref{chilimthm}}]
-    From the proof of the Theorem~\ref{myPanpan}, the distribution
-    $
-\tau^{-1}\big\|\hat{\tilde{V}}^T\big(\bar{X}_1-\bar{X}_2\big)\big\|^2
-$ is the same as 
+    From the proof of Theorem~\ref{myPanpan} we know that 
 \begin{equation*}
+\tau^{-1}\big\|\hat{\tilde{V}}^T\big(\bar{X}_1-\bar{X}_2\big)\big\|^2
+\sim
     \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2,
 \end{equation*}
-where $\xi_i$ is i.i.d. distributed as $N(0,1)$, $i=1,\ldots, p$, and $\xi_i$'s are independent of $\hat{\tilde{V}}$.
+where $\{\xi_i\}_{i=1}^{p-r}$ are i.i.d. standard normal random variables which are independent of $\hat{\tilde{V}}$.
 Note that
 $\lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})
    = 
-    p^{\beta}\lambda_i(\hat{\tilde{V}}^TVV^T\hat{\tilde{V}})+\sigma^2
-    $, $i=1,\ldots, p-r$, then
+    \kappa p^{\beta}\lambda_i(\hat{\tilde{V}}^TVV^T\hat{\tilde{V}})+\sigma^2
+    $, $i=1,\ldots, p-r$, we have
 \begin{equation*}
     \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2
 =
-    \sum_{i=1}^r p^{\beta}\lambda_i(\hat{\tilde{V}}^TVV^T\hat{\tilde{V}})\xi_i^2+
+    \kappa p^{\beta}\sum_{i=1}^r \lambda_i(\hat{\tilde{V}}^TVV^T\hat{\tilde{V}})\xi_i^2+
     \sigma^2\sum_{i=1}^{p-r}\xi_i^2.
 \end{equation*}
+Existing PCA results for $\hat{\tilde{V}}^TVV^T\hat{\tilde{V}}$ are not enough for current purpose.
+    Denote by $S=\hat{U}\hat{E}\hat{U}^T$ the spectral decomposition of $S$, where $\hat{U}=(\hat{V},\hat{\tilde{V}})$ and $\hat{E}=\mydiag(\hat{\lambda}_1,\ldots,\hat{\lambda}_p)$.
+    To study the property $\hat{\tilde{V}}^TVV^T\hat{\tilde{V}}$, we need to consider $\hat{\lambda}_i$, the $i$th eigenvalue of $S$, $i=1,\ldots, r$.
+
+Denote by $\Sigma=UEU^T$ the spectral decomposition of $\Sigma$, where $U=(V,\tilde{V})$ is an orthogonal matrix and $E=\mathrm{diag}(\lambda_1+\sigma^2,\ldots,\lambda_r+\sigma^2,\sigma^2,\ldots,\sigma^2)$.
+    Let $Z$ be a $p\times (n-2)$ random matrix with all elements i.i.d.\ distributed as $N(0,1)$.
+    Denote $Z={(Z_{(1)}^T,Z_{(2)}^T)}^T$, where $Z_{(1)}$ and $Z_{(2)}$ are the first $r$ rows and last $p-r$ rows of $Z$. 
+    We have
+    \begin{equation}\label{aiai}
+    S\sim \frac{1}{n-2} U E^{1/2} Z Z^T E^{1/2} U^T.
+\end{equation}
+    It can be seen that $\hat{\lambda}_i=\lambda_i(S)\sim (n-2)^{-1}\lambda_i(Z^T E Z)$, $i=1,\ldots,r$. Note that
+\begin{equation*}
+    Z^T E Z=(\kappa p^{\beta}+\sigma^2) Z_{(1)}^T Z_{(1)}+
+\sigma^2 Z_{(2)}^T  Z_{(2)}.
+\end{equation*}
+    By Bai-Yin's law, $\lambda_{\max}(Z_{(2)}^T Z_{(2)})=p(1+o_P(1))$ and $\lambda_{\min}(Z_{(2)}^T Z_{(2)})=p(1+o_P(1))$.
+    By law of large numbers, $\lambda_i(Z_{(1)}^T Z_{(1)})=\lambda_i(Z_{(1)}Z_{(1)}^T)=n(1+o_P(1))$, $i=1,\ldots,r$.
+    Since
+    $$
+    \lambda_i(Z_{(1)}^T Z_{(1)})+\lambda_{\min}(Z_{(2)}^T Z_{(2)})
+    \leq \lambda_i(Z^T E Z)
+    \leq
+    \lambda_i(Z_{(1)}^T Z_{(1)})+\lambda_{\max}(Z_{(2)}^T Z_{(2)}),
+    $$
+    we can deduce that
+    \begin{equation}
+    \hat{\lambda}_i=(\kappa n p^{\beta}+p\sigma^2)(1+o_P(1)),\quad
+    \textrm{$i=1,\ldots,r$}.
+    \end{equation}
+
+    Next, note that~\eqref{aiai} implies
+    $
+    \sigma^{-2}\tilde{V}^T S \tilde{V} \sim {(n-2)}^{-1} Z_{(2)} Z_{(2)}^T
+    $. Let $\hat{E}_1=(\hat{\lambda}_1,\ldots,\hat{\lambda}_r)$, $\hat{E}_2=(\hat{\lambda}_{r+1},\ldots,\hat{\lambda}_{p})$, then $S=\hat{V}\hat{E}_1\hat{V}^T+\hat{\tilde{V}}\hat{E}_2\hat{\tilde{V}}^T$.
+    We have
+$$
+    \tilde{V}^T \hat{V}\hat{E}_1\hat{V}^T\tilde{V}+
+    \tilde{V}^T\hat{\tilde{V}}\hat{E}_2\hat{\tilde{V}}^T \tilde{V} \sim
+    \frac{\sigma^2}{n-2} Z_{(2)} Z_{(2)}^T
+$$
+By Bai-Yin's law, the right hand side. By asymptotic Cochran's theorem.
+$$
+\lambda_1
+    \lambda_{n-2}
+$$
+
 \end{proof}

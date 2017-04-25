@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  23 APR 2017 22:11
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  25 APR 2017 22:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1301,8 +1301,8 @@ File: se-ascii-print.def 2011/12/02 v1.10 stringenc: Printable ASCII characters
 [1
 
 
-] [2] [3] [4] [5] [6]
-Overfull \hbox (0.58598pt too wide) detected at line 314
+] [2] [3] [4] [5]
+Overfull \hbox (0.58598pt too wide) detected at line 312
 [] []\OML/cmm/m/it/10 ^^\\OMS/cmsy/m/n/10 k\OML/cmm/m/it/10 V[]\OT1/cmr/m/n/10 
 ([] \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 k[][] \OT1/cmr/m/n
 /10 = [] 2(\OML/cmm/m/it/10 ^^U[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 ^^[[]\OT1/
@@ -1312,7 +1312,7 @@ cmr/m/n/10 )[]\OML/cmm/m/it/10 ;  [] []\OMS/cmsy/m/n/10 k[]\OT1/cmr/m/n/10 ([]
 ^@ \OML/cmm/m/it/10 r\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :
  []
 
-[7] [8] [9] [10] [11] [12] (./code/level.tex)
+[6] [7] [8] [9] [10] [11] [12] (./code/level.tex)
 File: code/fig1.jpeg Graphic file (type QTm)
  <use  "code/fig1.jpeg" >
 File: code/fig2.jpeg Graphic file (type QTm)
@@ -1328,18 +1328,18 @@ File: code/fig5.jpeg Graphic file (type QTm)
 File: code/fig6.jpeg Graphic file (type QTm)
  <use  "code/fig6.jpeg" >
 
-LaTeX Warning: Float too large for page by 18.45155pt on input line 700.
+LaTeX Warning: Float too large for page by 18.45155pt on input line 698.
 
 [13] [14] [15] [16]
-Overfull \hbox (9.07637pt too wide) in paragraph at lines 805--806
+Overfull \hbox (9.07637pt too wide) in paragraph at lines 803--804
 []  \EU1/lmr/bx/n/10 Corollary 3. []\EU1/lmr/m/it/10 Suppose that $\OML/cmm/m/i
 t/10 W[]$ \EU1/lmr/m/it/10 is a $\OML/cmm/m/it/10 p \OMS/cmsy/m/n/10 ^^B \OML/c
 mm/m/it/10 p$ \EU1/lmr/m/it/10 matrix distributed as $[][]\OT1/cmr/m/n/10 (\OML
 /cmm/m/it/10 n; I[]\OT1/cmr/m/n/10 )$\EU1/lmr/m/it/10 .
  []
 
-[17] [18]
-Overfull \hbox (15.78859pt too wide) in paragraph at lines 860--866
+[17]
+Overfull \hbox (15.78859pt too wide) in paragraph at lines 858--864
 []\EU1/lmr/m/n/10 Denote $\OML/cmm/m/it/10 c[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/
 10 ^^U[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 )/[][]$ \EU1/lmr/m
 /n/10 ($\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; [] ; k[]$\EU1/
@@ -1349,12 +1349,12 @@ lmr/m/n/10 ), we have $\OML/cmm/m/it/10 c[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10
  []
 
 
-Overfull \hbox (3.19302pt too wide) detected at line 881
+Overfull \hbox (3.19302pt too wide) detected at line 879
 [] []
  []
 
-
-Overfull \hbox (11.00288pt too wide) in paragraph at lines 881--889
+[18]
+Overfull \hbox (11.00288pt too wide) in paragraph at lines 879--887
 \EU1/lmr/m/n/10 Denote $\OML/cmm/m/it/10 b[] \OT1/cmr/m/n/10 = [][] [][]$\EU1/l
 mr/m/n/10 , $\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/
 m/n/10 2\OML/cmm/m/it/10 ; [] $ \EU1/lmr/m/n/10 and $\OML/cmm/m/it/10 l \OT1/cm
@@ -1363,17 +1363,12 @@ r/m/n/10 = 3\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; [] $\EU1/lmr
 mr/m/n/10 , $[] [][] [][][] \OMS/cmsy/m/n/10 ^^T
  []
 
-
-Overfull \hbox (88.84259pt too wide) in paragraph at lines 902--904
-[]\EU1/lmr/m/n/10 Let $\OML/cmm/m/it/10 X[] \OT1/cmr/m/n/10 = ^^F[]\OML/cmm/m/i
-t/10 Z[]$ \EU1/lmr/m/n/10 with $\OML/cmm/m/it/10 Z[]$ \EU1/lmr/m/n/10 distribut
-ed as $\OML/cmm/m/it/10 N[]\OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 ; I[]\OT1/cmr/m/n
-/10 )$\EU1/lmr/m/n/10 . Denote $\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = [][]$\EU1/
-lmr/m/n/10 .
+[19] [20]
+Overfull \hbox (23.39941pt too wide) detected at line 1022
+[] []
  []
 
-[19] [20] (./someLatex/varianceEstimation.tex [21] [22])
-(./someLatex/spaceEstimation.tex
+[21] (./someLatex/spaceEstimation.tex
 Overfull \hbox (57.01933pt too wide) detected at line 14
 [] \OT1/cmr/m/n/10 = [] + \OML/cmm/m/it/10 O[]\OT1/cmr/m/n/10 ([])\OML/cmm/m/it
 /10 :
@@ -1384,12 +1379,12 @@ Overfull \hbox (20.05505pt too wide) detected at line 29
 [] []
  []
 
-[23]
+[22]
 Overfull \hbox (2.61203pt too wide) detected at line 102
 [] []
  []
 
-
+[23]
 Overfull \hbox (22.05766pt too wide) in paragraph at lines 110--113
 []\EU1/lmr/m/n/10 The conditional distribution of $[]\OML/cmm/m/it/10 V[][]\OT1
 /cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 ) \O
@@ -1399,21 +1394,15 @@ V[]\OT1/cmr/m/n/10 )[]$ \EU1/lmr/m/n/10 given $\OML/cmm/m/it/10 S$ \EU1/lmr/m/n
 /m/n/10 ^^F[]\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 )$\EU1/lmr/m/n/10 .
  []
 
-[24]
-Overfull \hbox (3.5844pt too wide) in paragraph at lines 140--143
+
+Overfull \hbox (3.5844pt too wide) in paragraph at lines 141--144
 \EU1/lmr/m/n/10 Then for every subsequence of $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/
 10 n\OMS/cmsy/m/n/10 g$\EU1/lmr/m/n/10 , there’s a further subsequence along wh
 ich []
  []
 
-
-Overfull \hbox (37.43445pt too wide) in paragraph at lines 167--171
-[]\EU1/lmr/m/n/10 From the proof of the Theorem []1[], the distribution $\OML/c
-mm/m/it/10 ^^\[][][]V[][][] \OMS/cmsy/m/n/10 ^^@
- []
-
-) [25]
-Overfull \hbox (23.29994pt too wide) in paragraph at lines 1081--1088
+[24] [25]) [26]
+Overfull \hbox (23.29994pt too wide) in paragraph at lines 1136--1143
 \EU1/lmr/m/n/10 Then $\OMS/cmsy/m/n/10 j[]\OT1/cmr/m/n/10 ([]\OML/cmm/m/it/10 V
 []\OT1/cmr/m/n/10 ^^F[]\OML/cmm/m/it/10 V\OT1/cmr/m/n/10 )[] \OMS/cmsy/m/n/10 ^
 ^@ []\OT1/cmr/m/n/10 ^^F[]\OMS/cmsy/m/n/10 j ^^T [][] \OML/cmm/m/it/10 ^^U[]\OT
@@ -1421,13 +1410,13 @@ Overfull \hbox (23.29994pt too wide) in paragraph at lines 1081--1088
  Hence [] holds. By [], [], []
  []
 
-[26]
-Overfull \hbox (38.58032pt too wide) detected at line 1102
+
+Overfull \hbox (38.58032pt too wide) detected at line 1157
 [] []
  []
 
-[27]
-Overfull \hbox (6.93556pt too wide) detected at line 1167
+[27] [28]
+Overfull \hbox (6.93556pt too wide) detected at line 1222
 []\OMS/cmsy/m/n/10 k\OML/cmm/m/it/10 ^^V[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/1
 0 ^^V[]\OMS/cmsy/m/n/10 k[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 k\OML/cmm/m/it/1
 0 ^^V[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 ^^V[]\OMS/cmsy/m/n/10 k[] \OT1/cm
@@ -1438,22 +1427,22 @@ OML/cmm/m/it/10 ^^V[]\OMS/cmsy/m/n/10 k[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 o[
 ]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^[[][]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :
  []
 
-(./someLatex/theOne.tex [28]) (./main.bbl [29] [30])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1200.
+(./someLatex/theOne.tex [29]) (./main.bbl [30])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1255.
  [31]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1200.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1255.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1200.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1200.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1200.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1255.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1255.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1255.
  ) 
 Here is how much of TeX's memory you used:
- 25243 strings out of 493638
- 458230 string characters out of 6146796
- 488484 words of memory out of 5000000
- 28398 multiletter control sequences out of 15000+600000
+ 25241 strings out of 493638
+ 458152 string characters out of 6146796
+ 485519 words of memory out of 5000000
+ 28399 multiletter control sequences out of 15000+600000
  14263 words of font info for 73 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 47i,17n,74p,10426b,823s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 47i,17n,74p,10426b,710s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on main.pdf (31 pages).
