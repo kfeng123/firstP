@@ -455,6 +455,8 @@ Such assumption for $\mu_k$ will be used in Theorem~\ref{sameTheorem}.
 
 \section{Theoretical results}
 
+\subsection{Asymptotic properties}
+
 In this section, we study the asymptotic behavior of the new test procedure.
 
 
@@ -532,8 +534,11 @@ The next theorem  shows that the asymptotics are different from Theorem~\ref{myP
 When Assumption~\ref{pAndN} doesn't hold,  permutation method can be used to determine the critical value.
 We will see from simulation results that the new test has good power behavior even if $p$ is much large than $n$.
 
+\subsection{Minimax optimality}
 
+{\color{red} here}
 
+\subsection{Robustness}
 In practice, it may not be an easy task to check if the covariance matrices are spiked, especially in high dimension setting.
 When the spiked covariance model is not valid,
 some estimators in our test procedure make no sense.
@@ -577,7 +582,7 @@ In this case, the Assumption~\ref{pAndN} can be dropped and we don't need to ass
 These results show that when the covariance matrices are not spiked, the new test procedure also has good power performance.
 
 
-\section{Unequal variance}
+\section{Extension to unequal variance}
 
 In this section, we concern the situation with unequal covariance matrices.
 %With the theoretic work we have done, it's not hard to deal with general case, that is, $\Sigma_1$ and $\Sigma_2$ are both spiked but don't need to be equal.
@@ -634,10 +639,17 @@ $\sigma_n^2=\frac{2(p-r_1-r_2)}{n_1(n_1-1)}\sigma_1^4+\frac{2(p-r_1-r_2)}{n_2(n_
 \section{Numerical studies}
 \subsection{Simulation results}
 
+{\color{red} unequal variance case.}
+
 Our simulation study focus on equal variance case. 
-In the model of Assumption~\ref{theModel}, we set $\sigma^2=1$, 
-$V\in\mathbb{O}_{p\times r}$ is randomly generate from Haar invariant distribution and $\lambda_i$ is $p^{\beta}$ plus a random error from $U(0,1)$ (Uniform distribution between $0$ and $1$).
-The nominal level $\alpha=0.05$.
+
+In this section, we report the simulation performance of the proposed test and compare it with $T_{CQ}$ and $T_S$.
+
+
+Samples are generated from the model described in Assumption~\ref{theModel},   
+    where $V_k\in\mathbb{O}_{p\times r}$ is randomly generated from Haar invariant distribution, $\lambda_{k,i}$ equals $p^{\beta}$ plus a random error from $U(0,1)$ (Uniform distribution between $0$ and $1$) and $\sigma^2_k=1$.
+    In unequal variance case, $(V_1,\Lambda_1)$ and $(V_2,\Lambda_2)$ are independently generated.
+In this section, we take nominal level $\alpha=0.05$.
 
 %The key to the validation of Theorem~\ref{myPanpan} is  that $T_{\textrm{dif}}=\frac{n_1n_2|T_1-T_2|}{\sqrt{2p}(n_1+n_2)\sigma^2}$ converges to $0$.
 %Here we verify it by simulation.
@@ -662,7 +674,7 @@ Samples are repeatedly generated $1000$ times to calculate empirical level.
 For comparison, we also give corresponding `oracle' level which is calculated by `statistic' ${T_1}/(\sigma^2\sqrt{2p\tau^2})$.
 The results are listed in
 Table~\ref{biaoge1}. From the results, we can find that for small $n$ and $p$, even oracle level is not satisfied.
-Level of the new test is  a little inflated compared with oracle level. It performs better when $n$ is larger.
+Level of the new test is  a little inflated compared with oracle level. The empirical level tends to be more close to $0.05$ as $n$ increases.
 
 \input{code/level.tex}
 

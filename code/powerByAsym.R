@@ -1,23 +1,31 @@
 # two sample
 source("./stat.R")
 # main simulation
-myMainSimulation=function(p,n1,n2,r3,beta){
-    modelSimulator=modelGenerator(p=p,r=r,beta=beta)$modelSimulator
-    temp1=rnorm(p,0,1)
-    temp2=rnorm(p,0,1)
+myMainSimulation=function(p,n1,n2,r=3,beta){
+    
+    theEig <- rep(1,p)
+    theEig[1:r] <- rep(p^beta,r)
+    temp <- newModelGenerator(theEig)
+    normalModelSimulator <- temp$normalModelSimulator
+    V <- temp$V
+    
     tau=(n1+n2)/n1/n2
     theoryPower=function(mu1,mu2){
         sum((mu1-mu2)^2)/sqrt(2*tau^2*p)
     }
+    
+    
+    temp1=rnorm(p,0,1)
+    temp2=rnorm(p,0,1)
     outMy=NULL
     for(hh in c(0,1,2,3,4,5)){
         myC=sqrt(hh*sqrt(2*tau^2*p)/sum((temp1-temp2)^2))
         mu1=temp1*myC
         mu2=temp2*myC
         tempMy=NULL
-        for(i in 1:30){
-            X1=modelSimulator(n=n1)+outer(rep(1,n1),mu1)
-            X2=modelSimulator(n=n2)+outer(rep(1,n2),mu2)
+        for(i in 1:300){
+            X1 <- normalModelSimulator(n=n1)+outer(rep(1,n1),mu1)
+            X2 <- normalModelSimulator(n=n2)+outer(rep(1,n2),mu2)
             temp=doTest(X1,X2,n1,n2,p)
             tempMy[i]=temp
         }

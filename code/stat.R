@@ -1,34 +1,23 @@
 library(ggplot2)
 library(MASS)
 
-# model generator
-# that is, generate V,D
-# return a function which can generate sample
-modelGenerator = function(c = 1,
-                          sigmaSquare = 1,
-                          p,
-                          r,
-                          beta = 1)
-{
-    # generate D
-    if (r == 0) {
-        r = 1
-        D = diag(0, nrow = 1, ncol = 1)
-    } else{
-        D = diag(sqrt(rep(c * p ^ beta, r) + runif(r, 0, 1)), nrow = r, ncol = r)
-    }
+
+newModelGenerator <- function(eigValue){
     # generate V
-    V = svd(matrix(rnorm(r * p, 0, 1), c(r, p)))$v
-    # modelSimulator 
-    list(V=V,D=D,
-    modelSimulator=function(n){
+    V = svd(matrix(rnorm(p * p, 0, 1), c(p, p)))$v
+    normalModelSimulator <- function(n){
         t(
-        #outer(mu,rep(1,n))+
-            V%*%D%*%matrix(rnorm(r*n),c(r,n))+
-            matrix(rnorm(p*n),c(p,n))*sigmaSquare
+            V%*%diag(eigValue)%*%matrix(rnorm(p*n),c(p,n))
+        )   
+    }
+    return(
+        list(
+            V=V,
+            normalModelSimulator=normalModelSimulator
         )
-    })
+    )
 }
+
 
 # single sample
 chenStat=function(X1,X2,n1,n2){
@@ -38,21 +27,48 @@ chenStat=function(X1,X2,n1,n2){
     return(T1+T2-2*T3)
 }
 myStat=function(X1,X2,n1,n2,rmax=10){
-    S=((n1-1)*var(X1)+(n2-1)*var(X2))/(n1+n2-2)
+    S1 <- var(X1)
+    S2 <- var(X2)
+    S=((n1-1)*S1+(n2-1)*S2)/(n1+n2-2)
     myEigen=eigen(S,symmetric = TRUE)
     theTemp=myEigen$values[1:(n1+n2-3)]/myEigen$values[2:(n1+n2-2)]
     myRhat=which.max(theTemp[1:rmax])
     myTildeV=myEigen$vectors[,-(1:myRhat)]
+    
+    trace1=sum(eigen(S1,symmetric = TRUE)$values[(myRhat+1):p])
+    trace2=sum(eigen(S2,symmetric = TRUE)$values[(myRhat+1):p])
+     
     # variance estimator
-    varEstimator1=mean(myEigen$values[(myRhat+1):p])
-    varEstimator2=mean(myEigen$values[(2*myRhat+1):(p-2*myRhat)])
-                       
-    return(list(stat=chenStat(X1%*%myTildeV,X2%*%myTildeV,n1,n2),
-                varEstimator1=varEstimator1,varEstimator2=varEstimator2))
+    sigmaSqEst <- mean(myEigen$values[(myRhat+1):p])
+    
+                     
+    stat <- sum((t(myTildeV)%*%(colMeans(X1)- colMeans(X2)))^2)-trace1/n1-trace2/n2
+    
+    tau <- 1/n1+1/n2
+    studentStat <- stat/sigmaSqEst/sqrt(2*tau^2*p)
+    
+    return(
+        list(
+            stat=stat,
+            studentStat=studentStat
+        )
+    )
 }
 # do test
 doTest = function(X1, X2, n1, n2, p, rmax = 10) {
     my = myStat(X1, X2, n1, n2, rmax)
-    myT1=n1*n2*my$stat/(sqrt(2*p)*(n1+n2)*my$varEstimator1)
-    return(pnorm(myT1,0,1,lower.tail = FALSE))
+    return(pnorm(my$studentStat,0,1,lower.tail = FALSE))
 }
+
+
+# n1 <- 30
+# n2 <- 30
+# p <- 100
+# r <- 3
+# beta <- 1
+# theEig <- rep(1,p)
+# theEig[1:r] <- rep(p^beta,r)
+# normalModelSimulator <- newModelGenerator(theEig)
+# X1 <- normalModelSimulator(n1)
+# X2 <- normalModelSimulator(n2)
+# myStat(X1,X2,n1,n2)

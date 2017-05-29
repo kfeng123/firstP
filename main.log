@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  28 APR 2017 22:13
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2016.6.24)  29 MAY 2017 15:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1328,18 +1328,18 @@ File: code/fig5.jpeg Graphic file (type QTm)
 File: code/fig6.jpeg Graphic file (type QTm)
  <use  "code/fig6.jpeg" >
 
-LaTeX Warning: Float too large for page by 18.45155pt on input line 691.
+LaTeX Warning: Float too large for page by 18.45155pt on input line 703.
 
 [13] [14] [15] [16]
-Overfull \hbox (9.07637pt too wide) in paragraph at lines 796--797
+Overfull \hbox (9.07637pt too wide) in paragraph at lines 808--809
 []  \EU1/lmr/bx/n/10 Corollary 3. []\EU1/lmr/m/it/10 Suppose that $\OML/cmm/m/i
 t/10 W[]$ \EU1/lmr/m/it/10 is a $\OML/cmm/m/it/10 p \OMS/cmsy/m/n/10 ^^B \OML/c
 mm/m/it/10 p$ \EU1/lmr/m/it/10 matrix distributed as $[][]\OT1/cmr/m/n/10 (\OML
 /cmm/m/it/10 n; I[]\OT1/cmr/m/n/10 )$\EU1/lmr/m/it/10 .
  []
 
-[17]
-Overfull \hbox (15.78859pt too wide) in paragraph at lines 851--857
+[17] [18]
+Overfull \hbox (15.78859pt too wide) in paragraph at lines 863--869
 []\EU1/lmr/m/n/10 Denote $\OML/cmm/m/it/10 c[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/
 10 ^^U[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 A[]\OT1/cmr/m/n/10 )/[][]$ \EU1/lmr/m
 /n/10 ($\OML/cmm/m/it/10 i \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; [] ; k[]$\EU1/
@@ -1349,12 +1349,12 @@ lmr/m/n/10 ), we have $\OML/cmm/m/it/10 c[] \OMS/cmsy/m/n/10 2 \OT1/cmr/m/n/10
  []
 
 
-Overfull \hbox (3.19302pt too wide) detected at line 872
+Overfull \hbox (3.19302pt too wide) detected at line 884
 [] []
  []
 
-[18]
-Overfull \hbox (11.00288pt too wide) in paragraph at lines 872--880
+
+Overfull \hbox (11.00288pt too wide) in paragraph at lines 884--892
 \EU1/lmr/m/n/10 Denote $\OML/cmm/m/it/10 b[] \OT1/cmr/m/n/10 = [][] [][]$\EU1/l
 mr/m/n/10 , $\OML/cmm/m/it/10 n \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/
 m/n/10 2\OML/cmm/m/it/10 ; [] $ \EU1/lmr/m/n/10 and $\OML/cmm/m/it/10 l \OT1/cm
@@ -1364,28 +1364,28 @@ mr/m/n/10 , $[] [][] [][][] \OMS/cmsy/m/n/10 ^^T
  []
 
 [19] [20]
-Overfull \hbox (23.39941pt too wide) detected at line 1015
+Overfull \hbox (23.39941pt too wide) detected at line 1027
 [] []
  []
 
 [21]
-Overfull \hbox (57.01933pt too wide) detected at line 1080
+Overfull \hbox (57.01933pt too wide) detected at line 1092
 [] \OT1/cmr/m/n/10 = [] + \OML/cmm/m/it/10 O[]\OT1/cmr/m/n/10 ([])\OML/cmm/m/it
 /10 :
  []
 
 
-Overfull \hbox (20.05505pt too wide) detected at line 1095
+Overfull \hbox (20.05505pt too wide) detected at line 1107
 [] []
  []
 
 [22]
-Overfull \hbox (2.61203pt too wide) detected at line 1168
+Overfull \hbox (2.61203pt too wide) detected at line 1180
 [] []
  []
 
 [23]
-Overfull \hbox (22.05766pt too wide) in paragraph at lines 1176--1179
+Overfull \hbox (22.05766pt too wide) in paragraph at lines 1188--1191
 []\EU1/lmr/m/n/10 The conditional distribution of $[]\OML/cmm/m/it/10 V[][]\OT1
 /cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 ^^V[]\OT1/cmr/m/n/10 ) \O
 MS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 ^^
@@ -1395,19 +1395,19 @@ V[]\OT1/cmr/m/n/10 )[]$ \EU1/lmr/m/n/10 given $\OML/cmm/m/it/10 S$ \EU1/lmr/m/n
  []
 
 
-Overfull \hbox (3.5844pt too wide) in paragraph at lines 1207--1210
+Overfull \hbox (3.5844pt too wide) in paragraph at lines 1219--1222
 \EU1/lmr/m/n/10 Then for every subsequence of $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/
 10 n\OMS/cmsy/m/n/10 g$\EU1/lmr/m/n/10 , there’s a further subsequence along wh
 ich []
  []
 
 [24]
-Overfull \hbox (4.33415pt too wide) detected at line 1260
+Overfull \hbox (4.33415pt too wide) detected at line 1272
 [] []
  []
 
 [25]
-Overfull \hbox (61.4955pt too wide) detected at line 1293
+Overfull \hbox (61.4955pt too wide) detected at line 1305
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^Tp[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 ^^[
 []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z[]Z
 []\OT1/cmr/m/n/10 ) + \OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z
@@ -1419,26 +1419,26 @@ Overfull \hbox (61.4955pt too wide) detected at line 1293
 m/n/10 )\OML/cmm/m/it/10 ;
  []
 
-
-Overfull \hbox (3.0482pt too wide) in paragraph at lines 1331--1339
+[26]
+Overfull \hbox (3.0482pt too wide) in paragraph at lines 1343--1351
 \EU1/lmr/m/n/10 This, together with inequality $[][][][][][] \OMS/cmsy/m/n/10 ^
 ^T [][][][] ^^T [][][][][][]$
  []
 
 
-Overfull \hbox (19.16862pt too wide) detected at line 1343
+Overfull \hbox (19.16862pt too wide) detected at line 1355
 \OML/cmm/m/it/10 ^^U[]\OT1/cmr/m/n/10 ([][][][]) = [](1 + \OML/cmm/m/it/10 o[]\
 OT1/cmr/m/n/10 (1))\OML/cmm/m/it/10 ;  ^^U[]\OT1/cmr/m/n/10 ([][][][]) = [](1 +
  \OML/cmm/m/it/10 o[]\OT1/cmr/m/n/10 (1))\OML/cmm/m/it/10 :
  []
 
-[26] [27]
-Overfull \hbox (38.58032pt too wide) detected at line 1454
+[27]
+Overfull \hbox (38.58032pt too wide) detected at line 1466
 [] []
  []
 
 [28] [29]
-Overfull \hbox (6.93556pt too wide) detected at line 1515
+Overfull \hbox (6.93556pt too wide) detected at line 1527
 []\OMS/cmsy/m/n/10 k\OML/cmm/m/it/10 ^^V[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/1
 0 ^^V[]\OMS/cmsy/m/n/10 k[] \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 k\OML/cmm/m/it/1
 0 ^^V[] \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 ^^V[]\OMS/cmsy/m/n/10 k[] \OT1/cm
@@ -1450,19 +1450,19 @@ OML/cmm/m/it/10 ^^V[]\OMS/cmsy/m/n/10 k[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 o[
  []
 
 (./someLatex/theOne.tex [30]) (./main.bbl [31])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1549.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1561.
  [32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1549.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1561.
  (./main.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1549.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1549.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1549.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1561.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1561.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1561.
  ) 
 Here is how much of TeX's memory you used:
- 25240 strings out of 493638
- 458102 string characters out of 6146796
- 484583 words of memory out of 5000000
- 28401 multiletter control sequences out of 15000+600000
+ 25241 strings out of 493638
+ 458113 string characters out of 6146796
+ 487583 words of memory out of 5000000
+ 28402 multiletter control sequences out of 15000+600000
  14263 words of font info for 73 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  47i,17n,74p,10426b,710s stack positions out of 5000i,500n,10000p,200000b,80000s

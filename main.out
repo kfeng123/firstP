@@ -4,8 +4,11 @@
 \BOOKMARK [2][-]{subsection.3.1}{Motivation}{section.3}% 4
 \BOOKMARK [2][-]{subsection.3.2}{New\040Test}{section.3}% 5
 \BOOKMARK [1][-]{section.4}{Theoretical\040results}{}% 6
-\BOOKMARK [1][-]{section.5}{Unequal\040variance}{}% 7
-\BOOKMARK [1][-]{section.6}{Numerical\040studies}{}% 8
-\BOOKMARK [2][-]{subsection.6.1}{Simulation\040results}{section.6}% 9
-\BOOKMARK [2][-]{subsection.6.2}{Real\040data\040analysis}{section.6}% 10
-\BOOKMARK [1][-]{section.7}{Conclusion\040remark}{}% 11
+\BOOKMARK [2][-]{subsection.4.1}{Asymptotic\040properties}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Minimax\040optimality}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Robustness}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{Extension\040to\040unequal\040variance}{}% 10
+\BOOKMARK [1][-]{section.6}{Numerical\040studies}{}% 11
+\BOOKMARK [2][-]{subsection.6.1}{Simulation\040results}{section.6}% 12
+\BOOKMARK [2][-]{subsection.6.2}{Real\040data\040analysis}{section.6}% 13
+\BOOKMARK [1][-]{section.7}{Conclusion\040remark}{}% 14
