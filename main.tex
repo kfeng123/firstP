@@ -211,7 +211,7 @@ Assume $p\to \infty$ as $n\to \infty$. Furthermore, assume two samples are balan
 
 To characterize correlations between $p$ variables, we consider spiked covariance structure which is adopted by PCA study. See~\cite{Cai2012Sparse} and the references given there.
 \begin{assumption}\label{theModel}
-    Let $X_{k,1},\ldots, X_{k, n_k}$  be i.i.d. samples with common distribution $N(\mu_k,\Sigma_k)$, $k=1,2$. 
+    Let $X_{k,1},\ldots, X_{k, n_k}$  be i.i.d.\  samples with common distribution $N(\mu_k,\Sigma_k)$, $k=1,2$. 
     Assume $\Sigma_k$ has structure $ 
 \Sigma_k=V_k\Lambda_k V_k^T+\sigma^2_k I_p
 $, where $\Lambda_k=\mydiag(\lambda_{k,1},\ldots,\lambda_{k,{r_k}})$, 
@@ -501,7 +501,7 @@ Now the power function of the new test can be obtained immediately.
 
 \begin{corollary}\label{testPowerh}
 Suppose Assumptions~\ref{balance}-\ref{pAndN} holds.
-    if the null hypothesis is rejected when $Q$ is larger than $1-\alpha$ quantile of $N(0,1)$, then the asymptotic power function of the new test is
+    If the null hypothesis is rejected when $Q$ is larger than $1-\alpha$ quantile of $N(0,1)$, then the asymptotic power function of the new test is
     \begin{equation*}
         \Phi\Big(-\Phi^{-1}(1-\alpha)+\frac{\|\tilde{V}(\mu_1-\mu_2)\|^2}{\sigma^2\sqrt{2\tau^2p}}\Big).
     \end{equation*}
@@ -645,11 +645,10 @@ Our simulation study focus on equal variance case.
 
 In this section, we report the simulation performance of the proposed test and compare it with $T_{CQ}$ and $T_S$.
 
-
-Samples are generated from the model described in Assumption~\ref{theModel},   
+In our simulation study, samples are generated from the model described in Assumption~\ref{theModel},   
     where $V_k\in\mathbb{O}_{p\times r}$ is randomly generated from Haar invariant distribution, $\lambda_{k,i}$ equals $p^{\beta}$ plus a random error from $U(0,1)$ (Uniform distribution between $0$ and $1$) and $\sigma^2_k=1$.
     In unequal variance case, $(V_1,\Lambda_1)$ and $(V_2,\Lambda_2)$ are independently generated.
-In this section, we take nominal level $\alpha=0.05$.
+We take nominal level $\alpha=0.05$.
 
 %The key to the validation of Theorem~\ref{myPanpan} is  that $T_{\textrm{dif}}=\frac{n_1n_2|T_1-T_2|}{\sqrt{2p}(n_1+n_2)\sigma^2}$ converges to $0$.
 %Here we verify it by simulation.
@@ -669,7 +668,7 @@ In this section, we take nominal level $\alpha=0.05$.
 %    \caption{These are plots of $T_{\textrm{dif}}$ versus $p$. The first column and the second column are the case of $p=n$ and $p=n^2$, separately. The cases of $\beta=1,2,3$ are in the row $1,2,3$ separately. $r$ is set to be $3$ in all cases. }\label{fig:fig1}
 %\end{figure}
 
-First we simulate the level of the new test. We set factor number $r=2$.
+First, we simulate the level of the new test. We set factor number $r=2$.
 Samples are repeatedly generated $1000$ times to calculate empirical level.
 For comparison, we also give corresponding `oracle' level which is calculated by `statistic' ${T_1}/(\sigma^2\sqrt{2p\tau^2})$.
 The results are listed in
@@ -680,14 +679,15 @@ Level of the new test is  a little inflated compared with oracle level. The empi
 
 
 
-Next we simulate the empirical power of our test and~\cite{Chen2010A}'s test.
+Next, we simulate the empirical power of our test.
 The simulation results of~\cite{Ma2015A} have showed that the level of the~\cite{Chen2010A}'s test can't be guaranteed when covariance is spiked.
-To be fair, we use permutation method to determine critical value.
-Permutation method can produce an exact test procedure, see~\cite{Lehmann}'s Example 15.2.2.\@
-For $T_{CQ}$, note that permutation method only need it's main part, $\|\bar{X}_1-\bar{X}_2\|^2$, which is also the main part of~\cite{Bai1996Efiect} and~\cite{Ma2015A}'s method.
-Thus, these methods all produce the same permutation test.
-We plot the empirical power versus $\|\mu_1-\mu_2\|$ while other parameters hold constant.
-The results are illustrated in figure~\ref{fig:fig2}.
+To be fair,  critical values are all determined by permutation method.
+We set $\Sigma_1=\Sigma_2$, under which permutation method can produce exact test procedures, see~\cite{Lehmann}'s Example 15.2.2.\@
+Note that  the statistics of~\cite{Chen2010A},~\cite{Bai1996Efiect} and~\cite{Ma2015A} all produce the same permutation test.
+Indeed, they are all equivalent to the permutation test based on $\|\bar{X}_1-\bar{X}_2\|^2$.
+We permutate the sample $100$ times to determine the critical value. We repeat the test procedure $500$ times to obtain empirical power.
+We plot the empirical power versus signal-to-noise ratio $\textrm{SNR}=\|\mu_1-\mu_2\|^2/(\sigma^2\sqrt{2\tau^2 p})$.
+The results are illustrated in figure~\ref{fig:fig1} and~\ref{fig:fig2}, where `NEW', `CQ' and `S' represent the new test,~\cite{Chen2010A}'s test and \cite{Srivastava2008A}'s test.
 From the results, we can find that when $\Sigma$ is spiked, the new test outperforms $T_{CQ}$ substantially; when $\Sigma$ is not spiked, the new test and $T_{CQ}$ are comparable.
 \begin{figure}
     \centering 
@@ -696,12 +696,18 @@ From the results, we can find that when $\Sigma$ is spiked, the new test outperf
     \\
     \includegraphics[height=6cm]{code/fig3.jpeg}
     \includegraphics[height=6cm]{code/fig4.jpeg}
-    \\
-    \includegraphics[height=6cm]{code/fig5.jpeg}
-    \includegraphics[height=6cm]{code/fig6.jpeg}
-    \caption{Empirical power simulation. $\alpha$ is set to be $0.05$. $d$ is proportional to $\|\mu_1-\mu_2\|^2$. For each simulation, we do 50 permutations to determine critical value. We generate $100$ independent samples to compute empirical power. }\label{fig:fig2}
+    \caption{Empirical power simulation.}\label{fig:fig1}
 \end{figure}
 
+\begin{figure}
+    \centering 
+    \includegraphics[height=6cm]{code/fig5.jpeg}
+    \includegraphics[height=6cm]{code/fig6.jpeg}
+    \\
+    \includegraphics[height=6cm]{code/fig7.jpeg}
+    \includegraphics[height=6cm]{code/fig8.jpeg}
+    \caption{Empirical power simulation.}\label{fig:fig2}
+\end{figure}
 %Permutation method is computation expensive. So when $p$ and $n$ are large, we simulate empirical power by asymptotic distribution. The results are illustrated in figure~\eqref{fig:fig3}.
 
 %\begin{figure}\label{fig:fig3}
@@ -1192,7 +1198,7 @@ $$\tau^{-1}\big\|\hat{\tilde{V}}^T\big((\bar{X}_1-\mu_1)-(\bar{X}_2-\mu_2)\big)\
 \sim
     \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2,
     $$
-where $\{\xi_i\}_{i=1}^{p-r}$ are i.i.d. standard normal random variables which are independent of $\hat{\tilde{V}}$.
+where $\{\xi_i\}_{i=1}^{p-r}$ are i.i.d.\  standard normal random variables which are independent of $\hat{\tilde{V}}$.
     Note that
     $$
      \lambda_1(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\leq 
@@ -1250,7 +1256,7 @@ Now the desired asymptotic properties of $P_1$, $P_2$ and $P_3$ are established,
 \sim
     \sum_{i=1}^{p-r} \lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})\xi_i^2,
 \end{equation*}
-where $\{\xi_i\}_{i=1}^{p-r}$ are i.i.d. standard normal random variables which are independent of $\hat{\tilde{V}}$.
+where $\{\xi_i\}_{i=1}^{p-r}$ are i.i.d.\  standard normal random variables which are independent of $\hat{\tilde{V}}$.
 Note that
 $\lambda_i(\hat{\tilde{V}}^T\Sigma\hat{\tilde{V}})
    = 
