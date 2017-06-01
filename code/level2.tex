@@ -1,13 +1,28 @@
 % latex table generated in R 3.3.3 by xtable 1.8-2 package
-% Thu Jun  1 17:44:36 2017
+% Thu Jun  1 20:35:00 2017
 \begin{table}[ht]
+
+\caption{Test level simulation. Unequal variance case.} 
+\label{biaoge2}
+    \vspace{3mm}
 \centering
 \begin{tabular}{rccccccc}
-  \hline
-n & p & myLevelbeta0.5 & oracleLevelbeta0.5 & myLevelbeta1 & oracleLevelbeta1 & myLevelbeta2 & oracleLevelbeta2 \\ 
-  \hline
-\hline
+  \toprule
+    &  & \multicolumn{2}{c}{$\beta$=0.5} & \multicolumn{2}{c}{$\beta$=1}& \multicolumn{2}{c}{$\beta$=2}   \\
+    \cmidrule(r){3-4}
+    \cmidrule(r){5-6}
+    \cmidrule(r){7-8}
+$n$ & $p$ & NEW & ORACLE & NEW & ORACLE & NEW & ORACLE \\ 
+\midrule
+300 & 200 & 0.066 & 0.058 & 0.057 & 0.054 & 0.054 & 0.050 \\ 
+  300 & 400 & 0.063 & 0.047 & 0.063 & 0.047 & 0.069 & 0.052 \\ 
+  300 & 600 & 0.070 & 0.058 & 0.091 & 0.059 & 0.086 & 0.053 \\ 
+  300 & 800 & 0.069 & 0.040 & 0.097 & 0.055 & 0.083 & 0.056 \\ 
+  600 & 200 & 0.054 & 0.056 & 0.049 & 0.049 & 0.052 & 0.051 \\ 
+  600 & 400 & 0.060 & 0.054 & 0.067 & 0.059 & 0.060 & 0.055 \\ 
+  600 & 600 & 0.041 & 0.034 & 0.069 & 0.062 & 0.055 & 0.049 \\ 
+  600 & 800 & 0.077 & 0.063 & 0.066 & 0.058 & 0.071 & 0.058 \\ 
+   \bottomrule
 \end{tabular}
-\caption{Test level simulation} 
-\label{biaoge1}
+
 \end{table}

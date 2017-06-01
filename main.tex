@@ -534,9 +534,6 @@ The next theorem  shows that the asymptotics are different from Theorem~\ref{myP
 When Assumption~\ref{pAndN} doesn't hold,  permutation method can be used to determine the critical value.
 We will see from simulation results that the new test has good power behavior even if $p$ is much large than $n$.
 
-\subsection{Minimax optimality}
-
-{\color{red} here}
 
 \subsection{Robustness}
 In practice, it may not be an easy task to check if the covariance matrices are spiked, especially in high dimension setting.
@@ -671,11 +668,14 @@ We take nominal level $\alpha=0.05$.
 First, we simulate the level of the new test. We set factor number $r=2$.
 Samples are repeatedly generated $1000$ times to calculate empirical level.
 For comparison, we also give corresponding `oracle' level which is calculated by `statistic' ${T_1}/(\sigma^2\sqrt{2p\tau^2})$.
-The results are listed in
-Table~\ref{biaoge1}. From the results, we can find that for small $n$ and $p$, even oracle level is not satisfied.
-Level of the new test is  a little inflated compared with oracle level. The empirical level tends to be more close to $0.05$ as $n$ increases.
+The results for equal variance case and unequal variance case are listed in
+Table~\ref{biaoge1}, respectively.
+From the results, we can find that for small $n$ and $p$, even oracle level is not satisfied.
+Level of the new test is a little inflated compared with oracle level.
+In all case, the empirical level tends to be more close to $0.05$ as $n$ increases.
 
 \input{code/level.tex}
+\input{code/level2.tex}
 
 
 
