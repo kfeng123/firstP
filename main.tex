@@ -636,14 +636,11 @@ $\sigma_n^2=\frac{2(p-r_1-r_2)}{n_1(n_1-1)}\sigma_1^4+\frac{2(p-r_1-r_2)}{n_2(n_
 \section{Numerical studies}
 \subsection{Simulation results}
 
-{\color{red} unequal variance case.}
-
-Our simulation study focus on equal variance case. 
 
 In this section, we report the simulation performance of the proposed test and compare it with $T_{CQ}$ and $T_S$.
 
-In our simulation study, samples are generated from the model described in Assumption~\ref{theModel},   
-    where $V_k\in\mathbb{O}_{p\times r}$ is randomly generated from Haar invariant distribution, $\lambda_{k,i}$ equals $p^{\beta}$ plus a random error from $U(0,1)$ (Uniform distribution between $0$ and $1$) and $\sigma^2_k=1$.
+In our simulation studies, samples are generated from the model described in Assumption~\ref{theModel},   
+    where $V_k\in\mathbb{O}_{p\times r}$ is randomly generated from Haar invariant distribution, $\lambda_{k,i}$ equals $p^{\beta}$ plus a random error from $U(0,1)$ (Uniform distribution between $0$ and $1$) and $\sigma^2_k=1$, $k=1,2$.
     In unequal variance case, $(V_1,\Lambda_1)$ and $(V_2,\Lambda_2)$ are independently generated.
 We take nominal level $\alpha=0.05$.
 
@@ -667,19 +664,19 @@ We take nominal level $\alpha=0.05$.
 
 First, we simulate the level of the new test. We set factor number $r=2$.
 Samples are repeatedly generated $1000$ times to calculate empirical level.
-For comparison, we also give corresponding `oracle' level which is calculated by `statistic' ${T_1}/(\sigma^2\sqrt{2p\tau^2})$.
+For comparison, we also give corresponding `oracle' level which is calculated by `statistics' ${T_1}/(\sigma^2\sqrt{2p\tau^2})$ in equal variance case and ${T_1}/\sqrt{\sigma_n^2}$ in unequal variance case.
 The results for equal variance case and unequal variance case are listed in
-Table~\ref{biaoge1}, respectively.
+Table~\ref{biaoge1} and~\ref{biaoge2}, respectively.
 From the results, we can find that for small $n$ and $p$, even oracle level is not satisfied.
 Level of the new test is a little inflated compared with oracle level.
-In all case, the empirical level tends to be more close to $0.05$ as $n$ increases.
+In all cases, the empirical level tends to be more close to $0.05$ as $n$ increases.
 
 \input{code/level.tex}
 \input{code/level2.tex}
 
 
 
-Next, we simulate the empirical power of our test.
+Next, we simulate the empirical power of the new test.
 The simulation results of~\cite{Ma2015A} have showed that the level of the~\cite{Chen2010A}'s test can't be guaranteed when covariance is spiked.
 To be fair,  critical values are all determined by permutation method.
 We set $\Sigma_1=\Sigma_2$, under which permutation method can produce exact test procedures, see~\cite{Lehmann}'s Example 15.2.2.\@
@@ -688,7 +685,7 @@ Indeed, they are all equivalent to the permutation test based on $\|\bar{X}_1-\b
 We permutate the sample $100$ times to determine the critical value. We repeat the test procedure $500$ times to obtain empirical power.
 We plot the empirical power versus signal-to-noise ratio $\textrm{SNR}=\|\mu_1-\mu_2\|^2/(\sigma^2\sqrt{2\tau^2 p})$.
 The results are illustrated in figure~\ref{fig:fig1} and~\ref{fig:fig2}, where `NEW', `CQ' and `S' represent the new test,~\cite{Chen2010A}'s test and \cite{Srivastava2008A}'s test.
-From the results, we can find that when $\Sigma$ is spiked, the new test outperforms $T_{CQ}$ substantially; when $\Sigma$ is not spiked, the new test and $T_{CQ}$ are comparable.
+From the results, we can find that when $\Sigma$ is spiked, the new test outperforms $T_{CQ}$ substantially; when $\Sigma$ is not spiked, all three tests have similar performance.
 \begin{figure}
     \centering 
     \includegraphics[height=6cm]{code/fig1.jpeg}
